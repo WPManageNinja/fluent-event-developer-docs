@@ -1,0 +1,189 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentEvent API",
+    "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
+    "version": "1.0.2"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-event/v2",
+      "description": "Your WordPress site",
+      "variables": {
+        "website": {
+          "default": "yourwebsite.com",
+          "description": "Your WordPress site domain, without https://"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "A WordPress username and an Application Password."
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-WP-Nonce",
+        "description": "Logged-in cookie plus a `wp_rest` nonce. The browser sends the cookie."
+      }
+    }
+  },
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/calendars/options": {
+      "get": {
+        "operationId": "listCalendarOptions",
+        "summary": "List Calendar Options",
+        "description": "Returns calendars as dropdown options: ID, title, status and meta only, with no counts.\n\nController: `CalendarController@getCalendarOptions`\nRoute source: `fluent-event/app/Http/Routes/api.php:39`",
+        "tags": [
+          "Calendars"
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "description": "Matches title or slug.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "meetup"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "description": "Only calendars with this status.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "public",
+                "private",
+                "draft"
+              ]
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "description": "Column to sort by.",
+            "schema": {
+              "enum": [
+                "id",
+                "title",
+                "slug",
+                "status",
+                "created_at",
+                "updated_at"
+              ],
+              "default": "id",
+              "type": "string"
+            },
+            "example": "title"
+          },
+          {
+            "name": "order_type",
+            "in": "query",
+            "required": false,
+            "description": "Sort direction.",
+            "schema": {
+              "enum": [
+                "ASC",
+                "DESC"
+              ],
+              "default": "DESC",
+              "type": "string"
+            },
+            "example": "ASC"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "calendars": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "meta": {
+                            "type": "object",
+                            "properties": {
+                              "theme_color": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "calendars": [
+                    {
+                      "id": 744,
+                      "title": "Archive",
+                      "status": "draft",
+                      "meta": {
+                        "theme_color": "#0099ff"
+                      }
+                    },
+                    {
+                      "id": 743,
+                      "title": "Team Meetups",
+                      "status": "public",
+                      "meta": {
+                        "theme_color": "#12A9B5"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The current user does not have the `manage_options` capability, or the nonce is missing.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

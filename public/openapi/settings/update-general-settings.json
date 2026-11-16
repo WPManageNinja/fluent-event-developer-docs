@@ -1,0 +1,188 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentEvent API",
+    "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
+    "version": "1.0.2"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-event/v2",
+      "description": "Your WordPress site",
+      "variables": {
+        "website": {
+          "default": "yourwebsite.com",
+          "description": "Your WordPress site domain, without https://"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "A WordPress username and an Application Password."
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-WP-Nonce",
+        "description": "Logged-in cookie plus a `wp_rest` nonce. The browser sends the cookie."
+      }
+    }
+  },
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/settings/general": {
+      "post": {
+        "operationId": "updateGeneralSettings",
+        "summary": "Update General Settings",
+        "description": "Saves the general settings. Send only the fields of the box you save; the others keep their values.\n\nController: `SettingsController@updateGeneral`\nRoute source: `fluent-event/app/Http/Routes/api.php:25`",
+        "tags": [
+          "Settings"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "default_events_view": {
+                          "type": "string"
+                        },
+                        "disable_event_view_switch": {
+                          "type": "string"
+                        },
+                        "events_page_id": {
+                          "type": "integer"
+                        },
+                        "event_slug": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "pages": {
+                      "type": "object",
+                      "properties": {
+                        "events_page_id": {
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Settings have been saved.",
+                  "settings": {
+                    "default_events_view": "timeline",
+                    "disable_event_view_switch": "no",
+                    "events_page_id": 0,
+                    "event_slug": "event"
+                  },
+                  "pages": {
+                    "events_page_id": null
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The current user does not have the `manage_options` capability, or the nonce is missing.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation failed. `errors` holds one object per failing field.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "event_slug": {
+                    "pattern": "^[A-Za-z0-9_-]+$",
+                    "maxLength": 100,
+                    "type": "string",
+                    "description": "URL base for event pages and the events archive."
+                  },
+                  "default_events_view": {
+                    "type": "string",
+                    "enum": [
+                      "cards",
+                      "timeline",
+                      "calendar"
+                    ],
+                    "description": "Default layout of the events list."
+                  },
+                  "disable_event_view_switch": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ],
+                    "description": "`yes` hides the layout switcher."
+                  },
+                  "events_page_id": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "nullable": true,
+                    "description": "The page that shows `[fluent_events]`, or `0`."
+                  }
+                }
+              },
+              "example": {
+                "default_events_view": "timeline",
+                "disable_event_view_switch": "no"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

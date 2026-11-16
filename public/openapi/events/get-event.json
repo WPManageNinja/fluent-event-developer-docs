@@ -1,0 +1,264 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentEvent API",
+    "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
+    "version": "1.0.2"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-event/v2",
+      "description": "Your WordPress site",
+      "variables": {
+        "website": {
+          "default": "yourwebsite.com",
+          "description": "Your WordPress site domain, without https://"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "A WordPress username and an Application Password."
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-WP-Nonce",
+        "description": "Logged-in cookie plus a `wp_rest` nonce. The browser sends the cookie."
+      }
+    }
+  },
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/events/{id}": {
+      "get": {
+        "operationId": "getEvent",
+        "summary": "Get Event",
+        "description": "Returns one event with its description, post, calendar and guest count, plus its public URL.\n\nController: `EventController@getEvent`\nRoute source: `fluent-event/app/Http/Routes/api.php:55`",
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Record ID.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "event": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "post_id": {
+                          "type": "integer"
+                        },
+                        "calendar_id": {
+                          "type": "integer"
+                        },
+                        "parent_event_id": {
+                          "nullable": true
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "start_at": {
+                          "type": "string"
+                        },
+                        "end_at": {
+                          "type": "string"
+                        },
+                        "timezone": {
+                          "type": "string"
+                        },
+                        "venue_type": {
+                          "type": "string"
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "cover_url": {
+                              "type": "string"
+                            },
+                            "online_meeting_url": {
+                              "type": "string"
+                            },
+                            "venue": {
+                              "type": "string"
+                            },
+                            "address": {
+                              "type": "string"
+                            },
+                            "entry_type": {
+                              "type": "string"
+                            },
+                            "show_guest_count": {
+                              "type": "string"
+                            },
+                            "description_md": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "guests_count": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "start_at_local": {
+                          "type": "string"
+                        },
+                        "end_at_local": {
+                          "type": "string"
+                        },
+                        "start_at_site": {
+                          "type": "string"
+                        },
+                        "end_at_site": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "calendar": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "status": {
+                              "type": "string"
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "theme_color": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "public_url": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "event": {
+                    "id": 665,
+                    "post_id": 3373,
+                    "calendar_id": 743,
+                    "parent_event_id": null,
+                    "status": "public",
+                    "start_at": "2026-12-07 23:00:00",
+                    "end_at": "2026-12-08 01:30:00",
+                    "timezone": "America/New_York",
+                    "venue_type": "offline",
+                    "meta": {
+                      "cover_url": "https://example.com/images/spring-meetup.jpg",
+                      "online_meeting_url": "",
+                      "venue": "Riverside Community Hall",
+                      "address": "120 Market Street, Springfield",
+                      "entry_type": "rsvp",
+                      "show_guest_count": "yes",
+                      "description_md": "An evening of short talks and open networking.\n\n**Doors open at 6 PM.**"
+                    },
+                    "created_at": "2026-11-16 11:50:01",
+                    "updated_at": "2026-11-16 11:50:01",
+                    "guests_count": "3",
+                    "title": "Spring Meetup",
+                    "start_at_local": "2026-12-07 18:00:00",
+                    "end_at_local": "2026-12-07 20:30:00",
+                    "start_at_site": "2026-12-08 05:00:00",
+                    "end_at_site": "2026-12-08 07:30:00",
+                    "description": "<p>An evening of short talks and open networking.</p>\n<p><strong>Doors open at 6 PM.</strong></p>",
+                    "calendar": {
+                      "id": 743,
+                      "title": "Team Meetups",
+                      "status": "public",
+                      "meta": {
+                        "theme_color": "#12A9B5"
+                      }
+                    }
+                  },
+                  "public_url": "https://yourwebsite.com/event/spring-meetup/"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The current user does not have the `manage_options` capability, or the nonce is missing.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No record with that ID.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

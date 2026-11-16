@@ -1,0 +1,315 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentEvent API",
+    "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
+    "version": "1.0.2"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-event/v2",
+      "description": "Your WordPress site",
+      "variables": {
+        "website": {
+          "default": "yourwebsite.com",
+          "description": "Your WordPress site domain, without https://"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "A WordPress username and an Application Password."
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-WP-Nonce",
+        "description": "Logged-in cookie plus a `wp_rest` nonce. The browser sends the cookie."
+      }
+    }
+  },
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/community/events": {
+      "get": {
+        "operationId": "listCommunityEvents",
+        "summary": "List Community Events",
+        "description": "Returns the events the caller can see in the FluentCommunity portal, with their space and the caller's own status.\n\nController: `CommunityEventController@getEvents`\nRoute source: `fluent-event/app/Http/Routes/api.php:70`",
+        "tags": [
+          "Community Portal"
+        ],
+        "parameters": [
+          {
+            "name": "space",
+            "in": "query",
+            "required": false,
+            "description": "Only events in this space (slug).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "required": false,
+            "description": "`Y-m-d`. Events that end on or after this day.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": false,
+            "description": "`Y-m-d`. Events that start on or before this day.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "description": "Matches the event title.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": false,
+            "description": "Which events, and in which order.",
+            "schema": {
+              "default": "upcoming",
+              "type": "string",
+              "enum": [
+                "upcoming",
+                "past",
+                "all"
+              ]
+            },
+            "example": "upcoming"
+          },
+          {
+            "name": "paginate",
+            "in": "query",
+            "required": false,
+            "description": "Set to `false` with a window of at most 62 days.",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "description": "Items per page.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            },
+            "example": 5
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page number, starting at 1.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "events": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "slug": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "start_at": {
+                            "type": "string"
+                          },
+                          "end_at": {
+                            "type": "string"
+                          },
+                          "start_at_local": {
+                            "type": "string"
+                          },
+                          "end_at_local": {
+                            "type": "string"
+                          },
+                          "start_at_site": {
+                            "type": "string"
+                          },
+                          "end_at_site": {
+                            "type": "string"
+                          },
+                          "timezone": {
+                            "type": "string"
+                          },
+                          "venue_type": {
+                            "type": "string"
+                          },
+                          "venue": {
+                            "type": "string"
+                          },
+                          "address": {
+                            "type": "string"
+                          },
+                          "cover_url": {
+                            "type": "string"
+                          },
+                          "has_meeting_url": {
+                            "type": "boolean"
+                          },
+                          "online_meeting_url": {
+                            "type": "string"
+                          },
+                          "entry_type": {
+                            "type": "string"
+                          },
+                          "guest_count": {
+                            "type": "integer"
+                          },
+                          "is_past": {
+                            "type": "boolean"
+                          },
+                          "my_status": {
+                            "nullable": true
+                          },
+                          "registration_open": {
+                            "type": "boolean"
+                          },
+                          "register_nonce": {
+                            "type": "string"
+                          },
+                          "edit_url": {
+                            "type": "string"
+                          },
+                          "space_slug": {
+                            "type": "string"
+                          },
+                          "space": {
+                            "nullable": true
+                          }
+                        }
+                      }
+                    },
+                    "total": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    },
+                    "last_page": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "example": {
+                  "events": [
+                    {
+                      "id": 668,
+                      "title": "Community Q&A",
+                      "slug": "community-qa",
+                      "status": "private",
+                      "start_at": "2026-11-30 19:00:00",
+                      "end_at": "2026-11-30 20:30:00",
+                      "start_at_local": "2026-11-30 14:00:00",
+                      "end_at_local": "2026-11-30 15:30:00",
+                      "start_at_site": "2026-12-01 01:00:00",
+                      "end_at_site": "2026-12-01 02:30:00",
+                      "timezone": "America/New_York",
+                      "venue_type": "online",
+                      "venue": "",
+                      "address": "",
+                      "cover_url": "",
+                      "has_meeting_url": true,
+                      "online_meeting_url": "",
+                      "entry_type": "rsvp",
+                      "guest_count": 0,
+                      "is_past": false,
+                      "my_status": null,
+                      "registration_open": true,
+                      "register_nonce": "",
+                      "edit_url": "",
+                      "space_slug": "",
+                      "space": null
+                    },
+                    {
+                      "id": 669,
+                      "title": "Design Workshop",
+                      "slug": "design-workshop",
+                      "status": "private",
+                      "start_at": "2026-12-02 19:00:00",
+                      "end_at": "2026-12-02 20:30:00",
+                      "start_at_local": "2026-12-02 14:00:00",
+                      "end_at_local": "2026-12-02 15:30:00",
+                      "start_at_site": "2026-12-03 01:00:00",
+                      "end_at_site": "2026-12-03 02:30:00",
+                      "timezone": "America/New_York",
+                      "venue_type": "online",
+                      "venue": "",
+                      "address": "",
+                      "cover_url": "",
+                      "has_meeting_url": true,
+                      "online_meeting_url": "",
+                      "entry_type": "open",
+                      "guest_count": 0,
+                      "is_past": false,
+                      "my_status": null,
+                      "registration_open": true,
+                      "register_nonce": "a1b2c3d4e5",
+                      "edit_url": "",
+                      "space_slug": "",
+                      "space": null
+                    }
+                  ],
+                  "total": 2,
+                  "current_page": 1,
+                  "last_page": 1
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ]
+      }
+    }
+  }
+}

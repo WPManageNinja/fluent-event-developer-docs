@@ -1,0 +1,369 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentEvent API",
+    "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
+    "version": "1.0.2"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-event/v2",
+      "description": "Your WordPress site",
+      "variables": {
+        "website": {
+          "default": "yourwebsite.com",
+          "description": "Your WordPress site domain, without https://"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "A WordPress username and an Application Password."
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-WP-Nonce",
+        "description": "Logged-in cookie plus a `wp_rest` nonce. The browser sends the cookie."
+      }
+    }
+  },
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/events/{id}": {
+      "patch": {
+        "operationId": "updateEvent",
+        "summary": "Update Event",
+        "description": "Updates an event and its post. Send the full event: every required field is validated again.\n\nController: `EventController@updateEvent`\nRoute source: `fluent-event/app/Http/Routes/api.php:58`",
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Record ID.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "event": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "post_id": {
+                          "type": "integer"
+                        },
+                        "calendar_id": {
+                          "type": "integer"
+                        },
+                        "parent_event_id": {
+                          "nullable": true
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "start_at": {
+                          "type": "string"
+                        },
+                        "end_at": {
+                          "type": "string"
+                        },
+                        "timezone": {
+                          "type": "string"
+                        },
+                        "venue_type": {
+                          "type": "string"
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "cover_url": {
+                              "type": "string"
+                            },
+                            "online_meeting_url": {
+                              "type": "string"
+                            },
+                            "venue": {
+                              "type": "string"
+                            },
+                            "address": {
+                              "type": "string"
+                            },
+                            "entry_type": {
+                              "type": "string"
+                            },
+                            "show_guest_count": {
+                              "type": "string"
+                            },
+                            "description_md": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "start_at_local": {
+                          "type": "string"
+                        },
+                        "end_at_local": {
+                          "type": "string"
+                        },
+                        "start_at_site": {
+                          "type": "string"
+                        },
+                        "end_at_site": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Event has been successfully updated",
+                  "event": {
+                    "id": 665,
+                    "post_id": 3373,
+                    "calendar_id": 743,
+                    "parent_event_id": null,
+                    "status": "public",
+                    "start_at": "2026-12-07 22:30:00",
+                    "end_at": "2026-12-08 01:30:00",
+                    "timezone": "America/New_York",
+                    "venue_type": "offline",
+                    "meta": {
+                      "cover_url": "https://example.com/images/spring-meetup.jpg",
+                      "online_meeting_url": "",
+                      "venue": "Riverside Community Hall",
+                      "address": "120 Market Street, Springfield",
+                      "entry_type": "rsvp",
+                      "show_guest_count": "yes",
+                      "description_md": "An evening of short talks and open networking.\n\n**Doors open at 5:30 PM.**"
+                    },
+                    "created_at": "2026-11-16 11:50:01",
+                    "updated_at": "2026-11-16 11:50:01",
+                    "title": "Spring Meetup",
+                    "start_at_local": "2026-12-07 17:30:00",
+                    "end_at_local": "2026-12-07 20:30:00",
+                    "start_at_site": "2026-12-08 04:30:00",
+                    "end_at_site": "2026-12-08 07:30:00"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The current user does not have the `manage_options` capability, or the nonce is missing.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No record with that ID.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation failed. `errors` holds one object per failing field.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "calendar_id": {
+                    "type": "integer",
+                    "description": "Calendar ID (`fe_calendars.id`). Must exist in `fe_calendars.id`."
+                  },
+                  "title": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Event title."
+                  },
+                  "description_md": {
+                    "nullable": true,
+                    "type": "string",
+                    "description": "Description in Markdown. The server converts the Markdown to HTML for the post body."
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "public",
+                      "unlisted",
+                      "private",
+                      "draft"
+                    ],
+                    "description": "Event status."
+                  },
+                  "start_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Start, `Y-m-d H:i:s`, in `timezone`."
+                  },
+                  "end_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "End, `Y-m-d H:i:s`, in `timezone`."
+                  },
+                  "timezone": {
+                    "nullable": true,
+                    "type": "string",
+                    "maxLength": 64,
+                    "description": "IANA time zone."
+                  },
+                  "venue_type": {
+                    "type": "string",
+                    "enum": [
+                      "offline",
+                      "online"
+                    ],
+                    "description": "Where the event happens."
+                  },
+                  "cover_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "nullable": true,
+                    "description": "Cover image URL."
+                  },
+                  "online_meeting_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "nullable": true,
+                    "description": "Meeting link. Required when `venue_type` is `online`."
+                  },
+                  "venue": {
+                    "nullable": true,
+                    "type": "string",
+                    "description": "Venue name, for an offline event. The length limit is filterable."
+                  },
+                  "address": {
+                    "nullable": true,
+                    "type": "string",
+                    "maxLength": 500,
+                    "description": "Address, for an offline event."
+                  },
+                  "entry_type": {
+                    "type": "string",
+                    "enum": [
+                      "rsvp",
+                      "open",
+                      "none"
+                    ],
+                    "description": "How people join."
+                  },
+                  "show_guest_count": {
+                    "nullable": true,
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ],
+                    "description": "Show how many guests are going."
+                  }
+                },
+                "required": [
+                  "calendar_id",
+                  "title",
+                  "status",
+                  "start_at",
+                  "end_at",
+                  "venue_type",
+                  "entry_type"
+                ]
+              },
+              "example": {
+                "calendar_id": 743,
+                "title": "Spring Meetup",
+                "description_md": "An evening of short talks and open networking.\n\n**Doors open at 5:30 PM.**",
+                "status": "public",
+                "start_at": "2026-12-07 17:30:00",
+                "end_at": "2026-12-07 20:30:00",
+                "timezone": "America/New_York",
+                "venue_type": "offline",
+                "venue": "Riverside Community Hall",
+                "address": "120 Market Street, Springfield",
+                "cover_url": "https://example.com/images/spring-meetup.jpg",
+                "entry_type": "rsvp",
+                "show_guest_count": "yes"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

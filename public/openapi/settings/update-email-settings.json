@@ -1,0 +1,184 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentEvent API",
+    "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
+    "version": "1.0.2"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-event/v2",
+      "description": "Your WordPress site",
+      "variables": {
+        "website": {
+          "default": "yourwebsite.com",
+          "description": "Your WordPress site domain, without https://"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "A WordPress username and an Application Password."
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-WP-Nonce",
+        "description": "Logged-in cookie plus a `wp_rest` nonce. The browser sends the cookie."
+      }
+    }
+  },
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/settings/email": {
+      "post": {
+        "operationId": "updateEmailSettings",
+        "summary": "Update Email Settings",
+        "description": "Saves the sender, reply-to and footer for guest emails.\n\nController: `SettingsController@updateEmail`\nRoute source: `fluent-event/app/Http/Routes/api.php:30`",
+        "tags": [
+          "Settings"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "from_name": {
+                          "type": "string"
+                        },
+                        "from_email": {
+                          "type": "string"
+                        },
+                        "reply_to_name": {
+                          "type": "string"
+                        },
+                        "reply_to_email": {
+                          "type": "string"
+                        },
+                        "email_footer": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Settings have been saved.",
+                  "settings": {
+                    "from_name": "Community Events",
+                    "from_email": "events@example.com",
+                    "reply_to_name": "Events Team",
+                    "reply_to_email": "hello@example.com",
+                    "email_footer": "<p>You are receiving this email because you registered for an event.</p>"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The current user does not have the `manage_options` capability, or the nonce is missing.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation failed. `errors` holds one object per failing field.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "from_email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "Sender address."
+                  },
+                  "from_name": {
+                    "type": "string",
+                    "description": "Sender name."
+                  },
+                  "reply_to_name": {
+                    "nullable": true,
+                    "type": "string",
+                    "description": "Reply-to name."
+                  },
+                  "reply_to_email": {
+                    "type": "string",
+                    "format": "email",
+                    "nullable": true,
+                    "description": "Reply-to address."
+                  },
+                  "email_footer": {
+                    "nullable": true,
+                    "type": "string",
+                    "description": "Footer HTML, filtered with `wp_kses_post()`."
+                  }
+                },
+                "required": [
+                  "from_email",
+                  "from_name"
+                ]
+              },
+              "example": {
+                "from_name": "Community Events",
+                "from_email": "events@example.com",
+                "reply_to_name": "Events Team",
+                "reply_to_email": "hello@example.com",
+                "email_footer": "<p>You are receiving this email because you registered for an event.</p>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

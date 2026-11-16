@@ -1,0 +1,196 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentEvent API",
+    "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
+    "version": "1.0.2"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-event/v2",
+      "description": "Your WordPress site",
+      "variables": {
+        "website": {
+          "default": "yourwebsite.com",
+          "description": "Your WordPress site domain, without https://"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "A WordPress username and an Application Password."
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-WP-Nonce",
+        "description": "Logged-in cookie plus a `wp_rest` nonce. The browser sends the cookie."
+      }
+    }
+  },
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/settings/create-page": {
+      "post": {
+        "operationId": "createPage",
+        "summary": "Create Page",
+        "description": "Creates a published page that holds the events block, and selects it for the setting.\n\nController: `SettingsController@createPage`\nRoute source: `fluent-event/app/Http/Routes/api.php:27`",
+        "tags": [
+          "Settings"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "default_events_view": {
+                          "type": "string"
+                        },
+                        "disable_event_view_switch": {
+                          "type": "string"
+                        },
+                        "events_page_id": {
+                          "type": "integer"
+                        },
+                        "event_slug": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "pages": {
+                      "type": "object",
+                      "properties": {
+                        "events_page_id": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "link": {
+                              "type": "string"
+                            },
+                            "has_shortcode": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "message": "The page has been created.",
+                  "settings": {
+                    "default_events_view": "timeline",
+                    "disable_event_view_switch": "no",
+                    "events_page_id": 3376,
+                    "event_slug": "event"
+                  },
+                  "pages": {
+                    "events_page_id": {
+                      "id": 3376,
+                      "title": "Events",
+                      "link": "https://yourwebsite.com/events/",
+                      "has_shortcode": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The current user does not have the `manage_options` capability, or the nonce is missing.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation failed. `errors` holds one object per failing field.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "default": "",
+                    "type": "string",
+                    "enum": [
+                      "events_page_id"
+                    ],
+                    "description": "The page setting."
+                  },
+                  "title": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "default": "",
+                    "description": "Page title."
+                  }
+                },
+                "required": [
+                  "key",
+                  "title"
+                ]
+              },
+              "example": {
+                "key": "events_page_id",
+                "title": "Events"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

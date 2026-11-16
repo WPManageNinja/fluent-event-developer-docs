@@ -1,0 +1,47 @@
+[
+  {
+    "key": "events",
+    "title": "Events",
+    "group": "Admin API"
+  },
+  {
+    "key": "guests",
+    "title": "Guests",
+    "group": "Admin API"
+  },
+  {
+    "key": "calendars",
+    "title": "Calendars",
+    "group": "Admin API"
+  },
+  {
+    "key": "reports",
+    "title": "Reports",
+    "group": "Admin API"
+  },
+  {
+    "key": "settings",
+    "title": "Settings",
+    "group": "Admin API"
+  },
+  {
+    "key": "users",
+    "title": "Users",
+    "group": "Admin API"
+  },
+  {
+    "key": "dashboard",
+    "title": "Dashboard",
+    "group": "Admin API"
+  },
+  {
+    "key": "community",
+    "title": "Community Portal",
+    "group": "Front-End API"
+  },
+  {
+    "key": "portal",
+    "title": "Public Event Page",
+    "group": "Front-End API"
+  }
+]

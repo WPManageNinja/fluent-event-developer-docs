@@ -1,0 +1,147 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentEvent API",
+    "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
+    "version": "1.0.2"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-event/v2",
+      "description": "Your WordPress site",
+      "variables": {
+        "website": {
+          "default": "yourwebsite.com",
+          "description": "Your WordPress site domain, without https://"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "A WordPress username and an Application Password."
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-WP-Nonce",
+        "description": "Logged-in cookie plus a `wp_rest` nonce. The browser sends the cookie."
+      }
+    }
+  },
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "operationId": "searchUsers",
+        "summary": "Search Users",
+        "description": "Searches WordPress users by login, email or display name, for the guest picker.\n\nController: `UserController@getUsers`\nRoute source: `fluent-event/app/Http/Routes/api.php:20`",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "description": "Matches login, email or display name.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "example.com"
+          },
+          {
+            "name": "role_in",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated roles, for example `subscriber,customer`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "users": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "avatar": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "users": [
+                    {
+                      "id": 9398,
+                      "name": "Jonas Weber",
+                      "email": "jonas.weber@example.com",
+                      "avatar": "https://secure.gravatar.com/avatar/0874a506e975e942d1f2555f3a6693e46e3da4c9ee73c704f43ffd493a6bc25a?s=96&d=mm&r=g"
+                    },
+                    {
+                      "id": 9397,
+                      "name": "Maya Chen",
+                      "email": "maya.chen@example.com",
+                      "avatar": "https://secure.gravatar.com/avatar/0512aa23cb9d989426d803e88ccc40972235fe9b60d9a03b1516f926c850050a?s=96&d=mm&r=g"
+                    },
+                    {
+                      "id": 9399,
+                      "name": "Priya Raman",
+                      "email": "priya.raman@example.com",
+                      "avatar": "https://secure.gravatar.com/avatar/54d24a9428a94dac01af1e7b7a8d29a28eb92212174ab7dcd2438a948d7ed3b3?s=96&d=mm&r=g"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The current user does not have the `manage_options` capability, or the nonce is missing.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

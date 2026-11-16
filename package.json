@@ -1,0 +1,24 @@
+{
+  "name": "fluent-event-developer-docs",
+  "private": true,
+  "type": "module",
+  "packageManager": "yarn@4.11.0",
+  "devDependencies": {
+    "@types/node": "22.19.15",
+    "mermaid": "10.9.5",
+    "sharp": "0.35.4",
+    "vitepress": "1.6.4",
+    "vitepress-openapi": "0.1.17",
+    "vue": "3.5.30"
+  },
+  "scripts": {
+    "generate:docs": "node scripts/generate-docs.mjs",
+    "generate:manifest": "node generate-manifest.js",
+    "featured:generate": "node scripts/generate-featured-images.mjs",
+    "featured:regenerate": "node scripts/generate-featured-images.mjs --force",
+    "docs:dev": "npm run generate:docs && npm run generate:manifest && npm run featured:generate && vitepress dev",
+    "docs:build": "npm run generate:docs && npm run generate:manifest && npm run featured:generate && vitepress build && npm run check:anchors",
+    "docs:preview": "vitepress preview",
+    "check:anchors": "node scripts/check-anchors.mjs"
+  }
+}

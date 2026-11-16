@@ -1,0 +1,31 @@
+[
+  {
+    "text": "Models",
+    "items": [
+      {
+        "text": "Event",
+        "link": "/database/models/event"
+      },
+      {
+        "text": "Calendar",
+        "link": "/database/models/calendar"
+      },
+      {
+        "text": "Guest",
+        "link": "/database/models/guest"
+      },
+      {
+        "text": "Meta",
+        "link": "/database/models/meta"
+      },
+      {
+        "text": "Post",
+        "link": "/database/models/post"
+      },
+      {
+        "text": "User",
+        "link": "/database/models/user"
+      }
+    ]
+  }
+]

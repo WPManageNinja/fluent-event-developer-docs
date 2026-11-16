@@ -1,0 +1,483 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentEvent API",
+    "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
+    "version": "1.0.2"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-event/v2",
+      "description": "Your WordPress site",
+      "variables": {
+        "website": {
+          "default": "yourwebsite.com",
+          "description": "Your WordPress site domain, without https://"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "A WordPress username and an Application Password."
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-WP-Nonce",
+        "description": "Logged-in cookie plus a `wp_rest` nonce. The browser sends the cookie."
+      }
+    }
+  },
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/events": {
+      "get": {
+        "operationId": "listEvents",
+        "summary": "List Events",
+        "description": "Returns events with their post title, calendar and guest count, filtered and paginated, for the admin events list and calendar grid.\n\nController: `EventController@getAllEvents`\nRoute source: `fluent-event/app/Http/Routes/api.php:53`",
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": false,
+            "description": "Start of a date range, `Y-m-d`, in the site's time zone. Matches events that end on or after this day.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": false,
+            "description": "End of a date range, `Y-m-d`, in the site's time zone. Matches events that start on or before this day.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "description": "Matches the event title.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "meetup"
+          },
+          {
+            "name": "calendar_id",
+            "in": "query",
+            "required": false,
+            "description": "Only events in this calendar.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "description": "Only events with this status.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "public",
+                "unlisted",
+                "private",
+                "draft"
+              ]
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "description": "`upcoming`: not ended yet, soonest first. `past`: ended, latest first. Anything else: upcoming first, then by distance from now.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "upcoming",
+                "past",
+                "all"
+              ]
+            },
+            "example": "upcoming"
+          },
+          {
+            "name": "paginate",
+            "in": "query",
+            "required": false,
+            "description": "Set to `false` with a date window of at most 62 days to get every event in the window without paging.",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "description": "Items per page.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            },
+            "example": 5
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page number, starting at 1.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "events": {
+                      "type": "object",
+                      "properties": {
+                        "current_page": {
+                          "type": "integer"
+                        },
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "post_id": {
+                                "type": "integer"
+                              },
+                              "calendar_id": {
+                                "type": "integer"
+                              },
+                              "parent_event_id": {
+                                "nullable": true
+                              },
+                              "status": {
+                                "type": "string"
+                              },
+                              "start_at": {
+                                "type": "string"
+                              },
+                              "end_at": {
+                                "type": "string"
+                              },
+                              "timezone": {
+                                "type": "string"
+                              },
+                              "venue_type": {
+                                "type": "string"
+                              },
+                              "meta": {
+                                "type": "object",
+                                "properties": {
+                                  "cover_url": {
+                                    "type": "string"
+                                  },
+                                  "online_meeting_url": {
+                                    "type": "string"
+                                  },
+                                  "venue": {
+                                    "type": "string"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "entry_type": {
+                                    "type": "string"
+                                  },
+                                  "show_guest_count": {
+                                    "type": "string"
+                                  },
+                                  "description_md": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "created_at": {
+                                "type": "string"
+                              },
+                              "updated_at": {
+                                "type": "string"
+                              },
+                              "guests_count": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "start_at_local": {
+                                "type": "string"
+                              },
+                              "end_at_local": {
+                                "type": "string"
+                              },
+                              "start_at_site": {
+                                "type": "string"
+                              },
+                              "end_at_site": {
+                                "type": "string"
+                              },
+                              "calendar": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "title": {
+                                    "type": "string"
+                                  },
+                                  "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                      "theme_color": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "first_page_url": {
+                          "type": "string"
+                        },
+                        "from": {
+                          "type": "integer"
+                        },
+                        "last_page": {
+                          "type": "integer"
+                        },
+                        "last_page_url": {
+                          "type": "string"
+                        },
+                        "links": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "url": {
+                                "nullable": true
+                              },
+                              "label": {
+                                "type": "string"
+                              },
+                              "active": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        },
+                        "next_page_url": {
+                          "nullable": true
+                        },
+                        "path": {
+                          "type": "string"
+                        },
+                        "per_page": {
+                          "type": "integer"
+                        },
+                        "prev_page_url": {
+                          "nullable": true
+                        },
+                        "to": {
+                          "type": "integer"
+                        },
+                        "total": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "events": {
+                    "current_page": 1,
+                    "data": [
+                      {
+                        "id": 666,
+                        "post_id": 3374,
+                        "calendar_id": 743,
+                        "parent_event_id": null,
+                        "status": "public",
+                        "start_at": "2026-11-26 20:00:00",
+                        "end_at": "2026-11-26 21:00:00",
+                        "timezone": "America/New_York",
+                        "venue_type": "online",
+                        "meta": {
+                          "cover_url": "",
+                          "online_meeting_url": "https://example.com/meet/product-webinar",
+                          "venue": "",
+                          "address": "",
+                          "entry_type": "open",
+                          "show_guest_count": "yes",
+                          "description_md": "A walkthrough of what is new this quarter."
+                        },
+                        "created_at": "2026-11-16 11:50:01",
+                        "updated_at": "2026-11-16 11:50:01",
+                        "guests_count": "0",
+                        "title": "Product Webinar",
+                        "start_at_local": "2026-11-26 15:00:00",
+                        "end_at_local": "2026-11-26 16:00:00",
+                        "start_at_site": "2026-11-27 02:00:00",
+                        "end_at_site": "2026-11-27 03:00:00",
+                        "calendar": {
+                          "id": 743,
+                          "title": "Team Meetups",
+                          "meta": {
+                            "theme_color": "#12A9B5"
+                          }
+                        }
+                      },
+                      {
+                        "id": 665,
+                        "post_id": 3373,
+                        "calendar_id": 743,
+                        "parent_event_id": null,
+                        "status": "public",
+                        "start_at": "2026-12-07 23:00:00",
+                        "end_at": "2026-12-08 01:30:00",
+                        "timezone": "America/New_York",
+                        "venue_type": "offline",
+                        "meta": {
+                          "cover_url": "https://example.com/images/spring-meetup.jpg",
+                          "online_meeting_url": "",
+                          "venue": "Riverside Community Hall",
+                          "address": "120 Market Street, Springfield",
+                          "entry_type": "rsvp",
+                          "show_guest_count": "yes",
+                          "description_md": "An evening of short talks and open networking.\n\n**Doors open at 6 PM.**"
+                        },
+                        "created_at": "2026-11-16 11:50:01",
+                        "updated_at": "2026-11-16 11:50:01",
+                        "guests_count": "3",
+                        "title": "Spring Meetup",
+                        "start_at_local": "2026-12-07 18:00:00",
+                        "end_at_local": "2026-12-07 20:30:00",
+                        "start_at_site": "2026-12-08 05:00:00",
+                        "end_at_site": "2026-12-08 07:30:00",
+                        "calendar": {
+                          "id": 743,
+                          "title": "Team Meetups",
+                          "meta": {
+                            "theme_color": "#12A9B5"
+                          }
+                        }
+                      },
+                      {
+                        "id": 667,
+                        "post_id": 3375,
+                        "calendar_id": 744,
+                        "parent_event_id": null,
+                        "status": "draft",
+                        "start_at": "2026-12-16 15:00:00",
+                        "end_at": "2026-12-16 17:00:00",
+                        "timezone": "America/New_York",
+                        "venue_type": "offline",
+                        "meta": {
+                          "cover_url": "",
+                          "online_meeting_url": "",
+                          "venue": "",
+                          "address": "",
+                          "entry_type": "none",
+                          "show_guest_count": "yes",
+                          "description_md": ""
+                        },
+                        "created_at": "2026-11-16 11:50:01",
+                        "updated_at": "2026-11-16 11:50:01",
+                        "guests_count": "0",
+                        "title": "Cancelled Workshop",
+                        "start_at_local": "2026-12-16 10:00:00",
+                        "end_at_local": "2026-12-16 12:00:00",
+                        "start_at_site": "2026-12-16 21:00:00",
+                        "end_at_site": "2026-12-16 23:00:00",
+                        "calendar": {
+                          "id": 744,
+                          "title": "Archive",
+                          "meta": {
+                            "theme_color": "#0099ff"
+                          }
+                        }
+                      }
+                    ],
+                    "first_page_url": "https://yourwebsite.com/?page=1",
+                    "from": 1,
+                    "last_page": 1,
+                    "last_page_url": "https://yourwebsite.com/?page=1",
+                    "links": [
+                      {
+                        "url": null,
+                        "label": "pagination.previous",
+                        "active": false
+                      },
+                      {
+                        "url": "https://yourwebsite.com/?page=1",
+                        "label": "1",
+                        "active": true
+                      },
+                      {
+                        "url": null,
+                        "label": "pagination.next",
+                        "active": false
+                      }
+                    ],
+                    "next_page_url": null,
+                    "path": "https://yourwebsite.com",
+                    "per_page": 5,
+                    "prev_page_url": null,
+                    "to": 3,
+                    "total": 3
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The current user does not have the `manage_options` capability, or the nonce is missing.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

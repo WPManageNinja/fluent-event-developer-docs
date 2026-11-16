@@ -1,0 +1,201 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentEvent API",
+    "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
+    "version": "1.0.2"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-event/v2",
+      "description": "Your WordPress site",
+      "variables": {
+        "website": {
+          "default": "yourwebsite.com",
+          "description": "Your WordPress site domain, without https://"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "A WordPress username and an Application Password."
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-WP-Nonce",
+        "description": "Logged-in cookie plus a `wp_rest` nonce. The browser sends the cookie."
+      }
+    }
+  },
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/calendars": {
+      "post": {
+        "operationId": "createCalendar",
+        "summary": "Create Calendar",
+        "description": "Creates a calendar. The current user becomes its creator.\n\nController: `CalendarController@createCalendar`\nRoute source: `fluent-event/app/Http/Routes/api.php:42`",
+        "tags": [
+          "Calendars"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "calendar": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "theme_color": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "created_by": {
+                          "type": "integer"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Calendar has been successfully created",
+                  "calendar": {
+                    "title": "Team Meetups",
+                    "slug": "team-meetups",
+                    "status": "public",
+                    "meta": {
+                      "theme_color": "#12A9B5"
+                    },
+                    "created_by": 1,
+                    "updated_at": "2026-11-16 11:50:01",
+                    "created_at": "2026-11-16 11:50:01",
+                    "id": 743
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The current user does not have the `manage_options` capability, or the nonce is missing.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation failed. `errors` holds one object per failing field.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "Calendar title. The length limit is filterable. Default limit 100 characters (`fluent_event/calendar_title_max_length`)."
+                  },
+                  "slug": {
+                    "type": "string",
+                    "maxLength": 191,
+                    "description": "Unique slug. Generated from the title when empty. Must be unique in `fe_calendars.slug`."
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "public",
+                      "private",
+                      "draft"
+                    ],
+                    "description": "`public`, `private` or `draft`. Events in a non-public calendar never appear on the public pages."
+                  },
+                  "theme_color": {
+                    "type": "string",
+                    "nullable": true,
+                    "pattern": "^#[A-Fa-f0-9]{6}$",
+                    "description": "Six-digit hex colour, for example `#0099ff`."
+                  }
+                },
+                "required": [
+                  "title",
+                  "status"
+                ]
+              },
+              "example": {
+                "title": "Team Meetups",
+                "slug": "team-meetups",
+                "status": "public",
+                "theme_color": "#12A9B5"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

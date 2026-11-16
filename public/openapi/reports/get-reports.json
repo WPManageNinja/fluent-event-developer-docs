@@ -1,0 +1,697 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentEvent API",
+    "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
+    "version": "1.0.2"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-event/v2",
+      "description": "Your WordPress site",
+      "variables": {
+        "website": {
+          "default": "yourwebsite.com",
+          "description": "Your WordPress site domain, without https://"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "A WordPress username and an Application Password."
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-WP-Nonce",
+        "description": "Logged-in cookie plus a `wp_rest` nonce. The browser sends the cookie."
+      }
+    }
+  },
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/reports": {
+      "get": {
+        "operationId": "getReports",
+        "summary": "Get Reports",
+        "description": "Returns the dashboard tiles (event and guest totals) with ongoing, upcoming and top events.\n\nController: `ReportController@getReports`\nRoute source: `fluent-event/app/Http/Routes/api.php:48`",
+        "tags": [
+          "Reports"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "stats": {
+                      "type": "object",
+                      "properties": {
+                        "total_events": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string"
+                            },
+                            "icon": {
+                              "type": "string"
+                            },
+                            "amount": {
+                              "type": "integer"
+                            },
+                            "is_number": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "upcoming_events": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string"
+                            },
+                            "icon": {
+                              "type": "string"
+                            },
+                            "amount": {
+                              "type": "integer"
+                            },
+                            "is_number": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "ongoing_events": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string"
+                            },
+                            "icon": {
+                              "type": "string"
+                            },
+                            "amount": {
+                              "type": "integer"
+                            },
+                            "is_number": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "completed_events": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string"
+                            },
+                            "icon": {
+                              "type": "string"
+                            },
+                            "amount": {
+                              "type": "integer"
+                            },
+                            "is_number": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "total_guests": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string"
+                            },
+                            "icon": {
+                              "type": "string"
+                            },
+                            "amount": {
+                              "type": "integer"
+                            },
+                            "is_number": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "going_guests": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string"
+                            },
+                            "icon": {
+                              "type": "string"
+                            },
+                            "amount": {
+                              "type": "integer"
+                            },
+                            "is_number": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "checked_in_guests": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string"
+                            },
+                            "icon": {
+                              "type": "string"
+                            },
+                            "amount": {
+                              "type": "integer"
+                            },
+                            "is_number": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "cancelled_guests": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string"
+                            },
+                            "icon": {
+                              "type": "string"
+                            },
+                            "amount": {
+                              "type": "integer"
+                            },
+                            "is_number": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "ongoing_events": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "upcoming_events": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "post_id": {
+                            "type": "integer"
+                          },
+                          "calendar_id": {
+                            "type": "integer"
+                          },
+                          "parent_event_id": {
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "start_at": {
+                            "type": "string"
+                          },
+                          "end_at": {
+                            "type": "string"
+                          },
+                          "timezone": {
+                            "type": "string"
+                          },
+                          "venue_type": {
+                            "type": "string"
+                          },
+                          "meta": {
+                            "type": "object",
+                            "properties": {
+                              "cover_url": {
+                                "nullable": true
+                              },
+                              "online_meeting_url": {
+                                "type": "string"
+                              },
+                              "venue": {
+                                "type": "string"
+                              },
+                              "address": {
+                                "type": "string"
+                              },
+                              "entry_type": {
+                                "type": "string"
+                              },
+                              "show_guest_count": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "start_at_local": {
+                            "type": "string"
+                          },
+                          "end_at_local": {
+                            "type": "string"
+                          },
+                          "start_at_site": {
+                            "type": "string"
+                          },
+                          "end_at_site": {
+                            "type": "string"
+                          },
+                          "calendar": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "meta": {
+                                "type": "object",
+                                "properties": {
+                                  "theme_color": {
+                                    "type": "string"
+                                  },
+                                  "fcom_space_id": {
+                                    "type": "integer"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "top_events": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "post_id": {
+                            "type": "integer"
+                          },
+                          "calendar_id": {
+                            "type": "integer"
+                          },
+                          "parent_event_id": {
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "start_at": {
+                            "type": "string"
+                          },
+                          "end_at": {
+                            "type": "string"
+                          },
+                          "timezone": {
+                            "type": "string"
+                          },
+                          "venue_type": {
+                            "type": "string"
+                          },
+                          "meta": {
+                            "type": "object",
+                            "properties": {
+                              "cover_url": {
+                                "nullable": true
+                              },
+                              "online_meeting_url": {
+                                "type": "string"
+                              },
+                              "venue": {
+                                "type": "string"
+                              },
+                              "address": {
+                                "type": "string"
+                              },
+                              "entry_type": {
+                                "type": "string"
+                              },
+                              "show_guest_count": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          },
+                          "guests_count": {
+                            "type": "integer"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "start_at_local": {
+                            "type": "string"
+                          },
+                          "end_at_local": {
+                            "type": "string"
+                          },
+                          "start_at_site": {
+                            "type": "string"
+                          },
+                          "end_at_site": {
+                            "type": "string"
+                          },
+                          "calendar": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "meta": {
+                                "type": "object",
+                                "properties": {
+                                  "theme_color": {
+                                    "type": "string"
+                                  },
+                                  "fcom_space_id": {
+                                    "type": "integer"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "stats": {
+                    "total_events": {
+                      "title": "Total Events",
+                      "icon": "Event",
+                      "amount": 12,
+                      "is_number": true
+                    },
+                    "upcoming_events": {
+                      "title": "Upcoming Events",
+                      "icon": "Upcoming",
+                      "amount": 6,
+                      "is_number": true
+                    },
+                    "ongoing_events": {
+                      "title": "Ongoing Events",
+                      "icon": "Ongoing",
+                      "amount": 0,
+                      "is_number": true
+                    },
+                    "completed_events": {
+                      "title": "Completed Events",
+                      "icon": "Completed",
+                      "amount": 6,
+                      "is_number": true
+                    },
+                    "total_guests": {
+                      "title": "Total Guests",
+                      "icon": "Guest",
+                      "amount": 9,
+                      "is_number": true
+                    },
+                    "going_guests": {
+                      "title": "Going Guests",
+                      "icon": "Going",
+                      "amount": 7,
+                      "is_number": true
+                    },
+                    "checked_in_guests": {
+                      "title": "Checked In Guests",
+                      "icon": "CheckedIn",
+                      "amount": 1,
+                      "is_number": true
+                    },
+                    "cancelled_guests": {
+                      "title": "Cancelled Guests",
+                      "icon": "Cancelled",
+                      "amount": 0,
+                      "is_number": true
+                    }
+                  },
+                  "ongoing_events": [],
+                  "upcoming_events": [
+                    {
+                      "id": 109,
+                      "post_id": 2608,
+                      "calendar_id": 108,
+                      "parent_event_id": null,
+                      "status": "private",
+                      "start_at": "2026-11-20 04:00:00",
+                      "end_at": "2026-11-20 06:00:00",
+                      "timezone": "Asia/Dhaka",
+                      "venue_type": "offline",
+                      "meta": {
+                        "cover_url": null,
+                        "online_meeting_url": "",
+                        "venue": "Harbor View Studio",
+                        "address": "45 Harbor Road, Portland",
+                        "entry_type": "open",
+                        "show_guest_count": "yes"
+                      },
+                      "created_at": "2026-11-12 14:35:27",
+                      "updated_at": "2026-11-12 14:35:27",
+                      "title": "Monthly Community Call",
+                      "start_at_local": "2026-11-20 10:00:00",
+                      "end_at_local": "2026-11-20 12:00:00",
+                      "start_at_site": "2026-11-20 10:00:00",
+                      "end_at_site": "2026-11-20 12:00:00",
+                      "calendar": {
+                        "id": 108,
+                        "title": "Community Events",
+                        "meta": {
+                          "theme_color": "#0099ff",
+                          "fcom_space_id": 5757
+                        }
+                      }
+                    },
+                    {
+                      "id": 108,
+                      "post_id": 2607,
+                      "calendar_id": 110,
+                      "parent_event_id": null,
+                      "status": "private",
+                      "start_at": "2026-11-21 12:00:00",
+                      "end_at": "2026-11-21 13:00:00",
+                      "timezone": "Asia/Dhaka",
+                      "venue_type": "online",
+                      "meta": {
+                        "cover_url": "",
+                        "online_meeting_url": "https://meet.example.com/tour-social",
+                        "venue": "",
+                        "address": "",
+                        "entry_type": "none",
+                        "show_guest_count": "no"
+                      },
+                      "created_at": "2026-11-12 14:35:20",
+                      "updated_at": "2026-11-12 14:41:29",
+                      "title": "Founders Breakfast",
+                      "start_at_local": "2026-11-21 18:00:00",
+                      "end_at_local": "2026-11-21 19:00:00",
+                      "start_at_site": "2026-11-21 18:00:00",
+                      "end_at_site": "2026-11-21 19:00:00",
+                      "calendar": {
+                        "id": 110,
+                        "title": "Workshops",
+                        "meta": {
+                          "theme_color": "#0099ff"
+                        }
+                      }
+                    },
+                    {
+                      "id": 214,
+                      "post_id": 2713,
+                      "calendar_id": 110,
+                      "parent_event_id": null,
+                      "status": "private",
+                      "start_at": "2026-11-22 04:00:00",
+                      "end_at": "2026-11-22 05:00:00",
+                      "timezone": "Asia/Dhaka",
+                      "venue_type": "offline",
+                      "meta": {
+                        "cover_url": "",
+                        "online_meeting_url": "",
+                        "venue": "Oak Street Library",
+                        "address": "",
+                        "entry_type": "rsvp",
+                        "show_guest_count": "yes"
+                      },
+                      "created_at": "2026-11-12 14:55:31",
+                      "updated_at": "2026-11-12 14:55:32",
+                      "title": "Photography Walk",
+                      "start_at_local": "2026-11-22 10:00:00",
+                      "end_at_local": "2026-11-22 11:00:00",
+                      "start_at_site": "2026-11-22 10:00:00",
+                      "end_at_site": "2026-11-22 11:00:00",
+                      "calendar": {
+                        "id": 110,
+                        "title": "Workshops",
+                        "meta": {
+                          "theme_color": "#0099ff"
+                        }
+                      }
+                    }
+                  ],
+                  "top_events": [
+                    {
+                      "id": 109,
+                      "post_id": 2608,
+                      "calendar_id": 108,
+                      "parent_event_id": null,
+                      "status": "private",
+                      "start_at": "2026-11-20 04:00:00",
+                      "end_at": "2026-11-20 06:00:00",
+                      "timezone": "Asia/Dhaka",
+                      "venue_type": "offline",
+                      "meta": {
+                        "cover_url": null,
+                        "online_meeting_url": "",
+                        "venue": "Harbor View Studio",
+                        "address": "45 Harbor Road, Portland",
+                        "entry_type": "open",
+                        "show_guest_count": "yes"
+                      },
+                      "created_at": "2026-11-12 14:35:27",
+                      "updated_at": "2026-11-12 14:35:27",
+                      "guests_count": 2,
+                      "title": "Monthly Community Call",
+                      "start_at_local": "2026-11-20 10:00:00",
+                      "end_at_local": "2026-11-20 12:00:00",
+                      "start_at_site": "2026-11-20 10:00:00",
+                      "end_at_site": "2026-11-20 12:00:00",
+                      "calendar": {
+                        "id": 108,
+                        "title": "Community Events",
+                        "meta": {
+                          "theme_color": "#0099ff",
+                          "fcom_space_id": 5757
+                        }
+                      }
+                    },
+                    {
+                      "id": 665,
+                      "post_id": 3373,
+                      "calendar_id": 743,
+                      "parent_event_id": null,
+                      "status": "public",
+                      "start_at": "2026-12-07 22:30:00",
+                      "end_at": "2026-12-08 01:30:00",
+                      "timezone": "America/New_York",
+                      "venue_type": "offline",
+                      "meta": {
+                        "cover_url": "https://example.com/images/spring-meetup.jpg",
+                        "online_meeting_url": "",
+                        "venue": "Riverside Community Hall",
+                        "address": "120 Market Street, Springfield",
+                        "entry_type": "rsvp",
+                        "show_guest_count": "yes",
+                        "description_md": "An evening of short talks and open networking.\n\n**Doors open at 5:30 PM.**"
+                      },
+                      "created_at": "2026-11-16 11:50:01",
+                      "updated_at": "2026-11-16 11:50:01",
+                      "guests_count": 2,
+                      "title": "Spring Meetup",
+                      "start_at_local": "2026-12-07 17:30:00",
+                      "end_at_local": "2026-12-07 20:30:00",
+                      "start_at_site": "2026-12-08 04:30:00",
+                      "end_at_site": "2026-12-08 07:30:00",
+                      "calendar": {
+                        "id": 743,
+                        "title": "Team Meetups",
+                        "meta": {
+                          "theme_color": "#0E8E99"
+                        }
+                      }
+                    },
+                    {
+                      "id": 2,
+                      "post_id": 2273,
+                      "calendar_id": 2,
+                      "parent_event_id": null,
+                      "status": "public",
+                      "start_at": "2026-10-14 08:00:00",
+                      "end_at": "2026-10-31 09:00:00",
+                      "timezone": "Asia/Dhaka",
+                      "venue_type": "offline",
+                      "meta": {
+                        "cover_url": "https://example.com/images/event-cover.jpg",
+                        "online_meeting_url": "",
+                        "venue": "The Commons Hall",
+                        "address": "210 Oak Street, Madison",
+                        "entry_type": "rsvp",
+                        "show_guest_count": "yes"
+                      },
+                      "created_at": "2026-09-29 13:16:17",
+                      "updated_at": "2026-10-30 18:26:18",
+                      "guests_count": 1,
+                      "title": "Open Source Sprint",
+                      "start_at_local": "2026-10-14 14:00:00",
+                      "end_at_local": "2026-10-31 15:00:00",
+                      "start_at_site": "2026-10-14 14:00:00",
+                      "end_at_site": "2026-10-31 15:00:00",
+                      "calendar": {
+                        "id": 2,
+                        "title": "Local Chapter",
+                        "meta": {
+                          "theme_color": "#b300ff",
+                          "fcom_space_id": 1666
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The current user does not have the `manage_options` capability, or the nonce is missing.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

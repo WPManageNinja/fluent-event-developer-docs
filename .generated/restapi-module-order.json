@@ -1,0 +1,54 @@
+{
+  "dashboard": [
+    "get-dashboard"
+  ],
+  "users": [
+    "search-users"
+  ],
+  "settings": [
+    "get-general-settings",
+    "update-general-settings",
+    "search-pages",
+    "create-page",
+    "get-email-settings",
+    "update-email-settings",
+    "get-email-notification-settings",
+    "update-email-notification-settings",
+    "preview-email"
+  ],
+  "calendars": [
+    "list-calendars",
+    "list-calendar-options",
+    "get-calendar",
+    "create-calendar",
+    "update-calendar",
+    "delete-calendar"
+  ],
+  "reports": [
+    "get-reports",
+    "get-guest-trends"
+  ],
+  "events": [
+    "list-events",
+    "get-event-by-slug",
+    "get-event",
+    "create-event",
+    "update-event",
+    "delete-event"
+  ],
+  "guests": [
+    "list-guests",
+    "create-guest",
+    "update-guest",
+    "delete-guest"
+  ],
+  "community": [
+    "list-community-events",
+    "get-community-event-by-slug",
+    "register-member",
+    "register-visitor-community"
+  ],
+  "portal": [
+    "register-visitor"
+  ]
+}

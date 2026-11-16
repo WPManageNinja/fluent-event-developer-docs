@@ -1,0 +1,16 @@
+{
+  "action": [
+    "events",
+    "guests",
+    "calendars",
+    "emails",
+    "settings",
+    "system"
+  ],
+  "filter": [
+    "events",
+    "calendars",
+    "community",
+    "system"
+  ]
+}
