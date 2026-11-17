@@ -21,13 +21,13 @@ description: "Events filter hooks in FluentEvent."
 - **Call sites:** 1
 - **When it fires:** Filters one event before the admin editor or the portal edit page loads it.
 
-Wraps `GET /events/{id}` and `GET /events/by-slug`. The event has its `post` and `calendar` relations loaded, the `description` attribute appended, and `guests_count` set.
+Wraps `GET /events/{id}` and `GET /events/by-slug`. The event has its `post` and `calendar` relations loaded, the `description` attribute appended, and `guests_count` set. `shortcode` is the `[fluent_event]` shortcode that shows this event, for example `[fluent_event event="spring-meetup"]`.
 
 ### Parameters
 
 | # | Name | Type | Description |
 | --- | --- | --- | --- |
-| 1 | `$data` | `array` | `['event' => Event, 'public_url' => string]`. |
+| 1 | `$data` | `array` | `['event' => Event, 'public_url' => string, 'shortcode' => string]`. |
 | 2 | `$event` | `Event` | The event being returned. |
 
 **Return:** `array` — the filtered data.
@@ -36,7 +36,7 @@ Wraps `GET /events/{id}` and `GET /events/by-slug`. The event has its `post` and
 
 | Source | Context | Arguments |
 | --- | --- | --- |
-| `fluent-event/app/Http/Controllers/EventController.php:88` | `EventController::getEvent()` | `$data`, `$event` |
+| `fluent-event/app/Http/Controllers/EventController.php:89` | `EventController::getEvent()` | `$data`, `$event` |
 
 ### Listeners Inside FluentEvent
 
@@ -78,7 +78,7 @@ The default is `100`. The value is clamped to 1–255, because 255 is the limit 
 
 | Source | Context | Arguments |
 | --- | --- | --- |
-| `fluent-event/app/Models/Event.php:73` | `Event::venueMaxLength()` | `100` |
+| `fluent-event/app/Models/Event.php:75` | `Event::venueMaxLength()` | `100` |
 
 ### Example
 

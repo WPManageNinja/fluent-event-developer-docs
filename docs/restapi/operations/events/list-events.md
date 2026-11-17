@@ -16,7 +16,7 @@ Each event carries `guests_count`: every guest row of the event, whatever its st
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/events`
 - **Controller:** `EventController@getAllEvents`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:53`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:52`
 - **Controller source:** `fluent-event/app/Http/Controllers/EventController.php:18`
 
 ## Permissions

@@ -1,22 +1,22 @@
 ---
 title: "Get Event"
-description: "Returns one event with its description, post, calendar and guest count, plus its public URL."
+description: "Returns one event with its description, post, calendar and guest count, plus its public URL and shortcode."
 outline: false
 aside: false
 ---
 
 # Get Event
 
-Returns one event with its description, post, calendar and guest count, plus its public URL.
+Returns one event with its description, post, calendar and guest count, plus its public URL and shortcode.
 
-`event.description` is the rendered HTML; `event.meta.description_md` is the Markdown the editor shows. `event.guests_count` counts every guest row, whatever its status, as the events list does.
+`event.description` is the rendered HTML; `event.meta.description_md` is the Markdown the editor shows. `event.guests_count` counts every guest row, whatever its status, as the events list does. `shortcode` shows the event on any page, for example `[fluent_event event="spring-meetup"]`.
 
 ## Endpoint
 
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/events/{id}`
 - **Controller:** `EventController@getEvent`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:55`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:54`
 - **Controller source:** `fluent-event/app/Http/Controllers/EventController.php:62`
 
 ## Permissions

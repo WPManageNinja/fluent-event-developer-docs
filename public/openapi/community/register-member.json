@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "post": {
         "operationId": "registerMember",
         "summary": "Register Member",
-        "description": "Records a logged-in member's RSVP or registration for an event.\n\nController: `CommunityEventController@register`\nRoute source: `fluent-event/app/Http/Routes/api.php:72`",
+        "description": "Records a logged-in member's RSVP or registration for an event.\n\nController: `CommunityEventController@register`\nRoute source: `fluent-event/app/Http/Routes/api.php:71`",
         "tags": [
           "Community Portal"
         ],

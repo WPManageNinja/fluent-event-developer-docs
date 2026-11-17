@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "get": {
         "operationId": "getGuestTrends",
         "summary": "Get Guest Trends",
-        "description": "Returns new guests per day, or per month for ranges longer than 92 days, ready for a chart.\n\nController: `ReportController@getGuestTrends`\nRoute source: `fluent-event/app/Http/Routes/api.php:49`",
+        "description": "Returns new guests per day, or per month for ranges longer than 92 days, ready for a chart.\n\nController: `ReportController@getGuestTrends`\nRoute source: `fluent-event/app/Http/Routes/api.php:48`",
         "tags": [
           "Reports"
         ],
@@ -55,7 +55,7 @@
             "schema": {
               "type": "string"
             },
-            "example": "2026-11-10"
+            "example": "2026-11-11"
           },
           {
             "name": "end_date",
@@ -65,7 +65,7 @@
             "schema": {
               "type": "string"
             },
-            "example": "2026-11-16"
+            "example": "2026-11-17"
           }
         ],
         "responses": {
@@ -117,22 +117,22 @@
                 },
                 "example": {
                   "range": {
-                    "start": "2026-11-10",
-                    "end": "2026-11-16"
+                    "start": "2026-11-11",
+                    "end": "2026-11-17"
                   },
                   "granularity": "day",
                   "xAxisData": [
-                    "2026-11-10",
                     "2026-11-11",
-                    "2026-11-12"
+                    "2026-11-12",
+                    "2026-11-13"
                   ],
                   "series": [
                     {
                       "name": "Total Guests",
                       "data": [
                         0,
-                        0,
-                        3
+                        3,
+                        0
                       ]
                     },
                     {

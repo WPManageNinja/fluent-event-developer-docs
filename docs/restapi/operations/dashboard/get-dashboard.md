@@ -14,7 +14,7 @@ Returns a welcome message. The admin dashboard reads its numbers from Get Report
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/dashboard`
 - **Controller:** `DashboardController@get`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:16`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:15`
 - **Controller source:** `fluent-event/app/Http/Controllers/DashboardController.php:18`
 
 ## Permissions

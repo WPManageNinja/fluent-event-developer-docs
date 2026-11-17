@@ -16,7 +16,7 @@ Without dates, the range is the last 7 days. Reversed dates are swapped.
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/reports/guest-trends`
 - **Controller:** `ReportController@getGuestTrends`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:49`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:48`
 - **Controller source:** `fluent-event/app/Http/Controllers/ReportController.php:22`
 
 ## Permissions

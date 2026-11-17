@@ -16,7 +16,7 @@ An empty `slug` is generated from the title. `theme_color` is stored in `meta`.
 - **Method:** `POST`
 - **Path:** `/fluent-event/v2/calendars`
 - **Controller:** `CalendarController@createCalendar`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:42`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:41`
 - **Controller source:** `fluent-event/app/Http/Controllers/CalendarController.php:81`
 
 ## Permissions

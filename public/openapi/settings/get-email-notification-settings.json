@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "get": {
         "operationId": "getEmailNotificationSettings",
         "summary": "Get Email Notification Settings",
-        "description": "Returns which guest emails are on, and when reminders go out.\n\nController: `SettingsController@getEmailNotifications`\nRoute source: `fluent-event/app/Http/Routes/api.php:32`",
+        "description": "Returns which guest emails are on, and when reminders go out.\n\nController: `SettingsController@getEmailNotifications`\nRoute source: `fluent-event/app/Http/Routes/api.php:31`",
         "tags": [
           "Settings"
         ],

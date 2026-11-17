@@ -5,13 +5,13 @@ description: "How FluentEvent is built, where its code lives, and how to extend 
 
 # Getting Started
 
-FluentEvent is a WordPress events plugin: **calendars hold events, and events collect guests.** It is built on the WPFluent framework, the same base as the other Fluent plugins. This site is generated from FluentEvent 1.0.2 source, so the routes, hooks, tables and models here match the code.
+FluentEvent is a WordPress events plugin: **calendars hold events, and events collect guests.** It is built on the WPFluent framework, the same base as the other Fluent plugins. This site is generated from FluentEvent 1.0.5 source, so the routes, hooks, tables and models here match the code.
 
 ## At a Glance
 
 | | |
 | --- | --- |
-| Plugin version | `1.0.2` (`FLUENT_EVENT_PLUGIN_VERSION`) |
+| Plugin version | `1.0.5` (`FLUENT_EVENT_PLUGIN_VERSION`) |
 | Requires | WordPress 6.7+, PHP 7.4+ |
 | PHP namespace | `FluentEvent\\` |
 | REST namespace | `fluent-event/v2` |
@@ -20,7 +20,7 @@ FluentEvent is a WordPress events plugin: **calendars hold events, and events co
 | Database tables | 7, prefixed `fe_` |
 | Post type | `fe_event` |
 | REST endpoints | 34 |
-| Hooks | 27 actions, 8 filters |
+| Hooks | 27 actions, 11 filters |
 
 ## The Data Model
 

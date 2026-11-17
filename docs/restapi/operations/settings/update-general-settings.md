@@ -16,7 +16,7 @@ A changed `event_slug` changes every event URL (`/<event_slug>/<post_slug>/`); W
 - **Method:** `POST`
 - **Path:** `/fluent-event/v2/settings/general`
 - **Controller:** `SettingsController@updateGeneral`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:25`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:24`
 - **Controller source:** `fluent-event/app/Http/Controllers/SettingsController.php:26`
 
 ## Permissions

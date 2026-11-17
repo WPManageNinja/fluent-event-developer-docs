@@ -14,7 +14,7 @@ Returns the general settings and the page chosen as the All Events page.
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/settings/general`
 - **Controller:** `SettingsController@getGeneral`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:24`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:23`
 - **Controller source:** `fluent-event/app/Http/Controllers/SettingsController.php:18`
 
 ## Permissions

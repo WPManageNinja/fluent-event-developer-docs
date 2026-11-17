@@ -16,7 +16,7 @@ Returns at most 50 pages, by title.
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/settings/pages`
 - **Controller:** `SettingsController@getPages`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:26`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:25`
 - **Controller source:** `fluent-event/app/Http/Controllers/SettingsController.php:61`
 
 ## Permissions

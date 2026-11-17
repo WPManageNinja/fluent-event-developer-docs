@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "get": {
         "operationId": "searchPages",
         "summary": "Search Pages",
-        "description": "Searches published pages for a page setting, and says whether each page already holds the right shortcode or block.\n\nController: `SettingsController@getPages`\nRoute source: `fluent-event/app/Http/Routes/api.php:26`",
+        "description": "Searches published pages for a page setting, and says whether each page already holds the right shortcode or block.\n\nController: `SettingsController@getPages`\nRoute source: `fluent-event/app/Http/Routes/api.php:25`",
         "tags": [
           "Settings"
         ],
@@ -106,7 +106,7 @@
                 "example": {
                   "pages": [
                     {
-                      "id": 3376,
+                      "id": 6937,
                       "title": "Events",
                       "link": "https://yourwebsite.com/events/",
                       "has_shortcode": true

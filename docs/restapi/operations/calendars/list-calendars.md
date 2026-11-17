@@ -16,7 +16,7 @@ Not paginated. `counts` ignores the `status` filter and follows `search`, so the
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/calendars`
 - **Controller:** `CalendarController@getAllCalendars`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:38`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:37`
 - **Controller source:** `fluent-event/app/Http/Controllers/CalendarController.php:12`
 
 ## Permissions

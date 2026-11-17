@@ -14,7 +14,7 @@ Returns calendars as dropdown options: ID, title, status and meta only, with no 
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/calendars/options`
 - **Controller:** `CalendarController@getCalendarOptions`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:39`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:38`
 - **Controller source:** `fluent-event/app/Http/Controllers/CalendarController.php:46`
 
 ## Permissions

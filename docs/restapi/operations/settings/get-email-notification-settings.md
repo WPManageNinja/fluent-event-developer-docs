@@ -14,7 +14,7 @@ Returns which guest emails are on, and when reminders go out.
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/settings/email-notifications`
 - **Controller:** `SettingsController@getEmailNotifications`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:32`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:31`
 - **Controller source:** `fluent-event/app/Http/Controllers/SettingsController.php:169`
 
 ## Permissions

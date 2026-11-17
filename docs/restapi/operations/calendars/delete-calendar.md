@@ -16,7 +16,7 @@ Each event is deleted on its own and fires its own delete hooks. This cannot be 
 - **Method:** `DELETE`
 - **Path:** `/fluent-event/v2/calendars/{id}`
 - **Controller:** `CalendarController@deleteCalendar`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:44`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:43`
 - **Controller source:** `fluent-event/app/Http/Controllers/CalendarController.php:119`
 
 ## Permissions

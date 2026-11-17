@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "get": {
         "operationId": "listCalendarOptions",
         "summary": "List Calendar Options",
-        "description": "Returns calendars as dropdown options: ID, title, status and meta only, with no counts.\n\nController: `CalendarController@getCalendarOptions`\nRoute source: `fluent-event/app/Http/Routes/api.php:39`",
+        "description": "Returns calendars as dropdown options: ID, title, status and meta only, with no counts.\n\nController: `CalendarController@getCalendarOptions`\nRoute source: `fluent-event/app/Http/Routes/api.php:38`",
         "tags": [
           "Calendars"
         ],
@@ -144,7 +144,7 @@
                 "example": {
                   "calendars": [
                     {
-                      "id": 744,
+                      "id": 3435,
                       "title": "Archive",
                       "status": "draft",
                       "meta": {
@@ -152,7 +152,7 @@
                       }
                     },
                     {
-                      "id": 743,
+                      "id": 3434,
                       "title": "Team Meetups",
                       "status": "public",
                       "meta": {

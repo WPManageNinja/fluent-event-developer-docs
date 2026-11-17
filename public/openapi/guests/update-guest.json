@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "patch": {
         "operationId": "updateGuest",
         "summary": "Update Guest",
-        "description": "Changes a guest. Fields you leave out keep their values.\n\nController: `GuestController@updateGuest`\nRoute source: `fluent-event/app/Http/Routes/api.php:63`",
+        "description": "Changes a guest. Fields you leave out keep their values.\n\nController: `GuestController@updateGuest`\nRoute source: `fluent-event/app/Http/Routes/api.php:62`",
         "tags": [
           "Guests"
         ],
@@ -155,18 +155,18 @@
                 "example": {
                   "message": "Guest has been successfully updated",
                   "guest": {
-                    "id": 182,
-                    "event_id": 665,
-                    "calendar_id": 743,
+                    "id": 1370,
+                    "event_id": 3507,
+                    "calendar_id": 3434,
                     "ticket_type_id": null,
-                    "group_id": "Txiyyojoeni4kFWk0Ebxknydueh7DDTu",
+                    "group_id": "uxvWWJeAzvQzq2ps8LFH68E2Dt3eo7ew",
                     "is_buyer": 1,
                     "name": "Maya Chen",
                     "email": "maya.chen@example.com",
-                    "user_id": 9397,
+                    "user_id": 12052,
                     "status": "checked_in",
                     "hash": null,
-                    "checked_in_at": "2026-11-16 11:50:01",
+                    "checked_in_at": "2026-11-17 17:41:46",
                     "payment_status": null,
                     "payment_ref": null,
                     "price": null,
@@ -174,8 +174,8 @@
                     "source": "manual",
                     "source_id": null,
                     "meta": null,
-                    "created_at": "2026-11-16 11:50:01",
-                    "updated_at": "2026-11-16 11:50:01",
+                    "created_at": "2026-11-17 17:41:46",
+                    "updated_at": "2026-11-17 17:41:46",
                     "avatar": "https://secure.gravatar.com/avatar/0512aa23cb9d989426d803e88ccc40972235fe9b60d9a03b1516f926c850050a?s=96&d=mm&r=g"
                   }
                 }

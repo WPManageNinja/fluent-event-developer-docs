@@ -15,6 +15,8 @@ FluentEvent sends three emails, to guests only:
 
 The sender, reply-to and footer come from **Settings → Email**. All three emails use one template, `app/Views/emails/template.php`. Hosts and administrators get no emails.
 
+An email greets a guest by name only when an admin added the guest or the guest is linked to a WordPress user. A visitor gets "Hi there", because nobody checked the name that the visitor typed.
+
 ## Everything Is Queued
 
 No email is sent during a page request. FluentEvent queues each send in [Action Scheduler](https://actionscheduler.org/) in the `fluent-event` group:

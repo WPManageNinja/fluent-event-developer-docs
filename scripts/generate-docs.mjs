@@ -818,6 +818,12 @@ function operationsFor() {
   return operations
 }
 
+// The per-minute limit a controller action enforces with RateLimiter::isSpamming('action', count).
+function rateLimit(op) {
+  const m = (op.method?.body || '').match(/RateLimiter::isSpamming\(\s*'(\w+)'\s*,\s*(\d+)\s*\)/)
+  return m ? { action: m[1], count: Number(m[2]) } : null
+}
+
 function policyText(op) {
   const id = `${op.policy.name}::${op.policy.method}`
   const text = POLICY_NOTES[id]
@@ -844,7 +850,8 @@ function openApiSpec(op) {
   if (op.policy.name === 'Policy') errorStatuses.set('403', 'The current user does not have the `manage_options` capability, or the nonce is missing.')
   if (Object.keys(op.bodyFields).length || /validate\(/.test(op.method?.body || '')) errorStatuses.set('422', 'Validation failed. `errors` holds one object per failing field.')
   if (/findOrFail\(/.test(op.method?.body || '') || /->find(?:OrFail)?\(\$id\)/.test(op.method?.body || '')) errorStatuses.set('404', 'No record with that ID.')
-  if (route.throttle) errorStatuses.set('429', `More than ${route.throttle} requests in one minute from this account or IP.`)
+  const limit = rateLimit(op)
+  if (limit) errorStatuses.set('429', `More than ${limit.count} requests in one minute from this account or IP.`)
   for (const error of op.errors) errorStatuses.set(String(error.status), error.when)
 
   for (const [status, description] of errorStatuses) {
@@ -927,7 +934,8 @@ function operationPage(op) {
   out += `- **Route source:** ${src(route.file, route.line)}\n`
   if (op.method) out += `- **Controller source:** ${src(op.method.file, op.method.line)}\n`
   out += `\n## Permissions\n\n- ${policyText(op)}\n`
-  if (route.throttle) out += `- Rate limit: ${route.throttle} requests per minute, counted per account for a logged-in user and per IP address for a visitor (\`Throttle\` middleware).\n`
+  const limit = rateLimit(op)
+  if (limit) out += `- Rate limit: ${limit.count} requests per minute, counted per account for a logged-in user and per IP address for a visitor (\`RateLimiter::isSpamming('${limit.action}')\`). Actions that share a counter name share the limit across every event.\n`
   out += '\n'
 
   const hooks = HOOKS.filter((h) => h.callSites.some((s) => s.file === op.method?.file && s.line >= op.method.line && s.line <= op.method.line + op.method.body.split('\n').length))

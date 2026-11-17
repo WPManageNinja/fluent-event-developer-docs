@@ -14,7 +14,7 @@ Returns one calendar with its creator's name and its event and guest totals.
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/calendars/{id}`
 - **Controller:** `CalendarController@getCalendar`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:40`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:39`
 - **Controller source:** `fluent-event/app/Http/Controllers/CalendarController.php:60`
 
 ## Permissions

@@ -16,7 +16,7 @@ An email or WordPress user that is already on the event is refused with 422. Wit
 - **Method:** `POST`
 - **Path:** `/fluent-event/v2/events/{eventId}/guests`
 - **Controller:** `GuestController@createGuest`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:62`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:61`
 - **Controller source:** `fluent-event/app/Http/Controllers/GuestController.php:35`
 
 ## Permissions

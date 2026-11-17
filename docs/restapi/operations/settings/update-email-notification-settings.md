@@ -9,14 +9,14 @@ aside: false
 
 Turns the confirmation, cancellation and reminder emails on or off, and sets up to five reminder times.
 
-Each reminder time must be a whole number from 5 minutes to 30 days before the event. Saving requeues the reminders of every upcoming event in the background.
+Each reminder time must be a whole number from 5 minutes to 30 days before the event. FluentEvent stores only the keys listed below and drops any other key in the body. Saving requeues the reminders of every upcoming event in the background.
 
 ## Endpoint
 
 - **Method:** `POST`
 - **Path:** `/fluent-event/v2/settings/email-notifications`
 - **Controller:** `SettingsController@updateEmailNotifications`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:33`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:32`
 - **Controller source:** `fluent-event/app/Http/Controllers/SettingsController.php:176`
 
 ## Permissions

@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "post": {
         "operationId": "createPage",
         "summary": "Create Page",
-        "description": "Creates a published page that holds the events block, and selects it for the setting.\n\nController: `SettingsController@createPage`\nRoute source: `fluent-event/app/Http/Routes/api.php:27`",
+        "description": "Creates a published page that holds the events block, and selects it for the setting.\n\nController: `SettingsController@createPage`\nRoute source: `fluent-event/app/Http/Routes/api.php:26`",
         "tags": [
           "Settings"
         ],
@@ -104,12 +104,12 @@
                   "settings": {
                     "default_events_view": "timeline",
                     "disable_event_view_switch": "no",
-                    "events_page_id": 3376,
+                    "events_page_id": 6937,
                     "event_slug": "event"
                   },
                   "pages": {
                     "events_page_id": {
-                      "id": 3376,
+                      "id": 6937,
                       "title": "Events",
                       "link": "https://yourwebsite.com/events/",
                       "has_shortcode": true

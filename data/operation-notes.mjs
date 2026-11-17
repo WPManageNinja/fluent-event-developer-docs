@@ -83,7 +83,14 @@ The Front-End API follows the visitor: the community endpoints use FluentCommuni
 
 ## Rate Limits
 
-The registration endpoints are throttled per minute, counted per account for a logged-in user and per IP address for a visitor: 10 requests for member registration, 5 for visitor registration. Over the limit, the API answers HTTP 429.
+The registration endpoints limit how often one caller can send them. FluentEvent counts a logged-in user by account and a visitor by IP address (an IPv6 address by its /64 network). The limit holds over any 60 seconds, not per clock minute, and refused requests count too.
+
+| Endpoint | Limit per minute | Counter |
+| --- | --- | --- |
+| Register Member | 10 | \`rsvp\` |
+| Register Visitor (Portal) and Register Visitor (Event Page) | 5 | \`register_guest\`, shared by both |
+
+The counter is shared across every event, so a new event ID gives no new allowance. Over the limit, the API answers HTTP 429. Behind a reverse proxy, add the proxy with [\`fluent_event/trusted_proxies\`](/hooks/filters/system#fluent-event-trusted-proxies) so that each visitor is counted by their own address.
 
 ## Interactive Playground
 
@@ -122,8 +129,8 @@ Every operation page has a playground. Enter your site's domain and \`username:a
   'EventController@getEvent': {
     slug: 'get-event',
     title: 'Get Event',
-    summary: 'Returns one event with its description, post, calendar and guest count, plus its public URL.',
-    notes: '`event.description` is the rendered HTML; `event.meta.description_md` is the Markdown the editor shows. `event.guests_count` counts every guest row, whatever its status, as the events list does.',
+    summary: 'Returns one event with its description, post, calendar and guest count, plus its public URL and shortcode.',
+    notes: '`event.description` is the rendered HTML; `event.meta.description_md` is the Markdown the editor shows. `event.guests_count` counts every guest row, whatever its status, as the events list does. `shortcode` shows the event on any page, for example `[fluent_event event="spring-meetup"]`.',
   },
 
   'EventController@createEvent': {
@@ -147,6 +154,7 @@ Every operation page has a playground. Enter your site's domain and \`username:a
       address: { desc: 'Address, for an offline event.' },
       entry_type: { desc: '`rsvp`: logged-in going / not going. `open`: a Register button with name and email. `none`: view only.' },
       show_guest_count: { desc: 'Show how many guests are going.' },
+      start_display: { desc: 'How the event page shows the time before the start: `relative` ("Starts in 3 days") or `countdown` (a live countdown). Default `relative`.' },
     },
   },
 
@@ -169,6 +177,7 @@ Every operation page has a playground. Enter your site's domain and \`username:a
       address: { desc: 'Address, for an offline event.' },
       entry_type: { desc: 'How people join.' },
       show_guest_count: { desc: 'Show how many guests are going.' },
+      start_display: { desc: 'How the event page shows the time before the start: `relative` ("Starts in 3 days") or `countdown` (a live countdown). Default `relative`.' },
     },
   },
 
@@ -391,7 +400,7 @@ Every operation page has a playground. Enter your site's domain and \`username:a
     slug: 'update-email-notification-settings',
     title: 'Update Email Notification Settings',
     summary: 'Turns the confirmation, cancellation and reminder emails on or off, and sets up to five reminder times.',
-    notes: 'Each reminder time must be a whole number from 5 minutes to 30 days before the event. Saving requeues the reminders of every upcoming event in the background.',
+    notes: 'Each reminder time must be a whole number from 5 minutes to 30 days before the event. FluentEvent stores only the keys listed below and drops any other key in the body. Saving requeues the reminders of every upcoming event in the background.',
     params: {
       registration_confirmation: { desc: '`{ "enabled": true }`' },
       registration_cancellation: { desc: '`{ "enabled": true }`' },
@@ -474,7 +483,7 @@ With a \`from\`/\`to\` window of at most 62 days and \`paginate=false\`, every e
     summary: 'Records a logged-in member\'s RSVP or registration for an event.',
     notes: `For an \`rsvp\` event, \`status\` is \`going\` or \`not_going\`. For an \`open\` event, \`status\` is \`going\` (register) or \`cancelled\` (cancel a registration the member holds); \`name\` can replace the display name.
 
-The member's existing row is reused, or a row an admin added under their email. A checked-in guest who says going again stays checked in. The confirmation or cancellation email is queued when the seat changes.
+The member's existing row is reused, or a row an admin added under their email. When the member claims a row that a visitor made, the row takes the member's name in place of the name the visitor typed. A checked-in guest who says going again stays checked in. The confirmation or cancellation email is queued when the seat changes.
 
 Errors: 404 when the event is not visible; 422 when the event does not take registrations, has ended, the status is not allowed, or another account holds the email; 409 when two requests changed the same registration at once.`,
     params: {
@@ -491,7 +500,7 @@ Errors: 404 when the event is not visible; 422 when the event does not take regi
     slug: 'register-visitor-community',
     title: 'Register Visitor (Portal)',
     summary: 'Registers a logged-out visitor for an `open` event in the FluentCommunity portal, by name and email.',
-    notes: 'The `nonce` comes from the portal page (`fe_guest_register_<event id>`). The visitor is always `going` and cannot undo it. The confirmation email is queued.',
+    notes: 'The `nonce` comes from the portal page (`fe_guest_register_<event id>`). The visitor is always `going` and cannot undo it. The confirmation email is queued.\n\nAn email that is already on the event gets the same success response as a new registration. FluentEvent saves nothing and sends no email, so the form does not tell anyone who is registered.',
     params: {
       nonce: { required: true, in: 'body' },
       website: { in: 'body' },
@@ -511,6 +520,8 @@ Errors: 404 when the event is not visible; 422 when the event does not take regi
     title: 'Register Visitor (Event Page)',
     summary: 'Registers anyone, logged in or not, for an `rsvp` or `open` event from its public page, by name and email.',
     notes: `The public event page treats every viewer as a visitor. The registration is always \`going\` and cannot be undone from the page.
+
+An email that is already on the event gets the same success response as a new registration. FluentEvent saves nothing and sends no email, so the form does not tell anyone who is registered.
 
 The \`nonce\` (\`fe_portal_register_<event id>\`) is checked **before** the event is looked up, so walking IDs cannot find unlisted events. The event must be \`public\` or \`unlisted\`, in a \`public\` calendar. The response carries \`html\`: the event's side card, drawn for the new state, which the page swaps in.`,
     params: {

@@ -16,8 +16,8 @@ Returns 404 when the event is not visible to the caller or the space slug does n
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/community/events/by-slug`
 - **Controller:** `CommunityEventController@getEventBySlug`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:71`
-- **Controller source:** `fluent-event/app/Http/Controllers/CommunityEventController.php:118`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:70`
+- **Controller source:** `fluent-event/app/Http/Controllers/CommunityEventController.php:119`
 
 ## Permissions
 

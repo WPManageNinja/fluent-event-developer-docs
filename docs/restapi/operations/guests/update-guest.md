@@ -16,7 +16,7 @@ Send `user_id: null` to unlink a WordPress user. Moving to `checked_in` stamps `
 - **Method:** `PATCH`
 - **Path:** `/fluent-event/v2/events/{eventId}/guests/{guestId}`
 - **Controller:** `GuestController@updateGuest`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:63`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:62`
 - **Controller source:** `fluent-event/app/Http/Controllers/GuestController.php:69`
 
 ## Permissions

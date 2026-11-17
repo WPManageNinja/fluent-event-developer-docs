@@ -369,7 +369,6 @@ export function createSource(pluginDir) {
       for (const m of statement.matchAll(/->(int|alphaNumDash|alphaNum|alpha)\('(\w+)'\)/g)) {
         constraints[m[2]] = m[1]
       }
-      const throttle = (statement.match(/new\s+Throttle\((\d+)\)/) || [])[1]
 
       const prefix = stack.map((s) => s.prefix).filter(Boolean).join('/')
       const fullPath = ('/' + [prefix, path.replace(/^\/|\/$/g, '')].filter(Boolean).join('/')).replace(/\/+/g, '/') || '/'
@@ -382,7 +381,6 @@ export function createSource(pluginDir) {
         action,
         policy,
         constraints,
-        throttle: throttle ? Number(throttle) : null,
         file,
         line: i + 1,
       })

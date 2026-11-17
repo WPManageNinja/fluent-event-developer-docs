@@ -39,7 +39,14 @@ The Front-End API follows the visitor: the community endpoints use FluentCommuni
 
 ## Rate Limits
 
-The registration endpoints are throttled per minute, counted per account for a logged-in user and per IP address for a visitor: 10 requests for member registration, 5 for visitor registration. Over the limit, the API answers HTTP 429.
+The registration endpoints limit how often one caller can send them. FluentEvent counts a logged-in user by account and a visitor by IP address (an IPv6 address by its /64 network). The limit holds over any 60 seconds, not per clock minute, and refused requests count too.
+
+| Endpoint | Limit per minute | Counter |
+| --- | --- | --- |
+| Register Member | 10 | `rsvp` |
+| Register Visitor (Portal) and Register Visitor (Event Page) | 5 | `register_guest`, shared by both |
+
+The counter is shared across every event, so a new event ID gives no new allowance. Over the limit, the API answers HTTP 429. Behind a reverse proxy, add the proxy with [`fluent_event/trusted_proxies`](/hooks/filters/system#fluent-event-trusted-proxies) so that each visitor is counted by their own address.
 
 ## Interactive Playground
 

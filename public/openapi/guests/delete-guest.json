@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "delete": {
         "operationId": "deleteGuest",
         "summary": "Delete Guest",
-        "description": "Removes a guest from an event.\n\nController: `GuestController@deleteGuest`\nRoute source: `fluent-event/app/Http/Routes/api.php:65`",
+        "description": "Removes a guest from an event.\n\nController: `GuestController@deleteGuest`\nRoute source: `fluent-event/app/Http/Routes/api.php:64`",
         "tags": [
           "Guests"
         ],

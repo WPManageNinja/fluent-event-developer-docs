@@ -16,7 +16,7 @@ With `send_email=true` and a guest who held a seat (`going` or `checked_in`), th
 - **Method:** `DELETE`
 - **Path:** `/fluent-event/v2/events/{eventId}/guests/{guestId}`
 - **Controller:** `GuestController@deleteGuest`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:65`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:64`
 - **Controller source:** `fluent-event/app/Http/Controllers/GuestController.php:115`
 
 ## Permissions

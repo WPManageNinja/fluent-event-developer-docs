@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "post": {
         "operationId": "createEvent",
         "summary": "Create Event",
-        "description": "Creates an event: the `fe_event` post and its `fe_event_details` row, in one transaction.\n\nController: `EventController@createEvent`\nRoute source: `fluent-event/app/Http/Routes/api.php:57`",
+        "description": "Creates an event: the `fe_event` post and its `fe_event_details` row, in one transaction.\n\nController: `EventController@createEvent`\nRoute source: `fluent-event/app/Http/Routes/api.php:56`",
         "tags": [
           "Events"
         ],
@@ -106,6 +106,9 @@
                             "show_guest_count": {
                               "type": "string"
                             },
+                            "start_display": {
+                              "type": "string"
+                            },
                             "description_md": {
                               "type": "string"
                             }
@@ -142,12 +145,12 @@
                 "example": {
                   "message": "Event has been successfully created",
                   "event": {
-                    "post_id": 3373,
-                    "calendar_id": 743,
+                    "post_id": 6934,
+                    "calendar_id": 3434,
                     "parent_event_id": null,
                     "status": "public",
-                    "start_at": "2026-12-07 23:00:00",
-                    "end_at": "2026-12-08 01:30:00",
+                    "start_at": "2026-12-08 23:00:00",
+                    "end_at": "2026-12-09 01:30:00",
                     "timezone": "America/New_York",
                     "venue_type": "offline",
                     "meta": {
@@ -157,16 +160,17 @@
                       "address": "120 Market Street, Springfield",
                       "entry_type": "rsvp",
                       "show_guest_count": "yes",
+                      "start_display": "relative",
                       "description_md": "An evening of short talks and open networking.\n\n**Doors open at 6 PM.**"
                     },
-                    "updated_at": "2026-11-16 11:50:01",
-                    "created_at": "2026-11-16 11:50:01",
-                    "id": 665,
+                    "updated_at": "2026-11-17 17:41:46",
+                    "created_at": "2026-11-17 17:41:46",
+                    "id": 3507,
                     "title": "Spring Meetup",
-                    "start_at_local": "2026-12-07 18:00:00",
-                    "end_at_local": "2026-12-07 20:30:00",
-                    "start_at_site": "2026-12-08 05:00:00",
-                    "end_at_site": "2026-12-08 07:30:00"
+                    "start_at_local": "2026-12-08 18:00:00",
+                    "end_at_local": "2026-12-08 20:30:00",
+                    "start_at_site": "2026-12-09 05:00:00",
+                    "end_at_site": "2026-12-09 07:30:00"
                   }
                 }
               }
@@ -304,6 +308,15 @@
                       "no"
                     ],
                     "description": "Show how many guests are going."
+                  },
+                  "start_display": {
+                    "nullable": true,
+                    "type": "string",
+                    "enum": [
+                      "relative",
+                      "countdown"
+                    ],
+                    "description": "How the event page shows the time before the start: `relative` (\"Starts in 3 days\") or `countdown` (a live countdown). Default `relative`."
                   }
                 },
                 "required": [
@@ -317,12 +330,12 @@
                 ]
               },
               "example": {
-                "calendar_id": 743,
+                "calendar_id": 3434,
                 "title": "Spring Meetup",
                 "description_md": "An evening of short talks and open networking.\n\n**Doors open at 6 PM.**",
                 "status": "public",
-                "start_at": "2026-12-07 18:00:00",
-                "end_at": "2026-12-07 20:30:00",
+                "start_at": "2026-12-08 18:00:00",
+                "end_at": "2026-12-08 20:30:00",
                 "timezone": "America/New_York",
                 "venue_type": "offline",
                 "venue": "Riverside Community Hall",
