@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "post": {
         "operationId": "createGuest",
         "summary": "Create Guest",
-        "description": "Adds a guest to an event by hand (`source = manual`).\n\nController: `GuestController@createGuest`\nRoute source: `fluent-event/app/Http/Routes/api.php:62`",
+        "description": "Adds a guest to an event by hand (`source = manual`).\n\nController: `GuestController@createGuest`\nRoute source: `fluent-event/app/Http/Routes/api.php:61`",
         "tags": [
           "Guests"
         ],
@@ -121,19 +121,19 @@
                 "example": {
                   "message": "Guest has been successfully saved",
                   "guest": {
-                    "event_id": 665,
-                    "calendar_id": 743,
+                    "event_id": 3507,
+                    "calendar_id": 3434,
                     "name": "Maya Chen",
                     "email": "maya.chen@example.com",
-                    "user_id": 9397,
+                    "user_id": 12052,
                     "status": "going",
                     "checked_in_at": null,
-                    "group_id": "Txiyyojoeni4kFWk0Ebxknydueh7DDTu",
+                    "group_id": "uxvWWJeAzvQzq2ps8LFH68E2Dt3eo7ew",
                     "is_buyer": 1,
                     "source": "manual",
-                    "updated_at": "2026-11-16 11:50:01",
-                    "created_at": "2026-11-16 11:50:01",
-                    "id": 182,
+                    "updated_at": "2026-11-17 17:41:46",
+                    "created_at": "2026-11-17 17:41:46",
+                    "id": 1370,
                     "avatar": "https://secure.gravatar.com/avatar/0512aa23cb9d989426d803e88ccc40972235fe9b60d9a03b1516f926c850050a?s=96&d=mm&r=g"
                   }
                 }
@@ -242,7 +242,7 @@
               "example": {
                 "name": "Maya Chen",
                 "email": "maya.chen@example.com",
-                "user_id": 9397,
+                "user_id": 12052,
                 "status": "going",
                 "send_email": true
               }

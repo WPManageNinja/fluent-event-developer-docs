@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "post": {
         "operationId": "updateEmailNotificationSettings",
         "summary": "Update Email Notification Settings",
-        "description": "Turns the confirmation, cancellation and reminder emails on or off, and sets up to five reminder times.\n\nController: `SettingsController@updateEmailNotifications`\nRoute source: `fluent-event/app/Http/Routes/api.php:33`",
+        "description": "Turns the confirmation, cancellation and reminder emails on or off, and sets up to five reminder times.\n\nController: `SettingsController@updateEmailNotifications`\nRoute source: `fluent-event/app/Http/Routes/api.php:32`",
         "tags": [
           "Settings"
         ],

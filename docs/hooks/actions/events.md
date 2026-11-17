@@ -44,7 +44,7 @@ Read anything you need from the guests at a priority below 10.
 | --- | --- | --- |
 | `fluent-event/app/Hooks/Handlers/CleanupHandlers/CleanupHandler.php:47` | `CleanupHandler::cleanDeletedPost()` | `$event` |
 | `fluent-event/app/Hooks/Handlers/CleanupHandlers/CleanupHandler.php:60` | `CleanupHandler::cleanCalendar()` | `$event` |
-| `fluent-event/app/Http/Controllers/EventController.php:172` | `EventController::deleteEvent()` | `$event` |
+| `fluent-event/app/Http/Controllers/EventController.php:173` | `EventController::deleteEvent()` | `$event` |
 
 ### Listeners Inside FluentEvent
 
@@ -89,7 +89,7 @@ The FluentCommunity bridge listens here to move the event's community post to th
 
 | Source | Context | Arguments |
 | --- | --- | --- |
-| `fluent-event/app/Http/Controllers/EventController.php:158` | `EventController::updateEvent()` | `$event`, `$previousCalendarId` |
+| `fluent-event/app/Http/Controllers/EventController.php:159` | `EventController::updateEvent()` | `$event`, `$previousCalendarId` |
 
 ### Listeners Inside FluentEvent
 
@@ -129,7 +129,7 @@ FluentEvent itself listens here to queue the guest reminder emails for the event
 
 | Source | Context | Arguments |
 | --- | --- | --- |
-| `fluent-event/app/Http/Controllers/EventController.php:111` | `EventController::createEvent()` | `$event` |
+| `fluent-event/app/Http/Controllers/EventController.php:112` | `EventController::createEvent()` | `$event` |
 | `fluent-event/Modules/FluentCommunity/FeedHandler.php:127` | `FeedHandler::createEvent()` | `$event` |
 
 ### Listeners Inside FluentEvent
@@ -175,7 +175,7 @@ The model instance still holds its last values, but nothing is left in the datab
 | --- | --- | --- |
 | `fluent-event/app/Hooks/Handlers/CleanupHandlers/CleanupHandler.php:52` | `CleanupHandler::cleanDeletedPost()` | `$event` |
 | `fluent-event/app/Hooks/Handlers/CleanupHandlers/CleanupHandler.php:62` | `CleanupHandler::cleanCalendar()` | `$event` |
-| `fluent-event/app/Http/Controllers/EventController.php:177` | `EventController::deleteEvent()` | `$event` |
+| `fluent-event/app/Http/Controllers/EventController.php:178` | `EventController::deleteEvent()` | `$event` |
 
 ### Example
 
@@ -207,7 +207,7 @@ Use `$event->wasChanged('start_at')` and the other dirty-tracking methods to see
 
 | Source | Context | Arguments |
 | --- | --- | --- |
-| `fluent-event/app/Http/Controllers/EventController.php:155` | `EventController::updateEvent()` | `$event` |
+| `fluent-event/app/Http/Controllers/EventController.php:156` | `EventController::updateEvent()` | `$event` |
 | `fluent-event/Modules/FluentCommunity/FeedHandler.php:191` | `FeedHandler::followSpaceMove()` | `$event` |
 | `fluent-event/Modules/FluentCommunity/FeedHandler.php:252` | `FeedHandler::parkEvent()` | `$event` |
 | `fluent-event/Modules/FluentCommunity/SpaceHandler.php:82` | `SpaceHandler::parkCalendar()` | `$event` |

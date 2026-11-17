@@ -14,7 +14,7 @@ Returns the sender name and address, reply-to and email footer used for guest em
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/settings/email`
 - **Controller:** `SettingsController@getEmail`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:29`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:28`
 - **Controller source:** `fluent-event/app/Http/Controllers/SettingsController.php:144`
 
 ## Permissions

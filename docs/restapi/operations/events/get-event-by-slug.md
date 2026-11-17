@@ -16,8 +16,8 @@ The FluentCommunity portal edit page addresses events by slug. An unknown slug r
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/events/by-slug`
 - **Controller:** `EventController@getEventBySlug`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:54`
-- **Controller source:** `fluent-event/app/Http/Controllers/EventController.php:92`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:53`
+- **Controller source:** `fluent-event/app/Http/Controllers/EventController.php:93`
 
 ## Permissions
 

@@ -55,6 +55,7 @@ Hidden from JSON: `post`.
 | --- | --- |
 | `entry_type` | How people join: `rsvp` (going / not going), `open` (a Register button) or `none` (view only). |
 | `show_guest_count` | `yes` or `no`: show how many people are going. |
+| `start_display` | How the event page shows the time before the start: `relative` ("Starts in 3 days", the default) or `countdown` (a live countdown). |
 | `cover_url` | Cover image URL. Images are stored as URLs, never as attachment IDs. |
 | `online_meeting_url` | Meeting link for an online event. Shown only to guests who hold a seat. |
 | `venue` | Venue name for an offline event. |

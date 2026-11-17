@@ -16,7 +16,7 @@ Returns the guests of one event, paginated, with a count per status for the tabs
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/events/{eventId}/guests`
 - **Controller:** `GuestController@getGuests`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:61`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:60`
 - **Controller source:** `fluent-event/app/Http/Controllers/GuestController.php:14`
 
 ## Permissions

@@ -11,18 +11,20 @@ Registers a logged-out visitor for an `open` event in the FluentCommunity portal
 
 The `nonce` comes from the portal page (`fe_guest_register_<event id>`). The visitor is always `going` and cannot undo it. The confirmation email is queued.
 
+An email that is already on the event gets the same success response as a new registration. FluentEvent saves nothing and sends no email, so the form does not tell anyone who is registered.
+
 ## Endpoint
 
 - **Method:** `POST`
 - **Path:** `/fluent-event/v2/community/events/{id}/register-guest`
 - **Controller:** `CommunityEventController@registerGuest`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:74`
-- **Controller source:** `fluent-event/app/Http/Controllers/CommunityEventController.php:213`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:72`
+- **Controller source:** `fluent-event/app/Http/Controllers/CommunityEventController.php:218`
 
 ## Permissions
 
 - Logged-out visitors only, on a portal that is open to visitors. The handler also checks the per-event `nonce`.
-- Rate limit: 5 requests per minute, counted per account for a logged-in user and per IP address for a visitor (`Throttle` middleware).
+- Rate limit: 5 requests per minute, counted per account for a logged-in user and per IP address for a visitor (`RateLimiter::isSpamming('register_guest')`). Actions that share a counter name share the limit across every event.
 
 ## Hooks Fired
 

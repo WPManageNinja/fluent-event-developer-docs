@@ -16,8 +16,8 @@ The delete runs in a transaction around [`fluent_event/event/before_deleted`](/h
 - **Method:** `DELETE`
 - **Path:** `/fluent-event/v2/events/{id}`
 - **Controller:** `EventController@deleteEvent`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:59`
-- **Controller source:** `fluent-event/app/Http/Controllers/EventController.php:167`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:58`
+- **Controller source:** `fluent-event/app/Http/Controllers/EventController.php:168`
 
 ## Permissions
 

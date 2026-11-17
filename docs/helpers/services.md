@@ -26,8 +26,9 @@ All classes are in the `FluentEvent\App\Services` or `FluentEvent\App\Utils` nam
 | Method | Description |
 | --- | --- |
 | `refusal(Event $event, array $entryTypes)` | Why the event refuses a registration, or `''` when it takes one. Refuses when `meta.entry_type` is not in `$entryTypes`, or the event has ended. |
-| `registerMember(Event $event, \WP_User $user, $status, $name, array $source)` | Creates or updates a member's guest row. Returns `[Guest, previous status, created]`, `null` when another account holds the email, or `false` when a concurrent request changed the row. |
+| `registerMember(Event $event, \WP_User $user, $status, $name, array $source)` | Creates or updates a member's guest row. A visitor's row that the member claims takes the member's name. Returns `[Guest, previous status, created]`, `null` when another account holds the email, or `false` when a concurrent request changed the row. |
 | `registerVisitor(Event $event, array $data, array $source)` | Creates a `going` guest row from a validated `name` and `email`. |
+| `hasGuestEmail(Event $event, $email)` | Whether any guest row on the event has this email. The visitor forms use it to answer a repeated email as a new registration, without saving. |
 | `queueEmail(Guest $guest, $previousStatus)` | Queues the confirmation or cancellation email that matches the status change, if that email is turned on. |
 
 ## CalendarService

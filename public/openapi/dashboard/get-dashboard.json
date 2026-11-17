@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "get": {
         "operationId": "getDashboard",
         "summary": "Get Dashboard",
-        "description": "Returns a welcome message. The admin dashboard reads its numbers from Get Reports.\n\nController: `DashboardController@get`\nRoute source: `fluent-event/app/Http/Routes/api.php:16`",
+        "description": "Returns a welcome message. The admin dashboard reads its numbers from Get Reports.\n\nController: `DashboardController@get`\nRoute source: `fluent-event/app/Http/Routes/api.php:15`",
         "tags": [
           "Dashboard"
         ],

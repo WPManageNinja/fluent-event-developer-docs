@@ -128,9 +128,9 @@ The FluentCommunity bridge uses this filter to add \`feed_url\` to events that h
 
   'fluent_event/event_api_response': {
     summary: 'Filters one event before the admin editor or the portal edit page loads it.',
-    notes: `Wraps \`GET /events/{id}\` and \`GET /events/by-slug\`. The event has its \`post\` and \`calendar\` relations loaded, the \`description\` attribute appended, and \`guests_count\` set.`,
+    notes: `Wraps \`GET /events/{id}\` and \`GET /events/by-slug\`. The event has its \`post\` and \`calendar\` relations loaded, the \`description\` attribute appended, and \`guests_count\` set. \`shortcode\` is the \`[fluent_event]\` shortcode that shows this event, for example \`[fluent_event event="spring-meetup"]\`.`,
     params: [
-      { name: '$data', type: 'array', desc: "`['event' => Event, 'public_url' => string]`." },
+      { name: '$data', type: 'array', desc: "`['event' => Event, 'public_url' => string, 'shortcode' => string]`." },
       { name: '$event', type: EVENT, desc: 'The event being returned.' },
     ],
     example: `add_filter('fluent_event/event_api_response', function ($data, $event) {
@@ -410,6 +410,35 @@ $actions = as_get_scheduled_actions([
       { name: '$slug', type: 'string', desc: 'The plugin slug.' },
       { name: '$reason', type: 'string', desc: '`checksum_missing` or `checksum_mismatch`.' },
     ],
+  },
+
+  'fluent_event/admin_base_url': {
+    summary: 'Filters the base URL of the FluentEvent admin app.',
+    notes: `The default is \`admin.php?page=fluent-event#/\` under \`admin_url()\`. The admin submenu, the top navigation and the admin app (as \`baseUrl\`) add their routes to this value, for example \`events\` or \`settings/general\`. Keep the trailing \`#/\`.`,
+    params: [{ name: '$url', type: 'string', desc: 'The admin app URL, ending in `#/`.' }],
+  },
+
+  'fluent_event/trusted_proxies': {
+    summary: 'Filters the reverse proxies whose `X-Forwarded-For` header FluentEvent believes when it finds the visitor IP address.',
+    notes: `The rate limit on the registration endpoints counts a visitor by IP address. By default FluentEvent uses \`REMOTE_ADDR\`. It reads \`X-Forwarded-For\` only when \`REMOTE_ADDR\` matches an entry in this list, and then takes the right-most address in the header, because a client can send anything to the left of it.
+
+The default list comes from \`config/trustedproxy.php\`, which is empty. Cloudflare needs no entry here: FluentEvent reads \`CF-Connecting-IP\` when \`REMOTE_ADDR\` is in [\`fluent_event/cloudflare_ip_ranges\`](#fluent-event-cloudflare-ip-ranges).
+
+After this, the shared \`fluent_auth/user_ip\` filter can still replace the address.`,
+    params: [{ name: '$proxies', type: 'array', desc: 'IP addresses or CIDR ranges, for example `10.0.0.0/8`.' }],
+    example: `// The site runs behind a load balancer on the private network.
+add_filter('fluent_event/trusted_proxies', function ($proxies) {
+    $proxies[] = '10.0.0.0/8';
+
+    return $proxies;
+});`,
+  },
+
+  'fluent_event/cloudflare_ip_ranges': {
+    summary: 'Filters the Cloudflare IP ranges. A request from one of them supplies the visitor IP address in `CF-Connecting-IP`.',
+    notes: `The default is the IPv4 and IPv6 lists published at https://www.cloudflare.com/ips/. Add a range here when Cloudflare publishes a new one before a FluentEvent update ships it. Return an empty array to ignore \`CF-Connecting-IP\` on a site that is not behind Cloudflare.`,
+    params: [{ name: '$ranges', type: 'array', desc: 'CIDR ranges.' }],
+    example: `add_filter('fluent_event/cloudflare_ip_ranges', '__return_empty_array');`,
   },
 
   'fluent_event/is_rtl': {

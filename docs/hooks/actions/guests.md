@@ -132,10 +132,10 @@ The confirmation email is queued separately, after this hook, so it is not sent 
 
 | Source | Context | Arguments |
 | --- | --- | --- |
-| `fluent-event/app/Http/Controllers/CommunityEventController.php:186` | `CommunityEventController::register()` | `$guest` |
-| `fluent-event/app/Http/Controllers/CommunityEventController.php:243` | `CommunityEventController::registerGuest()` | `$guest` |
+| `fluent-event/app/Http/Controllers/CommunityEventController.php:191` | `CommunityEventController::register()` | `$guest` |
+| `fluent-event/app/Http/Controllers/CommunityEventController.php:266` | `CommunityEventController::registerGuest()` | `$guest` |
 | `fluent-event/app/Http/Controllers/GuestController.php:57` | `GuestController::createGuest()` | `$guest` |
-| `fluent-event/app/Http/Controllers/PortalEventController.php:50` | `PortalEventController::registerGuest()` | `$guest` |
+| `fluent-event/app/Http/Controllers/PortalEventController.php:64` | `PortalEventController::registerGuest()` | `$guest` |
 
 ### Example
 
@@ -209,7 +209,7 @@ Compare `$guest->status` with `$previousStatus` to react to a status move, for e
 
 | Source | Context | Arguments |
 | --- | --- | --- |
-| `fluent-event/app/Http/Controllers/CommunityEventController.php:188` | `CommunityEventController::register()` | `$guest`, `$previousStatus` |
+| `fluent-event/app/Http/Controllers/CommunityEventController.php:193` | `CommunityEventController::register()` | `$guest`, `$previousStatus` |
 | `fluent-event/app/Http/Controllers/GuestController.php:99` | `GuestController::updateGuest()` | `$guest`, `$previousStatus` |
 
 ### Example

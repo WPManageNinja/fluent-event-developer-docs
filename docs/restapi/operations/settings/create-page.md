@@ -16,7 +16,7 @@ The page content is fixed by the plugin; the request only sets the title.
 - **Method:** `POST`
 - **Path:** `/fluent-event/v2/settings/create-page`
 - **Controller:** `SettingsController@createPage`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:27`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:26`
 - **Controller source:** `fluent-event/app/Http/Controllers/SettingsController.php:86`
 
 ## Permissions

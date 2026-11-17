@@ -16,8 +16,8 @@ When `calendar_id` changes, every guest row moves with the event and [`fluent_ev
 - **Method:** `PATCH`
 - **Path:** `/fluent-event/v2/events/{id}`
 - **Controller:** `EventController@updateEvent`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:58`
-- **Controller source:** `fluent-event/app/Http/Controllers/EventController.php:119`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:57`
+- **Controller source:** `fluent-event/app/Http/Controllers/EventController.php:120`
 
 ## Permissions
 

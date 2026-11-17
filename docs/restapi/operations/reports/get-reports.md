@@ -16,7 +16,7 @@ Totals count every event, drafts included. Top events rank by guests who hold a 
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/reports`
 - **Controller:** `ReportController@getReports`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:48`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:47`
 - **Controller source:** `fluent-event/app/Http/Controllers/ReportController.php:11`
 
 ## Permissions

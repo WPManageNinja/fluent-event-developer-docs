@@ -16,7 +16,7 @@ Uses a sample online event that starts in 7 days and a sample guest. Nothing is 
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/settings/email-notifications/preview/{type}`
 - **Controller:** `SettingsController@previewEmail`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:34`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:33`
 - **Controller source:** `fluent-event/app/Http/Controllers/SettingsController.php:193`
 
 ## Permissions

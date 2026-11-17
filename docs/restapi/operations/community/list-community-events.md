@@ -18,8 +18,8 @@ With a `from`/`to` window of at most 62 days and `paginate=false`, every event i
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/community/events`
 - **Controller:** `CommunityEventController@getEvents`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:70`
-- **Controller source:** `fluent-event/app/Http/Controllers/CommunityEventController.php:25`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:69`
+- **Controller source:** `fluent-event/app/Http/Controllers/CommunityEventController.php:26`
 
 ## Permissions
 

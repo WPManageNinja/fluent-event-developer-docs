@@ -16,7 +16,7 @@ Returns at most 50 users, by display name.
 - **Method:** `GET`
 - **Path:** `/fluent-event/v2/users`
 - **Controller:** `UserController@getUsers`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:20`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:19`
 - **Controller source:** `fluent-event/app/Http/Controllers/UserController.php:9`
 
 ## Permissions

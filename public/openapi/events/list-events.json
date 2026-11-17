@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "get": {
         "operationId": "listEvents",
         "summary": "List Events",
-        "description": "Returns events with their post title, calendar and guest count, filtered and paginated, for the admin events list and calendar grid.\n\nController: `EventController@getAllEvents`\nRoute source: `fluent-event/app/Http/Routes/api.php:53`",
+        "description": "Returns events with their post title, calendar and guest count, filtered and paginated, for the admin events list and calendar grid.\n\nController: `EventController@getAllEvents`\nRoute source: `fluent-event/app/Http/Routes/api.php:52`",
         "tags": [
           "Events"
         ],
@@ -214,6 +214,9 @@
                                   "show_guest_count": {
                                     "type": "string"
                                   },
+                                  "start_display": {
+                                    "type": "string"
+                                  },
                                   "description_md": {
                                     "type": "string"
                                   }
@@ -321,13 +324,13 @@
                     "current_page": 1,
                     "data": [
                       {
-                        "id": 666,
-                        "post_id": 3374,
-                        "calendar_id": 743,
+                        "id": 3508,
+                        "post_id": 6935,
+                        "calendar_id": 3434,
                         "parent_event_id": null,
                         "status": "public",
-                        "start_at": "2026-11-26 20:00:00",
-                        "end_at": "2026-11-26 21:00:00",
+                        "start_at": "2026-11-27 20:00:00",
+                        "end_at": "2026-11-27 21:00:00",
                         "timezone": "America/New_York",
                         "venue_type": "online",
                         "meta": {
@@ -337,18 +340,19 @@
                           "address": "",
                           "entry_type": "open",
                           "show_guest_count": "yes",
+                          "start_display": "relative",
                           "description_md": "A walkthrough of what is new this quarter."
                         },
-                        "created_at": "2026-11-16 11:50:01",
-                        "updated_at": "2026-11-16 11:50:01",
+                        "created_at": "2026-11-17 17:41:46",
+                        "updated_at": "2026-11-17 17:41:46",
                         "guests_count": "0",
                         "title": "Product Webinar",
-                        "start_at_local": "2026-11-26 15:00:00",
-                        "end_at_local": "2026-11-26 16:00:00",
-                        "start_at_site": "2026-11-27 02:00:00",
-                        "end_at_site": "2026-11-27 03:00:00",
+                        "start_at_local": "2026-11-27 15:00:00",
+                        "end_at_local": "2026-11-27 16:00:00",
+                        "start_at_site": "2026-11-28 02:00:00",
+                        "end_at_site": "2026-11-28 03:00:00",
                         "calendar": {
-                          "id": 743,
+                          "id": 3434,
                           "title": "Team Meetups",
                           "meta": {
                             "theme_color": "#12A9B5"
@@ -356,13 +360,13 @@
                         }
                       },
                       {
-                        "id": 665,
-                        "post_id": 3373,
-                        "calendar_id": 743,
+                        "id": 3507,
+                        "post_id": 6934,
+                        "calendar_id": 3434,
                         "parent_event_id": null,
                         "status": "public",
-                        "start_at": "2026-12-07 23:00:00",
-                        "end_at": "2026-12-08 01:30:00",
+                        "start_at": "2026-12-08 23:00:00",
+                        "end_at": "2026-12-09 01:30:00",
                         "timezone": "America/New_York",
                         "venue_type": "offline",
                         "meta": {
@@ -372,18 +376,19 @@
                           "address": "120 Market Street, Springfield",
                           "entry_type": "rsvp",
                           "show_guest_count": "yes",
+                          "start_display": "relative",
                           "description_md": "An evening of short talks and open networking.\n\n**Doors open at 6 PM.**"
                         },
-                        "created_at": "2026-11-16 11:50:01",
-                        "updated_at": "2026-11-16 11:50:01",
+                        "created_at": "2026-11-17 17:41:46",
+                        "updated_at": "2026-11-17 17:41:46",
                         "guests_count": "3",
                         "title": "Spring Meetup",
-                        "start_at_local": "2026-12-07 18:00:00",
-                        "end_at_local": "2026-12-07 20:30:00",
-                        "start_at_site": "2026-12-08 05:00:00",
-                        "end_at_site": "2026-12-08 07:30:00",
+                        "start_at_local": "2026-12-08 18:00:00",
+                        "end_at_local": "2026-12-08 20:30:00",
+                        "start_at_site": "2026-12-09 05:00:00",
+                        "end_at_site": "2026-12-09 07:30:00",
                         "calendar": {
-                          "id": 743,
+                          "id": 3434,
                           "title": "Team Meetups",
                           "meta": {
                             "theme_color": "#12A9B5"
@@ -391,13 +396,13 @@
                         }
                       },
                       {
-                        "id": 667,
-                        "post_id": 3375,
-                        "calendar_id": 744,
+                        "id": 3509,
+                        "post_id": 6936,
+                        "calendar_id": 3435,
                         "parent_event_id": null,
                         "status": "draft",
-                        "start_at": "2026-12-16 15:00:00",
-                        "end_at": "2026-12-16 17:00:00",
+                        "start_at": "2026-12-17 15:00:00",
+                        "end_at": "2026-12-17 17:00:00",
                         "timezone": "America/New_York",
                         "venue_type": "offline",
                         "meta": {
@@ -407,18 +412,19 @@
                           "address": "",
                           "entry_type": "none",
                           "show_guest_count": "yes",
+                          "start_display": "relative",
                           "description_md": ""
                         },
-                        "created_at": "2026-11-16 11:50:01",
-                        "updated_at": "2026-11-16 11:50:01",
+                        "created_at": "2026-11-17 17:41:46",
+                        "updated_at": "2026-11-17 17:41:46",
                         "guests_count": "0",
                         "title": "Cancelled Workshop",
-                        "start_at_local": "2026-12-16 10:00:00",
-                        "end_at_local": "2026-12-16 12:00:00",
-                        "start_at_site": "2026-12-16 21:00:00",
-                        "end_at_site": "2026-12-16 23:00:00",
+                        "start_at_local": "2026-12-17 10:00:00",
+                        "end_at_local": "2026-12-17 12:00:00",
+                        "start_at_site": "2026-12-17 21:00:00",
+                        "end_at_site": "2026-12-17 23:00:00",
                         "calendar": {
-                          "id": 744,
+                          "id": 3435,
                           "title": "Archive",
                           "meta": {
                             "theme_color": "#0099ff"

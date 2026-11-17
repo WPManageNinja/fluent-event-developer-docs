@@ -10,4 +10,4 @@ editLink: false
 pageClass: "docs-home"
 ---
 
-<DocsHome :stats="{'tables':7,'models':6,'routes':34,'hooks':35}" />
+<DocsHome :stats="{'tables':7,'models':6,'routes':34,'hooks':38}" />

@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "get": {
         "operationId": "getEvent",
         "summary": "Get Event",
-        "description": "Returns one event with its description, post, calendar and guest count, plus its public URL.\n\nController: `EventController@getEvent`\nRoute source: `fluent-event/app/Http/Routes/api.php:55`",
+        "description": "Returns one event with its description, post, calendar and guest count, plus its public URL and shortcode.\n\nController: `EventController@getEvent`\nRoute source: `fluent-event/app/Http/Routes/api.php:54`",
         "tags": [
           "Events"
         ],
@@ -117,6 +117,9 @@
                             "show_guest_count": {
                               "type": "string"
                             },
+                            "start_display": {
+                              "type": "string"
+                            },
                             "description_md": {
                               "type": "string"
                             }
@@ -175,18 +178,21 @@
                     },
                     "public_url": {
                       "type": "string"
+                    },
+                    "shortcode": {
+                      "type": "string"
                     }
                   }
                 },
                 "example": {
                   "event": {
-                    "id": 665,
-                    "post_id": 3373,
-                    "calendar_id": 743,
+                    "id": 3507,
+                    "post_id": 6934,
+                    "calendar_id": 3434,
                     "parent_event_id": null,
                     "status": "public",
-                    "start_at": "2026-12-07 23:00:00",
-                    "end_at": "2026-12-08 01:30:00",
+                    "start_at": "2026-12-08 23:00:00",
+                    "end_at": "2026-12-09 01:30:00",
                     "timezone": "America/New_York",
                     "venue_type": "offline",
                     "meta": {
@@ -196,19 +202,20 @@
                       "address": "120 Market Street, Springfield",
                       "entry_type": "rsvp",
                       "show_guest_count": "yes",
+                      "start_display": "relative",
                       "description_md": "An evening of short talks and open networking.\n\n**Doors open at 6 PM.**"
                     },
-                    "created_at": "2026-11-16 11:50:01",
-                    "updated_at": "2026-11-16 11:50:01",
+                    "created_at": "2026-11-17 17:41:46",
+                    "updated_at": "2026-11-17 17:41:46",
                     "guests_count": "3",
                     "title": "Spring Meetup",
-                    "start_at_local": "2026-12-07 18:00:00",
-                    "end_at_local": "2026-12-07 20:30:00",
-                    "start_at_site": "2026-12-08 05:00:00",
-                    "end_at_site": "2026-12-08 07:30:00",
+                    "start_at_local": "2026-12-08 18:00:00",
+                    "end_at_local": "2026-12-08 20:30:00",
+                    "start_at_site": "2026-12-09 05:00:00",
+                    "end_at_site": "2026-12-09 07:30:00",
                     "description": "<p>An evening of short talks and open networking.</p>\n<p><strong>Doors open at 6 PM.</strong></p>",
                     "calendar": {
-                      "id": 743,
+                      "id": 3434,
                       "title": "Team Meetups",
                       "status": "public",
                       "meta": {
@@ -216,7 +223,8 @@
                       }
                     }
                   },
-                  "public_url": "https://yourwebsite.com/event/spring-meetup/"
+                  "public_url": "https://yourwebsite.com/event/spring-meetup/",
+                  "shortcode": "[fluent_event event=\"spring-meetup\"]"
                 }
               }
             }

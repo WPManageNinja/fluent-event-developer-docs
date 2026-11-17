@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "get": {
         "operationId": "getCommunityEventBySlug",
         "summary": "Get Community Event by Slug",
-        "description": "Resolves a portal event URL (space slug + event slug) to the community post slug that shows it.\n\nController: `CommunityEventController@getEventBySlug`\nRoute source: `fluent-event/app/Http/Routes/api.php:71`",
+        "description": "Resolves a portal event URL (space slug + event slug) to the community post slug that shows it.\n\nController: `CommunityEventController@getEventBySlug`\nRoute source: `fluent-event/app/Http/Routes/api.php:70`",
         "tags": [
           "Community Portal"
         ],

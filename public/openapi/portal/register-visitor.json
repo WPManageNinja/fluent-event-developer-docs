@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "post": {
         "operationId": "registerVisitor",
         "summary": "Register Visitor (Event Page)",
-        "description": "Registers anyone, logged in or not, for an `rsvp` or `open` event from its public page, by name and email.\n\nController: `PortalEventController@registerGuest`\nRoute source: `fluent-event/app/Http/Routes/api.php:80`",
+        "description": "Registers anyone, logged in or not, for an `rsvp` or `open` event from its public page, by name and email.\n\nController: `PortalEventController@registerGuest`\nRoute source: `fluent-event/app/Http/Routes/api.php:77`",
         "tags": [
           "Public Event Page"
         ],
@@ -80,7 +80,7 @@
                 "example": {
                   "message": "You are registered.",
                   "status": "going",
-                  "html": "<aside\n    class=\"fe-event-page__card fe-event-page__side\"\n    aria-label=\"Registration\"\n    data-fe-card\n    data-error=\"Something went wrong. Please try again.\"\n            data-event-nonce=\"a1b2c3d4e5\"\n            >\n    <div class=\"fe-event-page__when\">\n        <span class=\"fe-date-chip\" aria-hidden=\"true\">\n            <span class=\"fe-date-chip__month\">Dec</span>\n            <span class=\"fe-date-chip__day\">7</span>\n        </span>\n\n        <div class=\"fe-event-page__when-text\">\n            <span class=\"fe-event-page__when-date\">December 7, 2026</span>\n            <span>17:30 – 20:30 (America/New_York)</span>\n                            <span class=\"fe-event-page__when-local\">Dec 8, 04:30 – 07:30 (Asia/Dhaka)</span>\n                    </div>\n    </div>\n\n            <span class=\"fe-event-page__status fe-event-page__status--upcoming\">Starts in 3 weeks</span>\n    \n            <div class=\"fe-event-page__rsvp\">\n                            <span class=\"fe-event-page__badge\" tabindex=\"-1\" data-fe-focus>\n                    <span class=\"fe-event-page__badge-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"10\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3.5 8.5l3 3 6-7\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span>\n                    Going                </span>\n            \n                            <span class=\"fe-event-page__count\">3 going</span>\n                    </div>\n\n              … (truncated)"
+                  "html": "<aside\n    class=\"fe-event-page__card fe-event-page__side\"\n    aria-label=\"Registration\"\n    data-fe-card\n    data-error=\"Something went wrong. Please try again.\"\n            data-event-nonce=\"a1b2c3d4e5\"\n            >\n    <div class=\"fe-event-page__when\">\n        <span class=\"fe-date-chip\" aria-hidden=\"true\">\n            <span class=\"fe-date-chip__month\">Dec</span>\n            <span class=\"fe-date-chip__day\">8</span>\n        </span>\n\n        <div class=\"fe-event-page__when-text\">\n            <span class=\"fe-event-page__when-date\">December 8, 2026</span>\n            <span>17:30 – 20:30 (America/New_York)</span>\n                            <span class=\"fe-event-page__when-local\">Dec 9, 04:30 – 07:30 (Asia/Dhaka)</span>\n                    </div>\n    </div>\n\n            <span class=\"fe-event-page__status fe-event-page__status--upcoming\">Starts in 3 weeks</span>\n    \n            <div class=\"fe-event-page__rsvp\">\n                            <span class=\"fe-event-page__badge\" tabindex=\"-1\" data-fe-focus>\n                    <span class=\"fe-event-page__badge-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"10\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3.5 8.5l3 3 6-7\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span>\n                    Going                </span>\n            \n                            <span class=\"fe-event-page__count\">3 going</span>\n                    </div>\n\n              … (truncated)"
                 }
               }
             }

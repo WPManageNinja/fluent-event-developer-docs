@@ -14,7 +14,7 @@ Updates a calendar. Send the full calendar: every required field is validated ag
 - **Method:** `PATCH`
 - **Path:** `/fluent-event/v2/calendars/{id}`
 - **Controller:** `CalendarController@updateCalendar`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:43`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:42`
 - **Controller source:** `fluent-event/app/Http/Controllers/CalendarController.php:97`
 
 ## Permissions

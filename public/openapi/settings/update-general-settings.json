@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "post": {
         "operationId": "updateGeneralSettings",
         "summary": "Update General Settings",
-        "description": "Saves the general settings. Send only the fields of the box you save; the others keep their values.\n\nController: `SettingsController@updateGeneral`\nRoute source: `fluent-event/app/Http/Routes/api.php:25`",
+        "description": "Saves the general settings. Send only the fields of the box you save; the others keep their values.\n\nController: `SettingsController@updateGeneral`\nRoute source: `fluent-event/app/Http/Routes/api.php:24`",
         "tags": [
           "Settings"
         ],

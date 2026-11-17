@@ -14,7 +14,7 @@ Saves the sender, reply-to and footer for guest emails.
 - **Method:** `POST`
 - **Path:** `/fluent-event/v2/settings/email`
 - **Controller:** `SettingsController@updateEmail`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:30`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:29`
 - **Controller source:** `fluent-event/app/Http/Controllers/SettingsController.php:153`
 
 ## Permissions

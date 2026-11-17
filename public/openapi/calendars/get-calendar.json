@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "get": {
         "operationId": "getCalendar",
         "summary": "Get Calendar",
-        "description": "Returns one calendar with its creator's name and its event and guest totals.\n\nController: `CalendarController@getCalendar`\nRoute source: `fluent-event/app/Http/Routes/api.php:40`",
+        "description": "Returns one calendar with its creator's name and its event and guest totals.\n\nController: `CalendarController@getCalendar`\nRoute source: `fluent-event/app/Http/Routes/api.php:39`",
         "tags": [
           "Calendars"
         ],
@@ -186,7 +186,7 @@
                 },
                 "example": {
                   "calendar": {
-                    "id": 743,
+                    "id": 3434,
                     "title": "Team Meetups",
                     "slug": "team-meetups",
                     "description": null,
@@ -196,8 +196,8 @@
                       "theme_color": "#12A9B5"
                     },
                     "created_by": 1,
-                    "created_at": "2026-11-16 11:50:01",
-                    "updated_at": "2026-11-16 11:50:01",
+                    "created_at": "2026-11-17 17:41:46",
+                    "updated_at": "2026-11-17 17:41:46",
                     "creator_name": "admin"
                   },
                   "stats": {

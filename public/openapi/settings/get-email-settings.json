@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "servers": [
     {
@@ -42,7 +42,7 @@
       "get": {
         "operationId": "getEmailSettings",
         "summary": "Get Email Settings",
-        "description": "Returns the sender name and address, reply-to and email footer used for guest emails.\n\nController: `SettingsController@getEmail`\nRoute source: `fluent-event/app/Http/Routes/api.php:29`",
+        "description": "Returns the sender name and address, reply-to and email footer used for guest emails.\n\nController: `SettingsController@getEmail`\nRoute source: `fluent-event/app/Http/Routes/api.php:28`",
         "tags": [
           "Settings"
         ],

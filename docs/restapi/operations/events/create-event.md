@@ -18,8 +18,8 @@ Send `start_at` and `end_at` as local date-times (`Y-m-d H:i:s`) in `timezone`. 
 - **Method:** `POST`
 - **Path:** `/fluent-event/v2/events`
 - **Controller:** `EventController@createEvent`
-- **Route source:** `fluent-event/app/Http/Routes/api.php:57`
-- **Controller source:** `fluent-event/app/Http/Controllers/EventController.php:103`
+- **Route source:** `fluent-event/app/Http/Routes/api.php:56`
+- **Controller source:** `fluent-event/app/Http/Controllers/EventController.php:104`
 
 ## Permissions
 
