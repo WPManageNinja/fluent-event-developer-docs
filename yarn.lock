@@ -495,6 +495,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource-variable/jetbrains-mono@npm:5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource-variable/jetbrains-mono@npm:5.3.0"
+  checksum: 10c0/ba983321b530a56696b12390a377c79a962376a33359eeda37c9a2141450802e0b630e6c232d90aab0281179e623d01c77d1bc8059ce595fe865fbc6d6022ffb
+  languageName: node
+  linkType: hard
+
 "@iconify-json/simple-icons@npm:^1.2.21":
   version: 1.2.102
   resolution: "@iconify-json/simple-icons@npm:1.2.102"
@@ -2312,6 +2319,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "fluent-event-developer-docs@workspace:."
   dependencies:
+    "@fontsource-variable/jetbrains-mono": "npm:5.3.0"
     "@types/node": "npm:22.19.15"
     mermaid: "npm:10.9.5"
     sharp: "npm:0.35.4"
