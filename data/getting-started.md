@@ -17,9 +17,11 @@ How people join an event depends on `event_details.meta.entry_type`:
 
 | Entry type | Who registers | How |
 | --- | --- | --- |
-| `rsvp` | Logged-in members in the portal; anyone on the public page | Going / not going. On the public page, Going only, by name and email. No seat limit. |
-| `open` | Anyone | A Register button with name and email. A member can cancel and register again in the portal; a visitor's registration is final. |
+| `rsvp` | Logged-in members in the portal; anyone on the public page | Going / not going. On the public page, Going only, by name and email. |
+| `open` | Anyone | A Register button with name and email. A member can say not going and register again in the portal; a visitor's registration is final. |
 | `none` | Nobody | View only. Every viewer sees the whole event, meeting link included. Admins can still add guests. |
+
+An `rsvp` or `open` event can set `meta.capacity`, the most guests going at once (`0` = no limit). A full event refuses a new Going or Register. Guests answer only going or not going; only an admin sets `cancelled`.
 
 See [Database Schema](/database/schema) for every column.
 

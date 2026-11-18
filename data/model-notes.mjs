@@ -89,6 +89,8 @@ Call \`$event->delete()\` directly and none of this happens. Fire the hooks your
 | --- | --- |
 | \`entry_type\` | How people join: \`rsvp\` (going / not going), \`open\` (a Register button) or \`none\` (view only). |
 | \`show_guest_count\` | \`yes\` or \`no\`: show how many people are going. |
+| \`capacity\` | The most guests that can be going at once, for \`rsvp\` and \`open\` events. \`0\` (the default) means no limit. Going and checked-in guests hold a seat. Admins can add guests past it. |
+| \`show_spots_left\` | \`yes\` or \`no\` (the default): show the spots left on an event with a capacity. With \`show_guest_count\` also on, the event page shows a meter. |
 | \`start_display\` | How the event page shows the time before the start: \`relative\` ("Starts in 3 days", the default) or \`countdown\` (a live countdown). |
 | \`cover_url\` | Cover image URL. Images are stored as URLs, never as attachment IDs. |
 | \`online_meeting_url\` | Meeting link for an online event. Shown only to guests who hold a seat. |
@@ -187,10 +189,10 @@ $calendars = Calendar::query()
         name: 'Name the guest gave, or the member display name.',
         email: 'Email address. Unique per event.',
         user_id: 'The WordPress user, when a logged-in member registered or an admin linked one. Unique per event.',
-        status: '`going`, `not_going`, `checked_in` or `cancelled`.',
+        status: '`going`, `not_going`, `checked_in` or `cancelled`. Guests answer only `going` or `not_going`; only an admin sets `checked_in` or `cancelled`.',
         hash: 'Reserved for per-ticket links.',
         checked_in_at: 'When the guest was checked in. Cleared when the status leaves `checked_in`.',
-        source: 'Where the row came from: `manual` (admin), `wordpress_pages` (public event page or a visitor on the portal) or `fluent_community` (a member on the portal).',
+        source: 'Where the row came from: `manual` (admin), `wordpress_pages` (the public event page) or `fluent_community` (a member or a visitor on the portal).',
         source_id: 'ID in the source system, for example the FluentCommunity post ID.',
         meta: 'Open-ended JSON for per-guest data.',
       },

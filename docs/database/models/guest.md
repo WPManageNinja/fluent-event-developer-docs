@@ -30,14 +30,14 @@ Guests are not WordPress users. A visitor registers with a name and an email onl
 | `name` | `varchar(255)` | — | Yes | Name the guest gave, or the member display name. |
 | `email` | `varchar(191)` | — | Yes | Email address. Unique per event. |
 | `user_id` | `bigint(20) unsigned` | `int` | Yes | The WordPress user, when a logged-in member registered or an admin linked one. Unique per event. |
-| `status` | `varchar(64)` | — | Yes | `going`, `not_going`, `checked_in` or `cancelled`. |
+| `status` | `varchar(64)` | — | Yes | `going`, `not_going`, `checked_in` or `cancelled`. Guests answer only `going` or `not_going`; only an admin sets `checked_in` or `cancelled`. |
 | `hash` | `varchar(64)` | — | No | Reserved for per-ticket links. |
 | `checked_in_at` | `datetime` | — | Yes | When the guest was checked in. Cleared when the status leaves `checked_in`. |
 | `payment_status` | `varchar(64)` | — | No | paid \| unpaid \| refunded |
 | `payment_ref` | `varchar(255)` | — | No |  |
 | `price` | `decimal(10,2)` | — | No |  |
 | `paid_at` | `datetime` | — | No |  |
-| `source` | `varchar(64)` | — | Yes | Where the row came from: `manual` (admin), `wordpress_pages` (public event page or a visitor on the portal) or `fluent_community` (a member on the portal). |
+| `source` | `varchar(64)` | — | Yes | Where the row came from: `manual` (admin), `wordpress_pages` (the public event page) or `fluent_community` (a member or a visitor on the portal). |
 | `source_id` | `bigint(20) unsigned` | — | Yes | ID in the source system, for example the FluentCommunity post ID. |
 | `meta` | `longtext` | `array` | Yes | Open-ended JSON for per-guest data. |
 | `created_at` | `timestamp` | — | No |  |

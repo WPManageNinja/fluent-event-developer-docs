@@ -223,7 +223,7 @@ Action Scheduler runs this hook in the `fluent-event` group. These are the place
 | Source | Context | When | Arguments |
 | --- | --- | --- | --- |
 | `fluent-event/app/Http/Controllers/GuestController.php:105` | `GuestController::updateGuest()` | `now (async)` | `[(int) $guest->id]` |
-| `fluent-event/app/Services/RegistrationService.php:136` | `RegistrationService::queueEmail()` | `now (async)` | `[(int) $guest->id]` |
+| `fluent-event/app/Services/RegistrationService.php:215` | `RegistrationService::queueEmail()` | `now (async)` | `[(int) $guest->id]` |
 
 ### Listeners Inside FluentEvent
 
@@ -267,7 +267,7 @@ Action Scheduler runs this hook in the `fluent-event` group. These are the place
 | --- | --- | --- | --- |
 | `fluent-event/app/Http/Controllers/GuestController.php:60` | `GuestController::createGuest()` | `now (async)` | `[(int) $guest->id]` |
 | `fluent-event/app/Http/Controllers/GuestController.php:103` | `GuestController::updateGuest()` | `now (async)` | `[(int) $guest->id]` |
-| `fluent-event/app/Services/RegistrationService.php:134` | `RegistrationService::queueEmail()` | `now (async)` | `[(int) $guest->id]` |
+| `fluent-event/app/Services/RegistrationService.php:213` | `RegistrationService::queueEmail()` | `now (async)` | `[(int) $guest->id]` |
 
 ### Listeners Inside FluentEvent
 

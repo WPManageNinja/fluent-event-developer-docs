@@ -102,4 +102,6 @@ get_footer();
 
 ## Registration on the Event Page
 
-The registration card posts to [`POST /portal/events/{id}/register-guest`](/restapi/operations/portal/register-visitor) with a per-event nonce. It works for `rsvp` and `open` events while the event has not ended, and always records the guest as `going`. Successful registration fires [`fluent_event/guest/created`](/hooks/actions/guests#fluent-event-guest-created) with `source = wordpress_pages`.
+The registration card posts to [`POST /portal/events/{id}/register-guest`](/restapi/operations/portal/register-visitor) with a per-event nonce. It works for `rsvp` and `open` events while the event has not ended, and always records the guest as `going`. A new registration fires [`fluent_event/guest/created`](/hooks/actions/guests#fluent-event-guest-created) with `source = wordpress_pages`.
+
+An email that is already on the event is refused with a warning, and nothing is saved. The exception is a `not_going` row with no WordPress user: it comes back to `going` and fires [`fluent_event/guest/updated`](/hooks/actions/guests#fluent-event-guest-updated). When the event has a `capacity` and is full, the card shows **Event full** in place of the form. With `show_spots_left` on, the card shows the spots left, or a meter when `show_guest_count` is also on.

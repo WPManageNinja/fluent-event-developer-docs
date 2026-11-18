@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.5"
+    "version": "1.1.0"
   },
   "servers": [
     {
@@ -202,6 +202,15 @@
                           "guest_count": {
                             "type": "integer"
                           },
+                          "capacity": {
+                            "nullable": true
+                          },
+                          "spots_left": {
+                            "nullable": true
+                          },
+                          "is_full": {
+                            "type": "boolean"
+                          },
                           "start_display": {
                             "type": "string"
                           },
@@ -243,16 +252,16 @@
                 "example": {
                   "events": [
                     {
-                      "id": 3510,
+                      "id": 3525,
                       "title": "Community Q&A",
                       "slug": "community-qa",
                       "status": "private",
-                      "start_at": "2026-12-01 19:00:00",
-                      "end_at": "2026-12-01 20:30:00",
-                      "start_at_local": "2026-12-01 14:00:00",
-                      "end_at_local": "2026-12-01 15:30:00",
-                      "start_at_site": "2026-12-02 01:00:00",
-                      "end_at_site": "2026-12-02 02:30:00",
+                      "start_at": "2026-12-02 19:00:00",
+                      "end_at": "2026-12-02 20:30:00",
+                      "start_at_local": "2026-12-02 14:00:00",
+                      "end_at_local": "2026-12-02 15:30:00",
+                      "start_at_site": "2026-12-03 01:00:00",
+                      "end_at_site": "2026-12-03 02:30:00",
                       "timezone": "America/New_York",
                       "venue_type": "online",
                       "venue": "",
@@ -262,6 +271,9 @@
                       "online_meeting_url": "",
                       "entry_type": "rsvp",
                       "guest_count": 0,
+                      "capacity": null,
+                      "spots_left": null,
+                      "is_full": false,
                       "start_display": "relative",
                       "is_past": false,
                       "my_status": null,
@@ -272,16 +284,16 @@
                       "space": null
                     },
                     {
-                      "id": 3511,
+                      "id": 3526,
                       "title": "Design Workshop",
                       "slug": "design-workshop",
                       "status": "private",
-                      "start_at": "2026-12-03 19:00:00",
-                      "end_at": "2026-12-03 20:30:00",
-                      "start_at_local": "2026-12-03 14:00:00",
-                      "end_at_local": "2026-12-03 15:30:00",
-                      "start_at_site": "2026-12-04 01:00:00",
-                      "end_at_site": "2026-12-04 02:30:00",
+                      "start_at": "2026-12-04 19:00:00",
+                      "end_at": "2026-12-04 20:30:00",
+                      "start_at_local": "2026-12-04 14:00:00",
+                      "end_at_local": "2026-12-04 15:30:00",
+                      "start_at_site": "2026-12-05 01:00:00",
+                      "end_at_site": "2026-12-05 02:30:00",
                       "timezone": "America/New_York",
                       "venue_type": "online",
                       "venue": "",
@@ -291,6 +303,9 @@
                       "online_meeting_url": "",
                       "entry_type": "open",
                       "guest_count": 0,
+                      "capacity": null,
+                      "spots_left": null,
+                      "is_full": false,
                       "start_display": "relative",
                       "is_past": false,
                       "my_status": null,

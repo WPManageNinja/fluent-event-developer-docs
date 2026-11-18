@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.5"
+    "version": "1.1.0"
   },
   "servers": [
     {
@@ -74,13 +74,25 @@
                     },
                     "online_meeting_url": {
                       "type": "string"
+                    },
+                    "guest_count": {
+                      "type": "integer"
+                    },
+                    "spots_left": {
+                      "nullable": true
+                    },
+                    "is_full": {
+                      "type": "boolean"
                     }
                   }
                 },
                 "example": {
                   "message": "You are registered.",
                   "status": "going",
-                  "online_meeting_url": "https://example.com/meet/design-workshop"
+                  "online_meeting_url": "https://example.com/meet/design-workshop",
+                  "guest_count": 1,
+                  "spots_left": null,
+                  "is_full": false
                 }
               }
             }

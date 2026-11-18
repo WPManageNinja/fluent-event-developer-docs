@@ -78,7 +78,7 @@ The default is `100`. The value is clamped to 1–255, because 255 is the limit 
 
 | Source | Context | Arguments |
 | --- | --- | --- |
-| `fluent-event/app/Models/Event.php:75` | `Event::venueMaxLength()` | `100` |
+| `fluent-event/app/Models/Event.php:78` | `Event::venueMaxLength()` | `100` |
 
 ### Example
 

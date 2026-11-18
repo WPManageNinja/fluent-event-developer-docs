@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.5"
+    "version": "1.1.0"
   },
   "servers": [
     {
@@ -268,42 +268,42 @@
                     "current_page": 1,
                     "data": [
                       {
-                        "id": 1372,
-                        "event_id": 3507,
+                        "id": 1379,
+                        "event_id": 3522,
                         "name": "Amara Okafor",
                         "email": "amara.okafor@example.com",
                         "user_id": null,
                         "status": "going",
                         "source": "manual",
                         "checked_in_at": null,
-                        "created_at": "2026-11-17 17:41:46",
-                        "updated_at": "2026-11-17 17:41:46",
+                        "created_at": "2026-11-18 19:58:54",
+                        "updated_at": "2026-11-18 19:58:54",
                         "avatar": "https://secure.gravatar.com/avatar/29a805dddae9c60ee6d941a75546ed33eab13c9f38effbfdb0ba37a81fd3c9c2?s=96&d=mm&r=g"
                       },
                       {
-                        "id": 1371,
-                        "event_id": 3507,
+                        "id": 1378,
+                        "event_id": 3522,
                         "name": "Jonas Weber",
                         "email": "jonas.weber@example.com",
                         "user_id": null,
                         "status": "not_going",
                         "source": "manual",
                         "checked_in_at": null,
-                        "created_at": "2026-11-17 17:41:46",
-                        "updated_at": "2026-11-17 17:41:46",
+                        "created_at": "2026-11-18 19:58:54",
+                        "updated_at": "2026-11-18 19:58:54",
                         "avatar": "https://secure.gravatar.com/avatar/0874a506e975e942d1f2555f3a6693e46e3da4c9ee73c704f43ffd493a6bc25a?s=96&d=mm&r=g"
                       },
                       {
-                        "id": 1370,
-                        "event_id": 3507,
+                        "id": 1377,
+                        "event_id": 3522,
                         "name": "Maya Chen",
                         "email": "maya.chen@example.com",
-                        "user_id": 12052,
+                        "user_id": 14823,
                         "status": "checked_in",
                         "source": "manual",
-                        "checked_in_at": "2026-11-17 17:41:46",
-                        "created_at": "2026-11-17 17:41:46",
-                        "updated_at": "2026-11-17 17:41:46",
+                        "checked_in_at": "2026-11-18 19:58:55",
+                        "created_at": "2026-11-18 19:58:54",
+                        "updated_at": "2026-11-18 19:58:55",
                         "avatar": "https://secure.gravatar.com/avatar/0512aa23cb9d989426d803e88ccc40972235fe9b60d9a03b1516f926c850050a?s=96&d=mm&r=g"
                       }
                     ],

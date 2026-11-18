@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17",
+  "generated": "2026-11-18",
   "source": "scripts/capture",
   "modules": {
     "calendars": {
@@ -21,9 +21,9 @@
               "theme_color": "#12A9B5"
             },
             "created_by": 1,
-            "updated_at": "2026-11-17 17:41:46",
-            "created_at": "2026-11-17 17:41:46",
-            "id": 3434
+            "updated_at": "2026-11-18 19:58:54",
+            "created_at": "2026-11-18 19:58:54",
+            "id": 3440
           }
         }
       },
@@ -37,7 +37,7 @@
         "status": 200,
         "response": {
           "calendar": {
-            "id": 3434,
+            "id": 3440,
             "title": "Team Meetups",
             "slug": "team-meetups",
             "description": null,
@@ -47,8 +47,8 @@
               "theme_color": "#12A9B5"
             },
             "created_by": 1,
-            "created_at": "2026-11-17 17:41:46",
-            "updated_at": "2026-11-17 17:41:46",
+            "created_at": "2026-11-18 19:58:54",
+            "updated_at": "2026-11-18 19:58:54",
             "creator_name": "admin"
           },
           "stats": {
@@ -89,7 +89,7 @@
         "response": {
           "calendars": [
             {
-              "id": 3435,
+              "id": 3441,
               "title": "Archive",
               "status": "draft",
               "meta": {
@@ -97,7 +97,7 @@
               }
             },
             {
-              "id": 3434,
+              "id": 3440,
               "title": "Team Meetups",
               "status": "public",
               "meta": {
@@ -115,7 +115,7 @@
         "response": {
           "calendars": [
             {
-              "id": 3435,
+              "id": 3441,
               "title": "Archive",
               "slug": "archive",
               "description": null,
@@ -125,13 +125,13 @@
                 "theme_color": "#0099ff"
               },
               "created_by": 1,
-              "created_at": "2026-11-17 17:41:46",
-              "updated_at": "2026-11-17 17:41:46",
+              "created_at": "2026-11-18 19:58:54",
+              "updated_at": "2026-11-18 19:58:54",
               "events_count": "0",
               "guests_count": "0"
             },
             {
-              "id": 3434,
+              "id": 3440,
               "title": "Team Meetups",
               "slug": "team-meetups",
               "description": null,
@@ -141,8 +141,8 @@
                 "theme_color": "#12A9B5"
               },
               "created_by": 1,
-              "created_at": "2026-11-17 17:41:46",
-              "updated_at": "2026-11-17 17:41:46",
+              "created_at": "2026-11-18 19:58:54",
+              "updated_at": "2026-11-18 19:58:54",
               "events_count": "2",
               "guests_count": "3"
             }
@@ -165,7 +165,7 @@
         "response": {
           "message": "Calendar has been successfully updated",
           "calendar": {
-            "id": 3434,
+            "id": 3440,
             "title": "Team Meetups",
             "slug": "team-meetups",
             "description": null,
@@ -175,8 +175,8 @@
               "theme_color": "#0E8E99"
             },
             "created_by": 1,
-            "created_at": "2026-11-17 17:41:46",
-            "updated_at": "2026-11-17 17:41:46"
+            "created_at": "2026-11-18 19:58:54",
+            "updated_at": "2026-11-18 19:58:55"
           }
         }
       }
@@ -201,16 +201,16 @@
         "response": {
           "events": [
             {
-              "id": 3510,
+              "id": 3525,
               "title": "Community Q&A",
               "slug": "community-qa",
               "status": "private",
-              "start_at": "2026-12-01 19:00:00",
-              "end_at": "2026-12-01 20:30:00",
-              "start_at_local": "2026-12-01 14:00:00",
-              "end_at_local": "2026-12-01 15:30:00",
-              "start_at_site": "2026-12-02 01:00:00",
-              "end_at_site": "2026-12-02 02:30:00",
+              "start_at": "2026-12-02 19:00:00",
+              "end_at": "2026-12-02 20:30:00",
+              "start_at_local": "2026-12-02 14:00:00",
+              "end_at_local": "2026-12-02 15:30:00",
+              "start_at_site": "2026-12-03 01:00:00",
+              "end_at_site": "2026-12-03 02:30:00",
               "timezone": "America/New_York",
               "venue_type": "online",
               "venue": "",
@@ -220,6 +220,9 @@
               "online_meeting_url": "",
               "entry_type": "rsvp",
               "guest_count": 0,
+              "capacity": null,
+              "spots_left": null,
+              "is_full": false,
               "start_display": "relative",
               "is_past": false,
               "my_status": null,
@@ -230,16 +233,16 @@
               "space": null
             },
             {
-              "id": 3511,
+              "id": 3526,
               "title": "Design Workshop",
               "slug": "design-workshop",
               "status": "private",
-              "start_at": "2026-12-03 19:00:00",
-              "end_at": "2026-12-03 20:30:00",
-              "start_at_local": "2026-12-03 14:00:00",
-              "end_at_local": "2026-12-03 15:30:00",
-              "start_at_site": "2026-12-04 01:00:00",
-              "end_at_site": "2026-12-04 02:30:00",
+              "start_at": "2026-12-04 19:00:00",
+              "end_at": "2026-12-04 20:30:00",
+              "start_at_local": "2026-12-04 14:00:00",
+              "end_at_local": "2026-12-04 15:30:00",
+              "start_at_site": "2026-12-05 01:00:00",
+              "end_at_site": "2026-12-05 02:30:00",
               "timezone": "America/New_York",
               "venue_type": "online",
               "venue": "",
@@ -249,6 +252,9 @@
               "online_meeting_url": "",
               "entry_type": "open",
               "guest_count": 0,
+              "capacity": null,
+              "spots_left": null,
+              "is_full": false,
               "start_display": "relative",
               "is_past": false,
               "my_status": null,
@@ -272,7 +278,10 @@
         "response": {
           "message": "RSVP updated. You're going!",
           "status": "going",
-          "online_meeting_url": "https://example.com/meet/community-qa"
+          "online_meeting_url": "https://example.com/meet/community-qa",
+          "guest_count": 1,
+          "spots_left": null,
+          "is_full": false
         }
       },
       "register-visitor-community": {
@@ -285,7 +294,10 @@
         "response": {
           "message": "You are registered.",
           "status": "going",
-          "online_meeting_url": "https://example.com/meet/design-workshop"
+          "online_meeting_url": "https://example.com/meet/design-workshop",
+          "guest_count": 1,
+          "spots_left": null,
+          "is_full": false
         }
       }
     },
@@ -301,12 +313,12 @@
       "create-event": {
         "status": 200,
         "requestBody": {
-          "calendar_id": 3434,
+          "calendar_id": 3440,
           "title": "Spring Meetup",
           "description_md": "An evening of short talks and open networking.\n\n**Doors open at 6 PM.**",
           "status": "public",
-          "start_at": "2026-12-08 18:00:00",
-          "end_at": "2026-12-08 20:30:00",
+          "start_at": "2026-12-09 18:00:00",
+          "end_at": "2026-12-09 20:30:00",
           "timezone": "America/New_York",
           "venue_type": "offline",
           "venue": "Riverside Community Hall",
@@ -318,12 +330,12 @@
         "response": {
           "message": "Event has been successfully created",
           "event": {
-            "post_id": 6934,
-            "calendar_id": 3434,
+            "post_id": 7002,
+            "calendar_id": 3440,
             "parent_event_id": null,
             "status": "public",
-            "start_at": "2026-12-08 23:00:00",
-            "end_at": "2026-12-09 01:30:00",
+            "start_at": "2026-12-09 23:00:00",
+            "end_at": "2026-12-10 01:30:00",
             "timezone": "America/New_York",
             "venue_type": "offline",
             "meta": {
@@ -333,17 +345,19 @@
               "address": "120 Market Street, Springfield",
               "entry_type": "rsvp",
               "show_guest_count": "yes",
+              "capacity": 0,
+              "show_spots_left": "no",
               "start_display": "relative",
               "description_md": "An evening of short talks and open networking.\n\n**Doors open at 6 PM.**"
             },
-            "updated_at": "2026-11-17 17:41:46",
-            "created_at": "2026-11-17 17:41:46",
-            "id": 3507,
+            "updated_at": "2026-11-18 19:58:54",
+            "created_at": "2026-11-18 19:58:54",
+            "id": 3522,
             "title": "Spring Meetup",
-            "start_at_local": "2026-12-08 18:00:00",
-            "end_at_local": "2026-12-08 20:30:00",
-            "start_at_site": "2026-12-09 05:00:00",
-            "end_at_site": "2026-12-09 07:30:00"
+            "start_at_local": "2026-12-09 18:00:00",
+            "end_at_local": "2026-12-09 20:30:00",
+            "start_at_site": "2026-12-10 05:00:00",
+            "end_at_site": "2026-12-10 07:30:00"
           }
         }
       },
@@ -357,13 +371,13 @@
         "status": 200,
         "response": {
           "event": {
-            "id": 3507,
-            "post_id": 6934,
-            "calendar_id": 3434,
+            "id": 3522,
+            "post_id": 7002,
+            "calendar_id": 3440,
             "parent_event_id": null,
             "status": "public",
-            "start_at": "2026-12-08 23:00:00",
-            "end_at": "2026-12-09 01:30:00",
+            "start_at": "2026-12-09 23:00:00",
+            "end_at": "2026-12-10 01:30:00",
             "timezone": "America/New_York",
             "venue_type": "offline",
             "meta": {
@@ -373,20 +387,22 @@
               "address": "120 Market Street, Springfield",
               "entry_type": "rsvp",
               "show_guest_count": "yes",
+              "capacity": 0,
+              "show_spots_left": "no",
               "start_display": "relative",
               "description_md": "An evening of short talks and open networking.\n\n**Doors open at 6 PM.**"
             },
-            "created_at": "2026-11-17 17:41:46",
-            "updated_at": "2026-11-17 17:41:46",
+            "created_at": "2026-11-18 19:58:54",
+            "updated_at": "2026-11-18 19:58:54",
             "guests_count": "3",
             "title": "Spring Meetup",
-            "start_at_local": "2026-12-08 18:00:00",
-            "end_at_local": "2026-12-08 20:30:00",
-            "start_at_site": "2026-12-09 05:00:00",
-            "end_at_site": "2026-12-09 07:30:00",
+            "start_at_local": "2026-12-09 18:00:00",
+            "end_at_local": "2026-12-09 20:30:00",
+            "start_at_site": "2026-12-10 05:00:00",
+            "end_at_site": "2026-12-10 07:30:00",
             "description": "<p>An evening of short talks and open networking.</p>\n<p><strong>Doors open at 6 PM.</strong></p>",
             "calendar": {
-              "id": 3434,
+              "id": 3440,
               "title": "Team Meetups",
               "status": "public",
               "meta": {
@@ -405,13 +421,13 @@
         },
         "response": {
           "event": {
-            "id": 3507,
-            "post_id": 6934,
-            "calendar_id": 3434,
+            "id": 3522,
+            "post_id": 7002,
+            "calendar_id": 3440,
             "parent_event_id": null,
             "status": "public",
-            "start_at": "2026-12-08 23:00:00",
-            "end_at": "2026-12-09 01:30:00",
+            "start_at": "2026-12-09 23:00:00",
+            "end_at": "2026-12-10 01:30:00",
             "timezone": "America/New_York",
             "venue_type": "offline",
             "meta": {
@@ -421,20 +437,22 @@
               "address": "120 Market Street, Springfield",
               "entry_type": "rsvp",
               "show_guest_count": "yes",
+              "capacity": 0,
+              "show_spots_left": "no",
               "start_display": "relative",
               "description_md": "An evening of short talks and open networking.\n\n**Doors open at 6 PM.**"
             },
-            "created_at": "2026-11-17 17:41:46",
-            "updated_at": "2026-11-17 17:41:46",
+            "created_at": "2026-11-18 19:58:54",
+            "updated_at": "2026-11-18 19:58:54",
             "guests_count": "3",
             "title": "Spring Meetup",
-            "start_at_local": "2026-12-08 18:00:00",
-            "end_at_local": "2026-12-08 20:30:00",
-            "start_at_site": "2026-12-09 05:00:00",
-            "end_at_site": "2026-12-09 07:30:00",
+            "start_at_local": "2026-12-09 18:00:00",
+            "end_at_local": "2026-12-09 20:30:00",
+            "start_at_site": "2026-12-10 05:00:00",
+            "end_at_site": "2026-12-10 07:30:00",
             "description": "<p>An evening of short talks and open networking.</p>\n<p><strong>Doors open at 6 PM.</strong></p>",
             "calendar": {
-              "id": 3434,
+              "id": 3440,
               "title": "Team Meetups",
               "status": "public",
               "meta": {
@@ -458,13 +476,13 @@
             "current_page": 1,
             "data": [
               {
-                "id": 3508,
-                "post_id": 6935,
-                "calendar_id": 3434,
+                "id": 3523,
+                "post_id": 7003,
+                "calendar_id": 3440,
                 "parent_event_id": null,
                 "status": "public",
-                "start_at": "2026-11-27 20:00:00",
-                "end_at": "2026-11-27 21:00:00",
+                "start_at": "2026-11-28 20:00:00",
+                "end_at": "2026-11-28 21:00:00",
                 "timezone": "America/New_York",
                 "venue_type": "online",
                 "meta": {
@@ -474,19 +492,21 @@
                   "address": "",
                   "entry_type": "open",
                   "show_guest_count": "yes",
+                  "capacity": 0,
+                  "show_spots_left": "no",
                   "start_display": "relative",
                   "description_md": "A walkthrough of what is new this quarter."
                 },
-                "created_at": "2026-11-17 17:41:46",
-                "updated_at": "2026-11-17 17:41:46",
+                "created_at": "2026-11-18 19:58:54",
+                "updated_at": "2026-11-18 19:58:54",
                 "guests_count": "0",
                 "title": "Product Webinar",
-                "start_at_local": "2026-11-27 15:00:00",
-                "end_at_local": "2026-11-27 16:00:00",
-                "start_at_site": "2026-11-28 02:00:00",
-                "end_at_site": "2026-11-28 03:00:00",
+                "start_at_local": "2026-11-28 15:00:00",
+                "end_at_local": "2026-11-28 16:00:00",
+                "start_at_site": "2026-11-29 02:00:00",
+                "end_at_site": "2026-11-29 03:00:00",
                 "calendar": {
-                  "id": 3434,
+                  "id": 3440,
                   "title": "Team Meetups",
                   "meta": {
                     "theme_color": "#12A9B5"
@@ -494,13 +514,13 @@
                 }
               },
               {
-                "id": 3507,
-                "post_id": 6934,
-                "calendar_id": 3434,
+                "id": 3522,
+                "post_id": 7002,
+                "calendar_id": 3440,
                 "parent_event_id": null,
                 "status": "public",
-                "start_at": "2026-12-08 23:00:00",
-                "end_at": "2026-12-09 01:30:00",
+                "start_at": "2026-12-09 23:00:00",
+                "end_at": "2026-12-10 01:30:00",
                 "timezone": "America/New_York",
                 "venue_type": "offline",
                 "meta": {
@@ -510,19 +530,21 @@
                   "address": "120 Market Street, Springfield",
                   "entry_type": "rsvp",
                   "show_guest_count": "yes",
+                  "capacity": 0,
+                  "show_spots_left": "no",
                   "start_display": "relative",
                   "description_md": "An evening of short talks and open networking.\n\n**Doors open at 6 PM.**"
                 },
-                "created_at": "2026-11-17 17:41:46",
-                "updated_at": "2026-11-17 17:41:46",
+                "created_at": "2026-11-18 19:58:54",
+                "updated_at": "2026-11-18 19:58:54",
                 "guests_count": "3",
                 "title": "Spring Meetup",
-                "start_at_local": "2026-12-08 18:00:00",
-                "end_at_local": "2026-12-08 20:30:00",
-                "start_at_site": "2026-12-09 05:00:00",
-                "end_at_site": "2026-12-09 07:30:00",
+                "start_at_local": "2026-12-09 18:00:00",
+                "end_at_local": "2026-12-09 20:30:00",
+                "start_at_site": "2026-12-10 05:00:00",
+                "end_at_site": "2026-12-10 07:30:00",
                 "calendar": {
-                  "id": 3434,
+                  "id": 3440,
                   "title": "Team Meetups",
                   "meta": {
                     "theme_color": "#12A9B5"
@@ -530,13 +552,13 @@
                 }
               },
               {
-                "id": 3509,
-                "post_id": 6936,
-                "calendar_id": 3435,
+                "id": 3524,
+                "post_id": 7004,
+                "calendar_id": 3441,
                 "parent_event_id": null,
                 "status": "draft",
-                "start_at": "2026-12-17 15:00:00",
-                "end_at": "2026-12-17 17:00:00",
+                "start_at": "2026-12-18 15:00:00",
+                "end_at": "2026-12-18 17:00:00",
                 "timezone": "America/New_York",
                 "venue_type": "offline",
                 "meta": {
@@ -546,19 +568,21 @@
                   "address": "",
                   "entry_type": "none",
                   "show_guest_count": "yes",
+                  "capacity": 0,
+                  "show_spots_left": "no",
                   "start_display": "relative",
                   "description_md": ""
                 },
-                "created_at": "2026-11-17 17:41:46",
-                "updated_at": "2026-11-17 17:41:46",
+                "created_at": "2026-11-18 19:58:54",
+                "updated_at": "2026-11-18 19:58:54",
                 "guests_count": "0",
                 "title": "Cancelled Workshop",
-                "start_at_local": "2026-12-17 10:00:00",
-                "end_at_local": "2026-12-17 12:00:00",
-                "start_at_site": "2026-12-17 21:00:00",
-                "end_at_site": "2026-12-17 23:00:00",
+                "start_at_local": "2026-12-18 10:00:00",
+                "end_at_local": "2026-12-18 12:00:00",
+                "start_at_site": "2026-12-18 21:00:00",
+                "end_at_site": "2026-12-18 23:00:00",
                 "calendar": {
-                  "id": 3435,
+                  "id": 3441,
                   "title": "Archive",
                   "meta": {
                     "theme_color": "#0099ff"
@@ -599,12 +623,12 @@
       "update-event": {
         "status": 200,
         "requestBody": {
-          "calendar_id": 3434,
+          "calendar_id": 3440,
           "title": "Spring Meetup",
           "description_md": "An evening of short talks and open networking.\n\n**Doors open at 5:30 PM.**",
           "status": "public",
-          "start_at": "2026-12-08 17:30:00",
-          "end_at": "2026-12-08 20:30:00",
+          "start_at": "2026-12-09 17:30:00",
+          "end_at": "2026-12-09 20:30:00",
           "timezone": "America/New_York",
           "venue_type": "offline",
           "venue": "Riverside Community Hall",
@@ -616,13 +640,13 @@
         "response": {
           "message": "Event has been successfully updated",
           "event": {
-            "id": 3507,
-            "post_id": 6934,
-            "calendar_id": 3434,
+            "id": 3522,
+            "post_id": 7002,
+            "calendar_id": 3440,
             "parent_event_id": null,
             "status": "public",
-            "start_at": "2026-12-08 22:30:00",
-            "end_at": "2026-12-09 01:30:00",
+            "start_at": "2026-12-09 22:30:00",
+            "end_at": "2026-12-10 01:30:00",
             "timezone": "America/New_York",
             "venue_type": "offline",
             "meta": {
@@ -632,16 +656,18 @@
               "address": "120 Market Street, Springfield",
               "entry_type": "rsvp",
               "show_guest_count": "yes",
+              "capacity": 0,
+              "show_spots_left": "no",
               "start_display": "relative",
               "description_md": "An evening of short talks and open networking.\n\n**Doors open at 5:30 PM.**"
             },
-            "created_at": "2026-11-17 17:41:46",
-            "updated_at": "2026-11-17 17:41:46",
+            "created_at": "2026-11-18 19:58:54",
+            "updated_at": "2026-11-18 19:58:55",
             "title": "Spring Meetup",
-            "start_at_local": "2026-12-08 17:30:00",
-            "end_at_local": "2026-12-08 20:30:00",
-            "start_at_site": "2026-12-09 04:30:00",
-            "end_at_site": "2026-12-09 07:30:00"
+            "start_at_local": "2026-12-09 17:30:00",
+            "end_at_local": "2026-12-09 20:30:00",
+            "start_at_site": "2026-12-10 04:30:00",
+            "end_at_site": "2026-12-10 07:30:00"
           }
         }
       }
@@ -652,26 +678,26 @@
         "requestBody": {
           "name": "Maya Chen",
           "email": "maya.chen@example.com",
-          "user_id": 12052,
+          "user_id": 14823,
           "status": "going",
           "send_email": true
         },
         "response": {
           "message": "Guest has been successfully saved",
           "guest": {
-            "event_id": 3507,
-            "calendar_id": 3434,
+            "event_id": 3522,
+            "calendar_id": 3440,
             "name": "Maya Chen",
             "email": "maya.chen@example.com",
-            "user_id": 12052,
+            "user_id": 14823,
             "status": "going",
             "checked_in_at": null,
-            "group_id": "uxvWWJeAzvQzq2ps8LFH68E2Dt3eo7ew",
+            "group_id": "Yxot3X7rNZsTtqukukoKvHIZxilchRqe",
             "is_buyer": 1,
             "source": "manual",
-            "updated_at": "2026-11-17 17:41:46",
-            "created_at": "2026-11-17 17:41:46",
-            "id": 1370,
+            "updated_at": "2026-11-18 19:58:54",
+            "created_at": "2026-11-18 19:58:54",
+            "id": 1377,
             "avatar": "https://secure.gravatar.com/avatar/0512aa23cb9d989426d803e88ccc40972235fe9b60d9a03b1516f926c850050a?s=96&d=mm&r=g"
           }
         }
@@ -697,42 +723,42 @@
             "current_page": 1,
             "data": [
               {
-                "id": 1372,
-                "event_id": 3507,
+                "id": 1379,
+                "event_id": 3522,
                 "name": "Amara Okafor",
                 "email": "amara.okafor@example.com",
                 "user_id": null,
                 "status": "going",
                 "source": "manual",
                 "checked_in_at": null,
-                "created_at": "2026-11-17 17:41:46",
-                "updated_at": "2026-11-17 17:41:46",
+                "created_at": "2026-11-18 19:58:54",
+                "updated_at": "2026-11-18 19:58:54",
                 "avatar": "https://secure.gravatar.com/avatar/29a805dddae9c60ee6d941a75546ed33eab13c9f38effbfdb0ba37a81fd3c9c2?s=96&d=mm&r=g"
               },
               {
-                "id": 1371,
-                "event_id": 3507,
+                "id": 1378,
+                "event_id": 3522,
                 "name": "Jonas Weber",
                 "email": "jonas.weber@example.com",
                 "user_id": null,
                 "status": "not_going",
                 "source": "manual",
                 "checked_in_at": null,
-                "created_at": "2026-11-17 17:41:46",
-                "updated_at": "2026-11-17 17:41:46",
+                "created_at": "2026-11-18 19:58:54",
+                "updated_at": "2026-11-18 19:58:54",
                 "avatar": "https://secure.gravatar.com/avatar/0874a506e975e942d1f2555f3a6693e46e3da4c9ee73c704f43ffd493a6bc25a?s=96&d=mm&r=g"
               },
               {
-                "id": 1370,
-                "event_id": 3507,
+                "id": 1377,
+                "event_id": 3522,
                 "name": "Maya Chen",
                 "email": "maya.chen@example.com",
-                "user_id": 12052,
+                "user_id": 14823,
                 "status": "checked_in",
                 "source": "manual",
-                "checked_in_at": "2026-11-17 17:41:46",
-                "created_at": "2026-11-17 17:41:46",
-                "updated_at": "2026-11-17 17:41:46",
+                "checked_in_at": "2026-11-18 19:58:55",
+                "created_at": "2026-11-18 19:58:54",
+                "updated_at": "2026-11-18 19:58:55",
                 "avatar": "https://secure.gravatar.com/avatar/0512aa23cb9d989426d803e88ccc40972235fe9b60d9a03b1516f926c850050a?s=96&d=mm&r=g"
               }
             ],
@@ -781,18 +807,18 @@
         "response": {
           "message": "Guest has been successfully updated",
           "guest": {
-            "id": 1370,
-            "event_id": 3507,
-            "calendar_id": 3434,
+            "id": 1377,
+            "event_id": 3522,
+            "calendar_id": 3440,
             "ticket_type_id": null,
-            "group_id": "uxvWWJeAzvQzq2ps8LFH68E2Dt3eo7ew",
+            "group_id": "Yxot3X7rNZsTtqukukoKvHIZxilchRqe",
             "is_buyer": 1,
             "name": "Maya Chen",
             "email": "maya.chen@example.com",
-            "user_id": 12052,
+            "user_id": 14823,
             "status": "checked_in",
             "hash": null,
-            "checked_in_at": "2026-11-17 17:41:46",
+            "checked_in_at": "2026-11-18 19:58:55",
             "payment_status": null,
             "payment_ref": null,
             "price": null,
@@ -800,8 +826,8 @@
             "source": "manual",
             "source_id": null,
             "meta": null,
-            "created_at": "2026-11-17 17:41:46",
-            "updated_at": "2026-11-17 17:41:46",
+            "created_at": "2026-11-18 19:58:54",
+            "updated_at": "2026-11-18 19:58:55",
             "avatar": "https://secure.gravatar.com/avatar/0512aa23cb9d989426d803e88ccc40972235fe9b60d9a03b1516f926c850050a?s=96&d=mm&r=g"
           }
         }
@@ -818,7 +844,7 @@
         "response": {
           "message": "You are registered.",
           "status": "going",
-          "html": "<aside\n    class=\"fe-event-page__card fe-event-page__side\"\n    aria-label=\"Registration\"\n    data-fe-card\n    data-error=\"Something went wrong. Please try again.\"\n            data-event-nonce=\"a1b2c3d4e5\"\n            >\n    <div class=\"fe-event-page__when\">\n        <span class=\"fe-date-chip\" aria-hidden=\"true\">\n            <span class=\"fe-date-chip__month\">Dec</span>\n            <span class=\"fe-date-chip__day\">8</span>\n        </span>\n\n        <div class=\"fe-event-page__when-text\">\n            <span class=\"fe-event-page__when-date\">December 8, 2026</span>\n            <span>17:30 – 20:30 (America/New_York)</span>\n                            <span class=\"fe-event-page__when-local\">Dec 9, 04:30 – 07:30 (Asia/Dhaka)</span>\n                    </div>\n    </div>\n\n            <span class=\"fe-event-page__status fe-event-page__status--upcoming\">Starts in 3 weeks</span>\n    \n            <div class=\"fe-event-page__rsvp\">\n                            <span class=\"fe-event-page__badge\" tabindex=\"-1\" data-fe-focus>\n                    <span class=\"fe-event-page__badge-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"10\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3.5 8.5l3 3 6-7\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span>\n                    Going                </span>\n            \n                            <span class=\"fe-event-page__count\">3 going</span>\n                    </div>\n\n              … (truncated)"
+          "html": "<aside\n    class=\"fe-event-page__card fe-event-page__side\"\n    aria-label=\"Registration\"\n    data-fe-card\n    data-error=\"Something went wrong. Please try again.\"\n            data-event-nonce=\"a1b2c3d4e5\"\n            >\n    <div class=\"fe-event-page__when\">\n        <span class=\"fe-date-chip\" aria-hidden=\"true\">\n            <span class=\"fe-date-chip__month\">Dec</span>\n            <span class=\"fe-date-chip__day\">9</span>\n        </span>\n\n        <div class=\"fe-event-page__when-text\">\n            <span class=\"fe-event-page__when-date\">December 9, 2026</span>\n            <span>17:30 – 20:30 (America/New_York)</span>\n                            <span class=\"fe-event-page__when-local\">Dec 10, 04:30 – 07:30 (Asia/Dhaka)</span>\n                    </div>\n    </div>\n\n            <span class=\"fe-event-page__status fe-event-page__status--upcoming\">Starts in 3 weeks</span>\n    \n    \n    \n            <div class=\"fe-event-page__rsvp\">\n                            <span class=\"fe-event-page__badge\" tabindex=\"-1\" data-fe-focus>\n                    <span class=\"fe-event-page__badge-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"10\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3.5 8.5l3 3 6-7\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span>\n                    Going                </span>\n            \n                            <span class=\"fe-event-page__count\">3 going</span>\n                    </div>\n\n   … (truncated)"
         }
       }
     },
@@ -826,26 +852,26 @@
       "get-guest-trends": {
         "status": 200,
         "query": {
-          "start_date": "2026-11-11",
-          "end_date": "2026-11-17"
+          "start_date": "2026-11-12",
+          "end_date": "2026-11-18"
         },
         "response": {
           "range": {
-            "start": "2026-11-11",
-            "end": "2026-11-17"
+            "start": "2026-11-12",
+            "end": "2026-11-18"
           },
           "granularity": "day",
           "xAxisData": [
-            "2026-11-11",
             "2026-11-12",
-            "2026-11-13"
+            "2026-11-13",
+            "2026-11-14"
           ],
           "series": [
             {
               "name": "Total Guests",
               "data": [
-                0,
                 3,
+                0,
                 0
               ]
             },
@@ -875,13 +901,13 @@
             "total_events": {
               "title": "Total Events",
               "icon": "Event",
-              "amount": 12,
+              "amount": 17,
               "is_number": true
             },
             "upcoming_events": {
               "title": "Upcoming Events",
               "icon": "Upcoming",
-              "amount": 6,
+              "amount": 11,
               "is_number": true
             },
             "ongoing_events": {
@@ -1061,13 +1087,13 @@
               }
             },
             {
-              "id": 3507,
-              "post_id": 6934,
-              "calendar_id": 3434,
+              "id": 3522,
+              "post_id": 7002,
+              "calendar_id": 3440,
               "parent_event_id": null,
               "status": "public",
-              "start_at": "2026-12-08 22:30:00",
-              "end_at": "2026-12-09 01:30:00",
+              "start_at": "2026-12-09 22:30:00",
+              "end_at": "2026-12-10 01:30:00",
               "timezone": "America/New_York",
               "venue_type": "offline",
               "meta": {
@@ -1077,19 +1103,21 @@
                 "address": "120 Market Street, Springfield",
                 "entry_type": "rsvp",
                 "show_guest_count": "yes",
+                "capacity": 0,
+                "show_spots_left": "no",
                 "start_display": "relative",
                 "description_md": "An evening of short talks and open networking.\n\n**Doors open at 5:30 PM.**"
               },
-              "created_at": "2026-11-17 17:41:46",
-              "updated_at": "2026-11-17 17:41:46",
+              "created_at": "2026-11-18 19:58:54",
+              "updated_at": "2026-11-18 19:58:55",
               "guests_count": 2,
               "title": "Spring Meetup",
-              "start_at_local": "2026-12-08 17:30:00",
-              "end_at_local": "2026-12-08 20:30:00",
-              "start_at_site": "2026-12-09 04:30:00",
-              "end_at_site": "2026-12-09 07:30:00",
+              "start_at_local": "2026-12-09 17:30:00",
+              "end_at_local": "2026-12-09 20:30:00",
+              "start_at_site": "2026-12-10 04:30:00",
+              "end_at_site": "2026-12-10 07:30:00",
               "calendar": {
-                "id": 3434,
+                "id": 3440,
                 "title": "Team Meetups",
                 "meta": {
                   "theme_color": "#0E8E99"
@@ -1147,12 +1175,12 @@
           "settings": {
             "default_events_view": "timeline",
             "disable_event_view_switch": "no",
-            "events_page_id": 6937,
+            "events_page_id": 7005,
             "event_slug": "event"
           },
           "pages": {
             "events_page_id": {
-              "id": 6937,
+              "id": 7005,
               "title": "Events",
               "link": "https://yourwebsite.com/events/",
               "has_shortcode": true
@@ -1212,7 +1240,7 @@
         "status": 200,
         "response": {
           "subject": "You are registered for Community Meetup",
-          "html": "<!doctype html>\n<html>\n<head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n</head>\n<body style=\"margin: 0; padding: 0; background-color: #f0f3f5;\">\n    <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color: #f0f3f5;\">\n        <tr>\n            <td align=\"center\" style=\"padding: 24px 16px;\">\n                <table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width: 600px; width: 100%; background-color: #ffffff; border: 1px solid #d3d8de; border-radius: 8px;\">\n                    <tr>\n                        <td style=\"padding: 32px; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.6; color: #19283a;\">\n                            <p>Hi Jane Doe,</p><p>You are registered for <strong>Community Meetup</strong> on November 24, 2026 10:00 (Asia/Dhaka).</p><p>Join online: <a href=\"https://example.com/meeting\">https://example.com/meeting</a></p><p>See you there!</p>                        </td>\n                    </tr>\n                                    </table>\n            </td>\n        </tr>\n    </table>\n</body>\n</html>\n"
+          "html": "<!doctype html>\n<html>\n<head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n</head>\n<body style=\"margin: 0; padding: 0; background-color: #f0f3f5;\">\n    <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color: #f0f3f5;\">\n        <tr>\n            <td align=\"center\" style=\"padding: 24px 16px;\">\n                <table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width: 600px; width: 100%; background-color: #ffffff; border: 1px solid #d3d8de; border-radius: 8px;\">\n                    <tr>\n                        <td style=\"padding: 32px; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.6; color: #19283a;\">\n                            <p>Hi Jane Doe,</p><p>You are registered for <strong>Community Meetup</strong> on November 25, 2026 10:00 (Asia/Dhaka).</p><p>Join online: <a href=\"https://example.com/meeting\">https://example.com/meeting</a></p><p>See you there!</p>                        </td>\n                    </tr>\n                                    </table>\n            </td>\n        </tr>\n    </table>\n</body>\n</html>\n"
         }
       },
       "search-pages": {
@@ -1224,7 +1252,7 @@
         "response": {
           "pages": [
             {
-              "id": 6937,
+              "id": 7005,
               "title": "Events",
               "link": "https://yourwebsite.com/events/",
               "has_shortcode": true
@@ -1329,19 +1357,19 @@
         "response": {
           "users": [
             {
-              "id": 12053,
+              "id": 14824,
               "name": "Jonas Weber",
               "email": "jonas.weber@example.com",
               "avatar": "https://secure.gravatar.com/avatar/0874a506e975e942d1f2555f3a6693e46e3da4c9ee73c704f43ffd493a6bc25a?s=96&d=mm&r=g"
             },
             {
-              "id": 12052,
+              "id": 14823,
               "name": "Maya Chen",
               "email": "maya.chen@example.com",
               "avatar": "https://secure.gravatar.com/avatar/0512aa23cb9d989426d803e88ccc40972235fe9b60d9a03b1516f926c850050a?s=96&d=mm&r=g"
             },
             {
-              "id": 12054,
+              "id": 14825,
               "name": "Priya Raman",
               "email": "priya.raman@example.com",
               "avatar": "https://secure.gravatar.com/avatar/54d24a9428a94dac01af1e7b7a8d29a28eb92212174ab7dcd2438a948d7ed3b3?s=96&d=mm&r=g"

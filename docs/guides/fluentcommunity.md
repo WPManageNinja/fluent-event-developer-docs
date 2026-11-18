@@ -54,7 +54,7 @@ Visibility follows the post. A member sees an event when they can see its post: 
 | Entry type | Logged-in member | Visitor (portal open to visitors) |
 | --- | --- | --- |
 | `rsvp` | Going / not going, and can change it | Sees the event; cannot RSVP |
-| `open` | Register (name prefilled, email locked), can cancel and register again | Register by name and email; final |
+| `open` | Register (name prefilled, email locked), can say not going and register again | Register by name and email; final |
 | `none` | View only, meeting link included | View only |
 
 The meeting link of an online event shows only to guests who hold a seat (`going` or `checked_in`), except on `none` events.

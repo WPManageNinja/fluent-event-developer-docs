@@ -5,13 +5,13 @@ description: "How FluentEvent is built, where its code lives, and how to extend 
 
 # Getting Started
 
-FluentEvent is a WordPress events plugin: **calendars hold events, and events collect guests.** It is built on the WPFluent framework, the same base as the other Fluent plugins. This site is generated from FluentEvent 1.0.5 source, so the routes, hooks, tables and models here match the code.
+FluentEvent is a WordPress events plugin: **calendars hold events, and events collect guests.** It is built on the WPFluent framework, the same base as the other Fluent plugins. This site is generated from FluentEvent 1.1.0 source, so the routes, hooks, tables and models here match the code.
 
 ## At a Glance
 
 | | |
 | --- | --- |
-| Plugin version | `1.0.5` (`FLUENT_EVENT_PLUGIN_VERSION`) |
+| Plugin version | `1.1.0` (`FLUENT_EVENT_PLUGIN_VERSION`) |
 | Requires | WordPress 6.7+, PHP 7.4+ |
 | PHP namespace | `FluentEvent\\` |
 | REST namespace | `fluent-event/v2` |
@@ -41,9 +41,11 @@ How people join an event depends on `event_details.meta.entry_type`:
 
 | Entry type | Who registers | How |
 | --- | --- | --- |
-| `rsvp` | Logged-in members in the portal; anyone on the public page | Going / not going. On the public page, Going only, by name and email. No seat limit. |
-| `open` | Anyone | A Register button with name and email. A member can cancel and register again in the portal; a visitor's registration is final. |
+| `rsvp` | Logged-in members in the portal; anyone on the public page | Going / not going. On the public page, Going only, by name and email. |
+| `open` | Anyone | A Register button with name and email. A member can say not going and register again in the portal; a visitor's registration is final. |
 | `none` | Nobody | View only. Every viewer sees the whole event, meeting link included. Admins can still add guests. |
+
+An `rsvp` or `open` event can set `meta.capacity`, the most guests going at once (`0` = no limit). A full event refuses a new Going or Register. Guests answer only going or not going; only an admin sets `cancelled`.
 
 See [Database Schema](/database/schema) for every column.
 
