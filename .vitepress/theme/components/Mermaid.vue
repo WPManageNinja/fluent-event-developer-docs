@@ -34,20 +34,20 @@ onMounted(async () => {
     const dark = isDark.value
 
     const themeVars = dark ? {
-      primaryColor: '#151845',
+      primaryColor: '#12131f',
       primaryTextColor: '#dadef2',
       primaryBorderColor: '#a9b4ff',
       lineColor: '#a9b4ff',
-      secondaryColor: '#1c2058',
-      tertiaryColor: '#252a5e',
-      background: '#151845',
-      mainBkg: '#151845',
-      secondBkg: '#1c2058',
-      tertiaryBkg: '#252a5e',
-      entityBkg: '#151845',
+      secondaryColor: '#1a1c2c',
+      tertiaryColor: '#2a2d42',
+      background: '#12131f',
+      mainBkg: '#12131f',
+      secondBkg: '#1a1c2c',
+      tertiaryBkg: '#2a2d42',
+      entityBkg: '#12131f',
       entityTextColor: '#dadef2',
       relationLabelColor: '#dadef2',
-      relationLabelBackground: '#151845'
+      relationLabelBackground: '#12131f'
     } : {
       primaryColor: '#ffffff',
       primaryTextColor: '#14162a',
@@ -80,7 +80,7 @@ onMounted(async () => {
         minEntityHeight: 120,
         entityPadding: 30,
         stroke: brandColor,
-        fill: dark ? '#151845' : '#ffffff',
+        fill: dark ? '#12131f' : '#ffffff',
         fontSize: 13,
         useMaxWidth: true,
         relationColor: brandColor

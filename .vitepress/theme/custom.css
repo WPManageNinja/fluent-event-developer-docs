@@ -53,21 +53,22 @@
   --vp-c-brand-1: #a9b4ff;
   --vp-c-brand-2: #c3c8ff;
   --vp-c-brand-3: #4a5be3;
-  --vp-c-brand-soft: rgba(169, 180, 255, 0.14);
+  --vp-c-brand-soft: rgba(169, 180, 255, 0.12);
 
-  --vp-c-bg: #0e1030;
-  --vp-c-bg-alt: #0b0d27;
-  --vp-c-bg-elv: #151845;
-  --vp-c-bg-soft: #151845;
-  --vp-c-text-1: #f3f4fb;
-  --vp-c-text-2: #dadef2;
-  --vp-c-text-3: #9aa0c8;
-  --vp-c-divider: #252a5e;
-  --vp-c-border: #2f3570;
-  --vp-c-gutter: #0b0d27;
-  --vp-c-default-soft: #1c2058;
-  --vp-code-bg: #1c2058;
-  --vp-code-block-bg: #0b0d27;
+  /* Near-black with a faint indigo tint: the ink of the light theme, darkened. */
+  --vp-c-bg: #0b0c15;
+  --vp-c-bg-alt: #08090f;
+  --vp-c-bg-elv: #14162a;
+  --vp-c-bg-soft: #12131f;
+  --vp-c-text-1: #ecedf5;
+  --vp-c-text-2: #c4c7d9;
+  --vp-c-text-3: #8b8fa8;
+  --vp-c-divider: #1f2133;
+  --vp-c-border: #2a2d42;
+  --vp-c-gutter: #08090f;
+  --vp-c-default-soft: #1a1c2c;
+  --vp-code-bg: #1a1c2c;
+  --vp-code-block-bg: #0f1019;
 
   --vp-button-brand-bg: #ffffff;
   --vp-button-brand-border: #ffffff;
@@ -77,9 +78,9 @@
   --vp-button-brand-hover-text: #14162a;
   --vp-button-brand-active-bg: #ffffff;
 
-  --home-bg-tint: rgba(169, 180, 255, 0.04);
-  --home-card-bg: rgba(169, 180, 255, 0.04);
-  --home-card-hover: rgba(169, 180, 255, 0.4);
+  --home-bg-tint: rgba(169, 180, 255, 0.02);
+  --home-card-bg: rgba(169, 180, 255, 0.025);
+  --home-card-hover: rgba(169, 180, 255, 0.35);
   --home-btn-bg: #ffffff;
   --home-btn-text: #14162a;
   --home-btn-hover: #dadef2;
