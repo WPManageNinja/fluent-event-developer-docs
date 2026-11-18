@@ -158,8 +158,10 @@ The FluentCommunity bridge uses this filter to add \`feed_url\` to events that h
     notes: `Fires on every path that adds a guest:
 
 - an admin adds a guest (\`source = manual\`);
-- a member registers or RSVPs from the FluentCommunity portal (\`source = fluent_community\`, \`source_id\` = the community post ID);
-- a visitor registers from the portal or from the public event page (\`source = wordpress_pages\`).
+- a member or a visitor registers or RSVPs from the FluentCommunity portal (\`source = fluent_community\`, \`source_id\` = the community post ID);
+- anyone registers from the public event page (\`source = wordpress_pages\`).
+
+A registration that brings back an existing \`not_going\` row fires \`fluent_event/guest/updated\` instead.
 
 The confirmation email is queued separately, after this hook, so it is not sent yet. Check \`$guest->status\`: an RSVP can also create a \`not_going\` row.`,
     params: [{ name: '$guest', type: GUEST, desc: 'The saved guest. `event_id`, `email`, `status` and `source` are set.' }],
@@ -181,9 +183,15 @@ The confirmation email is queued separately, after this hook, so it is not sent 
 
   'fluent_event/guest/updated': {
     summary: "After a guest row changes, including a member's RSVP change.",
-    notes: `Fires when an admin edits a guest, and when a member changes their RSVP or cancels an open registration from the portal. On the portal path it fires only when the status really changed.
+    notes: `Fires when:
 
-Compare \`$guest->status\` with \`$previousStatus\` to react to a status move, for example \`going\` → \`cancelled\`.`,
+- an admin edits a guest;
+- a member changes their answer in the portal, or gives up an \`open\` registration;
+- a visitor form brings a \`not_going\` row back to \`going\`.
+
+On the portal and visitor paths it fires only when the status really changed.
+
+Compare \`$guest->status\` with \`$previousStatus\` to react to a status move, for example \`going\` → \`not_going\`.`,
     params: [
       { name: '$guest', type: GUEST, desc: 'The saved guest.' },
       { name: '$previousStatus', type: 'string', desc: 'The status before this change: `going`, `not_going`, `checked_in` or `cancelled`.' },

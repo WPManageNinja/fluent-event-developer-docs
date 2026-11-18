@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.5"
+    "version": "1.1.0"
   },
   "servers": [
     {
@@ -120,6 +120,12 @@
                             "show_guest_count": {
                               "type": "string"
                             },
+                            "capacity": {
+                              "type": "integer"
+                            },
+                            "show_spots_left": {
+                              "type": "string"
+                            },
                             "start_display": {
                               "type": "string"
                             },
@@ -156,13 +162,13 @@
                 "example": {
                   "message": "Event has been successfully updated",
                   "event": {
-                    "id": 3507,
-                    "post_id": 6934,
-                    "calendar_id": 3434,
+                    "id": 3522,
+                    "post_id": 7002,
+                    "calendar_id": 3440,
                     "parent_event_id": null,
                     "status": "public",
-                    "start_at": "2026-12-08 22:30:00",
-                    "end_at": "2026-12-09 01:30:00",
+                    "start_at": "2026-12-09 22:30:00",
+                    "end_at": "2026-12-10 01:30:00",
                     "timezone": "America/New_York",
                     "venue_type": "offline",
                     "meta": {
@@ -172,16 +178,18 @@
                       "address": "120 Market Street, Springfield",
                       "entry_type": "rsvp",
                       "show_guest_count": "yes",
+                      "capacity": 0,
+                      "show_spots_left": "no",
                       "start_display": "relative",
                       "description_md": "An evening of short talks and open networking.\n\n**Doors open at 5:30 PM.**"
                     },
-                    "created_at": "2026-11-17 17:41:46",
-                    "updated_at": "2026-11-17 17:41:46",
+                    "created_at": "2026-11-18 19:58:54",
+                    "updated_at": "2026-11-18 19:58:55",
                     "title": "Spring Meetup",
-                    "start_at_local": "2026-12-08 17:30:00",
-                    "end_at_local": "2026-12-08 20:30:00",
-                    "start_at_site": "2026-12-09 04:30:00",
-                    "end_at_site": "2026-12-09 07:30:00"
+                    "start_at_local": "2026-12-09 17:30:00",
+                    "end_at_local": "2026-12-09 20:30:00",
+                    "start_at_site": "2026-12-10 04:30:00",
+                    "end_at_site": "2026-12-10 07:30:00"
                   }
                 }
               }
@@ -338,6 +346,21 @@
                     ],
                     "description": "Show how many guests are going."
                   },
+                  "capacity": {
+                    "type": "integer",
+                    "nullable": true,
+                    "minimum": 0,
+                    "description": "The most guests that can be going at once, for `rsvp` and `open` events. `0` (the default) means no limit. Admins can add guests past it."
+                  },
+                  "show_spots_left": {
+                    "nullable": true,
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ],
+                    "description": "`yes` or `no` (the default). Show the spots left on an event with a capacity."
+                  },
                   "start_display": {
                     "nullable": true,
                     "type": "string",
@@ -359,12 +382,12 @@
                 ]
               },
               "example": {
-                "calendar_id": 3434,
+                "calendar_id": 3440,
                 "title": "Spring Meetup",
                 "description_md": "An evening of short talks and open networking.\n\n**Doors open at 5:30 PM.**",
                 "status": "public",
-                "start_at": "2026-12-08 17:30:00",
-                "end_at": "2026-12-08 20:30:00",
+                "start_at": "2026-12-09 17:30:00",
+                "end_at": "2026-12-09 20:30:00",
                 "timezone": "America/New_York",
                 "venue_type": "offline",
                 "venue": "Riverside Community Hall",

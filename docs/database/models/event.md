@@ -55,6 +55,8 @@ Hidden from JSON: `post`.
 | --- | --- |
 | `entry_type` | How people join: `rsvp` (going / not going), `open` (a Register button) or `none` (view only). |
 | `show_guest_count` | `yes` or `no`: show how many people are going. |
+| `capacity` | The most guests that can be going at once, for `rsvp` and `open` events. `0` (the default) means no limit. Going and checked-in guests hold a seat. Admins can add guests past it. |
+| `show_spots_left` | `yes` or `no` (the default): show the spots left on an event with a capacity. With `show_guest_count` also on, the event page shows a meter. |
 | `start_display` | How the event page shows the time before the start: `relative` ("Starts in 3 days", the default) or `countdown` (a live countdown). |
 | `cover_url` | Cover image URL. Images are stored as URLs, never as attachment IDs. |
 | `online_meeting_url` | Meeting link for an online event. Shown only to guests who hold a seat. |

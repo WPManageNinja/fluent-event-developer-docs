@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.5"
+    "version": "1.1.0"
   },
   "servers": [
     {
@@ -121,19 +121,19 @@
                 "example": {
                   "message": "Guest has been successfully saved",
                   "guest": {
-                    "event_id": 3507,
-                    "calendar_id": 3434,
+                    "event_id": 3522,
+                    "calendar_id": 3440,
                     "name": "Maya Chen",
                     "email": "maya.chen@example.com",
-                    "user_id": 12052,
+                    "user_id": 14823,
                     "status": "going",
                     "checked_in_at": null,
-                    "group_id": "uxvWWJeAzvQzq2ps8LFH68E2Dt3eo7ew",
+                    "group_id": "Yxot3X7rNZsTtqukukoKvHIZxilchRqe",
                     "is_buyer": 1,
                     "source": "manual",
-                    "updated_at": "2026-11-17 17:41:46",
-                    "created_at": "2026-11-17 17:41:46",
-                    "id": 1370,
+                    "updated_at": "2026-11-18 19:58:54",
+                    "created_at": "2026-11-18 19:58:54",
+                    "id": 1377,
                     "avatar": "https://secure.gravatar.com/avatar/0512aa23cb9d989426d803e88ccc40972235fe9b60d9a03b1516f926c850050a?s=96&d=mm&r=g"
                   }
                 }
@@ -242,7 +242,7 @@
               "example": {
                 "name": "Maya Chen",
                 "email": "maya.chen@example.com",
-                "user_id": 12052,
+                "user_id": 14823,
                 "status": "going",
                 "send_email": true
               }

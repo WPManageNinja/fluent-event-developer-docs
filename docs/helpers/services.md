@@ -26,9 +26,12 @@ All classes are in the `FluentEvent\App\Services` or `FluentEvent\App\Utils` nam
 | Method | Description |
 | --- | --- |
 | `refusal(Event $event, array $entryTypes)` | Why the event refuses a registration, or `''` when it takes one. Refuses when `meta.entry_type` is not in `$entryTypes`, or the event has ended. |
-| `registerMember(Event $event, \WP_User $user, $status, $name, array $source)` | Creates or updates a member's guest row. A visitor's row that the member claims takes the member's name. Returns `[Guest, previous status, created]`, `null` when another account holds the email, or `false` when a concurrent request changed the row. |
-| `registerVisitor(Event $event, array $data, array $source)` | Creates a `going` guest row from a validated `name` and `email`. |
-| `hasGuestEmail(Event $event, $email)` | Whether any guest row on the event has this email. The visitor forms use it to answer a repeated email as a new registration, without saving. |
+| `registerMember(Event $event, \WP_User $user, $status, $name, array $source)` | Creates or updates a member's guest row. A visitor's row that the member claims takes the member's name. Returns `[Guest, previous status, created]`; `null` when another account holds the email; a `repeatRefusal()` reason when the row cannot take this answer; a message when the event is full; or `false` when a concurrent request changed the row. |
+| `registerVisitor(Event $event, array $data, array $source, $guest = null)` | Records a visitor as `going`. With `$guest` (the email's `not_going` row with no user), brings that row back; otherwise creates a row from a validated `name` and `email`. Returns `[Guest, previous status or null]`, a message when the event is full, or `false` when the row changed meanwhile. |
+| `guestByEmail(Event $event, $email)` | The guest row that holds this email on the event, or `null`. |
+| `repeatRefusal(Guest $guest)` | Why a guest cannot register again: `already_registered` or `cancelled`. `''` for a `not_going` row. |
+| `visitorRefusal(Guest $guest)` | As `repeatRefusal()`, and also `already_registered` for a `not_going` row that is linked to a WordPress user. |
+| `refusalMessage($refusal)` | The message for a refusal reason. |
 | `queueEmail(Guest $guest, $previousStatus)` | Queues the confirmation or cancellation email that matches the status change, if that email is turned on. |
 
 ## CalendarService

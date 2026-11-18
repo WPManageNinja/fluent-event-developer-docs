@@ -154,6 +154,8 @@ Every operation page has a playground. Enter your site's domain and \`username:a
       address: { desc: 'Address, for an offline event.' },
       entry_type: { desc: '`rsvp`: logged-in going / not going. `open`: a Register button with name and email. `none`: view only.' },
       show_guest_count: { desc: 'Show how many guests are going.' },
+      capacity: { desc: 'The most guests that can be going at once, for `rsvp` and `open` events. `0` (the default) means no limit. Admins can add guests past it.' },
+      show_spots_left: { desc: '`yes` or `no` (the default). Show the spots left on an event with a capacity.' },
       start_display: { desc: 'How the event page shows the time before the start: `relative` ("Starts in 3 days") or `countdown` (a live countdown). Default `relative`.' },
     },
   },
@@ -177,6 +179,8 @@ Every operation page has a playground. Enter your site's domain and \`username:a
       address: { desc: 'Address, for an offline event.' },
       entry_type: { desc: 'How people join.' },
       show_guest_count: { desc: 'Show how many guests are going.' },
+      capacity: { desc: 'The most guests that can be going at once, for `rsvp` and `open` events. `0` (the default) means no limit. Admins can add guests past it.' },
+      show_spots_left: { desc: '`yes` or `no` (the default). Show the spots left on an event with a capacity.' },
       start_display: { desc: 'How the event page shows the time before the start: `relative` ("Starts in 3 days") or `countdown` (a live countdown). Default `relative`.' },
     },
   },
@@ -481,13 +485,19 @@ With a \`from\`/\`to\` window of at most 62 days and \`paginate=false\`, every e
     slug: 'register-member',
     title: 'Register Member',
     summary: 'Records a logged-in member\'s RSVP or registration for an event.',
-    notes: `For an \`rsvp\` event, \`status\` is \`going\` or \`not_going\`. For an \`open\` event, \`status\` is \`going\` (register) or \`cancelled\` (cancel a registration the member holds); \`name\` can replace the display name.
+    notes: `\`status\` is \`going\` or \`not_going\` for both entry types. On an \`open\` event, \`not_going\` gives up a registration the member holds, and the member can register again later. \`name\` can replace the display name on an \`open\` event. Only an admin sets \`cancelled\`.
 
-The member's existing row is reused, or a row an admin added under their email. When the member claims a row that a visitor made, the row takes the member's name in place of the name the visitor typed. A checked-in guest who says going again stays checked in. The confirmation or cancellation email is queued when the seat changes.
+The member's existing row is reused, or a row an admin added under their email. When the member claims a row that a visitor made, the row takes the member's name in place of the name the visitor typed. The confirmation or cancellation email is queued when the seat changes.
 
-Errors: 404 when the event is not visible; 422 when the event does not take registrations, has ended, the status is not allowed, or another account holds the email; 409 when two requests changed the same registration at once.`,
+**Going again.** \`going\` from a member who already holds a seat is refused. A row that an admin cancelled refuses both answers. A refused request answers HTTP 200 with \`status: null\`, a \`refusal\` of \`already_registered\` or \`cancelled\`, and a \`message\` for the member. Nothing is saved.
+
+**Capacity.** When the event has a \`capacity\` and every seat is taken, \`going\` is refused with 422. This includes a \`not_going\` row that comes back. A guest who already holds a seat keeps it.
+
+A success response carries \`message\`, \`status\`, and the event's current \`online_meeting_url\`, \`guest_count\`, \`spots_left\` and \`is_full\`, so the portal can redraw the event.
+
+Errors: 404 when the event is not visible; 422 when the event does not take registrations, has ended or is full, the status is not allowed, the member gives up an \`open\` registration they do not hold, or another account holds the email; 409 when two requests changed the same registration at once.`,
     params: {
-      status: { desc: 'The answer.', enum: ['going', 'not_going', 'cancelled'], required: true, in: 'body' },
+      status: { desc: 'The answer.', enum: ['going', 'not_going'], required: true, in: 'body' },
       name: { desc: 'Open events only: the name to register under.', in: 'body' },
     },
     errors: [
@@ -500,7 +510,7 @@ Errors: 404 when the event is not visible; 422 when the event does not take regi
     slug: 'register-visitor-community',
     title: 'Register Visitor (Portal)',
     summary: 'Registers a logged-out visitor for an `open` event in the FluentCommunity portal, by name and email.',
-    notes: 'The `nonce` comes from the portal page (`fe_guest_register_<event id>`). The visitor is always `going` and cannot undo it. The confirmation email is queued.\n\nAn email that is already on the event gets the same success response as a new registration. FluentEvent saves nothing and sends no email, so the form does not tell anyone who is registered.',
+    notes: 'The `nonce` comes from the portal page (`fe_guest_register_<event id>`). The visitor is always `going` and cannot undo it. The confirmation email is queued.\n\nAn email that is already on the event is refused, and FluentEvent saves nothing and sends no email. The one exception is a row that said `not_going` and is linked to no WordPress user: it comes back to `going`, keeps its name, and fires `fluent_event/guest/updated`. A row linked to a user changes only from that member\'s account. A refused request answers HTTP 200 with `status: null`, a `refusal` of `already_registered` or `cancelled`, and a `message` that the portal shows as a warning.\n\nWhen the event has a `capacity` and every seat is taken, the request is refused with 422.',
     params: {
       nonce: { required: true, in: 'body' },
       website: { in: 'body' },
@@ -521,7 +531,9 @@ Errors: 404 when the event is not visible; 422 when the event does not take regi
     summary: 'Registers anyone, logged in or not, for an `rsvp` or `open` event from its public page, by name and email.',
     notes: `The public event page treats every viewer as a visitor. The registration is always \`going\` and cannot be undone from the page.
 
-An email that is already on the event gets the same success response as a new registration. FluentEvent saves nothing and sends no email, so the form does not tell anyone who is registered.
+An email that is already on the event is refused, and FluentEvent saves nothing and sends no email. The one exception is a row that said \`not_going\` and is linked to no WordPress user: it comes back to \`going\`, keeps its name, and fires \`fluent_event/guest/updated\`. A row linked to a user changes only from that member's account. A refused request answers HTTP 200 with \`status: null\` and a \`message\`, and its \`html\` card opens a warning: the email is already registered, or the host cancelled the registration.
+
+When the event has a \`capacity\` and every seat is taken, the request is refused with 422, and the page shows the event as full.
 
 The \`nonce\` (\`fe_portal_register_<event id>\`) is checked **before** the event is looked up, so walking IDs cannot find unlisted events. The event must be \`public\` or \`unlisted\`, in a \`public\` calendar. The response carries \`html\`: the event's side card, drawn for the new state, which the page swaps in.`,
     params: {

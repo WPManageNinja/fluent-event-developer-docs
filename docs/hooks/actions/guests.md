@@ -5,7 +5,7 @@ description: "Guests action hooks in FluentEvent."
 
 # Guests Actions
 
-6 action hooks on this page, across 10 call sites.
+6 action hooks on this page, across 12 call sites.
 
 | Hook | Fires | Call Sites |
 | --- | --- | --- |
@@ -14,7 +14,7 @@ description: "Guests action hooks in FluentEvent."
 | [`fluent_event/guest/bulk_deleted`](#fluent-event-guest-bulk-deleted) | After every guest of an event is deleted, as part of deleting the event. | 1 |
 | [`fluent_event/guest/created`](#fluent-event-guest-created) | After a new guest row is saved. | 4 |
 | [`fluent_event/guest/deleted`](#fluent-event-guest-deleted) | After an admin deletes one guest. | 1 |
-| [`fluent_event/guest/updated`](#fluent-event-guest-updated) | After a guest row changes, including a member's RSVP change. | 2 |
+| [`fluent_event/guest/updated`](#fluent-event-guest-updated) | After a guest row changes, including a member's RSVP change. | 4 |
 
 <a id="fluent-event-guest-before-bulk-deleted"></a>
 
@@ -117,8 +117,10 @@ add_action('fluent_event/guest/bulk_deleted', function ($event) {
 Fires on every path that adds a guest:
 
 - an admin adds a guest (`source = manual`);
-- a member registers or RSVPs from the FluentCommunity portal (`source = fluent_community`, `source_id` = the community post ID);
-- a visitor registers from the portal or from the public event page (`source = wordpress_pages`).
+- a member or a visitor registers or RSVPs from the FluentCommunity portal (`source = fluent_community`, `source_id` = the community post ID);
+- anyone registers from the public event page (`source = wordpress_pages`).
+
+A registration that brings back an existing `not_going` row fires [`fluent_event/guest/updated`](/hooks/actions/guests#fluent-event-guest-updated) instead.
 
 The confirmation email is queued separately, after this hook, so it is not sent yet. Check `$guest->status`: an RSVP can also create a `not_going` row.
 
@@ -132,10 +134,10 @@ The confirmation email is queued separately, after this hook, so it is not sent 
 
 | Source | Context | Arguments |
 | --- | --- | --- |
-| `fluent-event/app/Http/Controllers/CommunityEventController.php:191` | `CommunityEventController::register()` | `$guest` |
-| `fluent-event/app/Http/Controllers/CommunityEventController.php:266` | `CommunityEventController::registerGuest()` | `$guest` |
+| `fluent-event/app/Http/Controllers/CommunityEventController.php:201` | `CommunityEventController::register()` | `$guest` |
+| `fluent-event/app/Http/Controllers/CommunityEventController.php:281` | `CommunityEventController::registerGuest()` | `$guest` |
 | `fluent-event/app/Http/Controllers/GuestController.php:57` | `GuestController::createGuest()` | `$guest` |
-| `fluent-event/app/Http/Controllers/PortalEventController.php:64` | `PortalEventController::registerGuest()` | `$guest` |
+| `fluent-event/app/Http/Controllers/PortalEventController.php:80` | `PortalEventController::registerGuest()` | `$guest` |
 
 ### Example
 
@@ -191,12 +193,18 @@ add_action('fluent_event/guest/deleted', function ($guest) {
 ## `fluent_event/guest/updated`
 
 - **Type:** action
-- **Call sites:** 2
+- **Call sites:** 4
 - **When it fires:** After a guest row changes, including a member's RSVP change.
 
-Fires when an admin edits a guest, and when a member changes their RSVP or cancels an open registration from the portal. On the portal path it fires only when the status really changed.
+Fires when:
 
-Compare `$guest->status` with `$previousStatus` to react to a status move, for example `going` → `cancelled`.
+- an admin edits a guest;
+- a member changes their answer in the portal, or gives up an `open` registration;
+- a visitor form brings a `not_going` row back to `going`.
+
+On the portal and visitor paths it fires only when the status really changed.
+
+Compare `$guest->status` with `$previousStatus` to react to a status move, for example `going` → `not_going`.
 
 ### Parameters
 
@@ -209,8 +217,10 @@ Compare `$guest->status` with `$previousStatus` to react to a status move, for e
 
 | Source | Context | Arguments |
 | --- | --- | --- |
-| `fluent-event/app/Http/Controllers/CommunityEventController.php:193` | `CommunityEventController::register()` | `$guest`, `$previousStatus` |
+| `fluent-event/app/Http/Controllers/CommunityEventController.php:203` | `CommunityEventController::register()` | `$guest`, `$previousStatus` |
+| `fluent-event/app/Http/Controllers/CommunityEventController.php:283` | `CommunityEventController::registerGuest()` | `$guest`, `$previousStatus` |
 | `fluent-event/app/Http/Controllers/GuestController.php:99` | `GuestController::updateGuest()` | `$guest`, `$previousStatus` |
+| `fluent-event/app/Http/Controllers/PortalEventController.php:82` | `PortalEventController::registerGuest()` | `$guest`, `$previousStatus` |
 
 ### Example
 

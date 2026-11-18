@@ -9,11 +9,17 @@ aside: false
 
 Records a logged-in member's RSVP or registration for an event.
 
-For an `rsvp` event, `status` is `going` or `not_going`. For an `open` event, `status` is `going` (register) or `cancelled` (cancel a registration the member holds); `name` can replace the display name.
+`status` is `going` or `not_going` for both entry types. On an `open` event, `not_going` gives up a registration the member holds, and the member can register again later. `name` can replace the display name on an `open` event. Only an admin sets `cancelled`.
 
-The member's existing row is reused, or a row an admin added under their email. When the member claims a row that a visitor made, the row takes the member's name in place of the name the visitor typed. A checked-in guest who says going again stays checked in. The confirmation or cancellation email is queued when the seat changes.
+The member's existing row is reused, or a row an admin added under their email. When the member claims a row that a visitor made, the row takes the member's name in place of the name the visitor typed. The confirmation or cancellation email is queued when the seat changes.
 
-Errors: 404 when the event is not visible; 422 when the event does not take registrations, has ended, the status is not allowed, or another account holds the email; 409 when two requests changed the same registration at once.
+**Going again.** `going` from a member who already holds a seat is refused. A row that an admin cancelled refuses both answers. A refused request answers HTTP 200 with `status: null`, a `refusal` of `already_registered` or `cancelled`, and a `message` for the member. Nothing is saved.
+
+**Capacity.** When the event has a `capacity` and every seat is taken, `going` is refused with 422. This includes a `not_going` row that comes back. A guest who already holds a seat keeps it.
+
+A success response carries `message`, `status`, and the event's current `online_meeting_url`, `guest_count`, `spots_left` and `is_full`, so the portal can redraw the event.
+
+Errors: 404 when the event is not visible; 422 when the event does not take registrations, has ended or is full, the status is not allowed, the member gives up an `open` registration they do not hold, or another account holds the email; 409 when two requests changed the same registration at once.
 
 ## Endpoint
 

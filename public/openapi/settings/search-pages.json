@@ -3,7 +3,7 @@
   "info": {
     "title": "FluentEvent API",
     "description": "REST API for FluentEvent, the WordPress events plugin by WPManageNinja.",
-    "version": "1.0.5"
+    "version": "1.1.0"
   },
   "servers": [
     {
@@ -106,7 +106,7 @@
                 "example": {
                   "pages": [
                     {
-                      "id": 6937,
+                      "id": 7005,
                       "title": "Events",
                       "link": "https://yourwebsite.com/events/",
                       "has_shortcode": true
