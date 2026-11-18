@@ -229,8 +229,9 @@ export default defineConfig({
     )
   },
   themeConfig: {
-    logo: '/images/fluent-event-icon.png',
-    siteTitle: 'FluentEvent',
+    // The wordmark already reads "fluentEvent", so the text title is off.
+    logo: { light: '/images/logo.svg', dark: '/images/logo-dark.svg', alt: 'FluentEvent' },
+    siteTitle: false,
     nav: [
       { text: 'Getting Started', link: '/getting-started' },
       {

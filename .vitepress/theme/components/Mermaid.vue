@@ -34,38 +34,38 @@ onMounted(async () => {
     const dark = isDark.value
 
     const themeVars = dark ? {
-      primaryColor: '#1e1e20',
-      primaryTextColor: '#e5e7eb',
-      primaryBorderColor: '#6370E0',
-      lineColor: '#6370E0',
-      secondaryColor: '#2c2c30',
-      tertiaryColor: '#3a3a40',
-      background: '#1e1e20',
-      mainBkg: '#1e1e20',
-      secondBkg: '#2c2c30',
-      tertiaryBkg: '#3a3a40',
-      entityBkg: '#1e1e20',
-      entityTextColor: '#e5e7eb',
-      relationLabelColor: '#e5e7eb',
-      relationLabelBackground: '#1e1e20'
+      primaryColor: '#12131f',
+      primaryTextColor: '#dadef2',
+      primaryBorderColor: '#a9b4ff',
+      lineColor: '#a9b4ff',
+      secondaryColor: '#1a1c2c',
+      tertiaryColor: '#2a2d42',
+      background: '#12131f',
+      mainBkg: '#12131f',
+      secondBkg: '#1a1c2c',
+      tertiaryBkg: '#2a2d42',
+      entityBkg: '#12131f',
+      entityTextColor: '#dadef2',
+      relationLabelColor: '#dadef2',
+      relationLabelBackground: '#12131f'
     } : {
       primaryColor: '#ffffff',
-      primaryTextColor: '#1e293b',
-      primaryBorderColor: '#2271b1',
-      lineColor: '#2271b1',
-      secondaryColor: '#f8fafc',
-      tertiaryColor: '#e2e8f0',
+      primaryTextColor: '#14162a',
+      primaryBorderColor: '#4a5be3',
+      lineColor: '#4a5be3',
+      secondaryColor: '#f6f7fb',
+      tertiaryColor: '#e6e8f0',
       background: '#ffffff',
       mainBkg: '#ffffff',
-      secondBkg: '#f8fafc',
-      tertiaryBkg: '#e2e8f0',
+      secondBkg: '#f6f7fb',
+      tertiaryBkg: '#e6e8f0',
       entityBkg: '#ffffff',
-      entityTextColor: '#1e293b',
-      relationLabelColor: '#1e293b',
+      entityTextColor: '#14162a',
+      relationLabelColor: '#14162a',
       relationLabelBackground: '#ffffff'
     }
 
-    const brandColor = dark ? '#6370E0' : '#2271b1'
+    const brandColor = dark ? '#a9b4ff' : '#4a5be3'
 
     // Initialize Mermaid with theme-aware settings
     mermaid.initialize({
@@ -80,7 +80,7 @@ onMounted(async () => {
         minEntityHeight: 120,
         entityPadding: 30,
         stroke: brandColor,
-        fill: dark ? '#1e1e20' : '#ffffff',
+        fill: dark ? '#12131f' : '#ffffff',
         fontSize: 13,
         useMaxWidth: true,
         relationColor: brandColor

@@ -65,25 +65,25 @@ const LOGO = {
   width: 380
 }
 
-// Brand palette (see .vitepress/theme CSS): near-black ground tinted toward the brand hue,
-// three blurred brand-colour fields, and a light tint of the brand for the eyebrow.
+// Brand palette, from https://fluentevent.com/ (see .vitepress/theme/custom.css): the dark
+// navy ground, three blurred brand-colour fields, and the light brand tint for the eyebrow.
 const PALETTE = {
-  bgTop: '#0F2A2E',
-  bgBottom: '#081315',
-  accent: '#12A9B5',
-  eyebrow: '#8FE3EA',
+  bgTop: '#151845',
+  bgBottom: '#0e1030',
+  accent: '#4a5be3',
+  eyebrow: '#a9b4ff',
   glows: [
     {
-      color: '#12A9B5',
+      color: '#4a5be3',
       opacity: 0.5
     },
     {
-      color: '#0B5F66',
+      color: '#2f3ab0',
       opacity: 0.55
     },
     {
-      color: '#3FC5CF',
-      opacity: 0.22
+      color: '#ff6b4a',
+      opacity: 0.14
     }
   ]
 }

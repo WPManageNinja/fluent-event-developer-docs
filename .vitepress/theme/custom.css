@@ -1,27 +1,102 @@
 /* Custom styles for FluentEvent documentation */
 
+/*
+ * Brand tokens, from https://fluentevent.com/:
+ * accent #4a5be3, accent-strong #2f3ab0, ink #14162a, body #4c5068, sun #ff6b4a,
+ * dark ground #0e1030 / #151845 with line #252a5e and accent #a9b4ff.
+ */
 :root {
-  --vp-c-brand-1: #0E8E99;
-  --vp-c-brand-2: #12A9B5;
-  --vp-c-brand-3: #0B737C;
-  --vp-c-brand-soft: rgba(18, 169, 181, 0.12);
-  --home-bg-tint: rgba(18, 169, 181, 0.03);
-  --home-card-bg: rgba(18, 169, 181, 0.04);
-  --home-card-hover: rgba(18, 169, 181, 0.35);
-}
+  --fe-accent: #4a5be3;
+  --fe-accent-strong: #2f3ab0;
+  --fe-accent-hover: #3d4dd0;
+  --fe-ink: #14162a;
+  --fe-sun: #ff6b4a;
 
-html:not(.dark) {
-  --vp-c-text-1: #1a1f36;
+  --vp-font-family-base: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --vp-font-family-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --vp-c-brand-1: #2f3ab0;
+  --vp-c-brand-2: #3d4dd0;
+  --vp-c-brand-3: #4a5be3;
+  --vp-c-brand-soft: rgba(74, 91, 227, 0.1);
+
+  --vp-c-text-1: #14162a;
+  --vp-c-text-2: #4c5068;
+  --vp-c-text-3: #70748a;
+  --vp-c-divider: #e6e8f0;
+  --vp-c-border: #dadde8;
+  --vp-c-gutter: #e6e8f0;
+  --vp-c-bg-soft: #f6f7fb;
+  --vp-c-bg-alt: #f6f7fb;
+  --vp-c-default-soft: #f0f1f8;
+  --vp-code-bg: #f0f1f8;
+  --vp-code-block-bg: #f6f7fb;
+
+  --vp-button-brand-bg: #14162a;
+  --vp-button-brand-border: #14162a;
+  --vp-button-brand-text: #fff;
+  --vp-button-brand-hover-bg: #2a2d48;
+  --vp-button-brand-hover-border: #2a2d48;
+  --vp-button-brand-hover-text: #fff;
+  --vp-button-brand-active-bg: #14162a;
+
+  --home-bg-tint: rgba(74, 91, 227, 0.03);
+  --home-card-bg: rgba(74, 91, 227, 0.03);
+  --home-card-hover: rgba(74, 91, 227, 0.35);
+  --home-btn-bg: #14162a;
+  --home-btn-text: #fff;
+  --home-btn-hover: #2a2d48;
+  --home-shadow: 0 1px 2px rgba(19, 26, 28, 0.05), 0 12px 32px -12px rgba(19, 26, 28, 0.16);
 }
 
 .dark {
-  --vp-c-brand-1: #3FD0DB;
-  --vp-c-brand-2: #12A9B5;
-  --vp-c-brand-3: #0E8E99;
-  --vp-c-brand-soft: rgba(18, 169, 181, 0.2);
-  --home-bg-tint: rgba(63, 197, 207, 0.04);
-  --home-card-bg: rgba(63, 197, 207, 0.06);
-  --home-card-hover: rgba(63, 197, 207, 0.4);
+  --vp-c-brand-1: #a9b4ff;
+  --vp-c-brand-2: #c3c8ff;
+  --vp-c-brand-3: #4a5be3;
+  --vp-c-brand-soft: rgba(169, 180, 255, 0.12);
+
+  /* Near-black with a faint indigo tint: the ink of the light theme, darkened. */
+  --vp-c-bg: #0b0c15;
+  --vp-c-bg-alt: #08090f;
+  --vp-c-bg-elv: #14162a;
+  --vp-c-bg-soft: #12131f;
+  --vp-c-text-1: #ecedf5;
+  --vp-c-text-2: #c4c7d9;
+  --vp-c-text-3: #8b8fa8;
+  --vp-c-divider: #1f2133;
+  --vp-c-border: #2a2d42;
+  --vp-c-gutter: #08090f;
+  --vp-c-default-soft: #1a1c2c;
+  --vp-code-bg: #1a1c2c;
+  --vp-code-block-bg: #0f1019;
+
+  --vp-button-brand-bg: #ffffff;
+  --vp-button-brand-border: #ffffff;
+  --vp-button-brand-text: #14162a;
+  --vp-button-brand-hover-bg: #dadef2;
+  --vp-button-brand-hover-border: #dadef2;
+  --vp-button-brand-hover-text: #14162a;
+  --vp-button-brand-active-bg: #ffffff;
+
+  --home-bg-tint: rgba(169, 180, 255, 0.02);
+  --home-card-bg: rgba(169, 180, 255, 0.025);
+  --home-card-hover: rgba(169, 180, 255, 0.35);
+  --home-btn-bg: #ffffff;
+  --home-btn-text: #14162a;
+  --home-btn-hover: #dadef2;
+  --home-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 24px 48px -24px rgba(0, 0, 0, 0.5);
+}
+
+/* Headings follow the landing page: semibold, tight tracking. */
+.vp-doc h1,
+.vp-doc h2 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* The logo is the full wordmark; keep it at the landing page's size. */
+.VPNavBarTitle .logo {
+  height: 28px;
 }
 
 /* ── Homepage ── */
@@ -61,9 +136,10 @@ html:not(.dark) {
   display: inline-block;
   padding: 4px 14px;
   border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--vp-c-brand-1);
   background: var(--vp-c-brand-soft);
@@ -72,9 +148,9 @@ html:not(.dark) {
 .home-hero__title {
   margin: 20px 0 0;
   font-size: clamp(2.2rem, 5vw, 3.2rem);
-  font-weight: 800;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
   color: var(--vp-c-text-1);
 }
 
@@ -103,19 +179,20 @@ html:not(.dark) {
   justify-content: center;
   height: 44px;
   padding: 0 24px;
-  border-radius: 10px;
+  border-radius: 9px;
   font-size: 0.94rem;
   font-weight: 600;
   transition: all 0.15s ease;
 }
 
 .home-btn--primary {
-  background: var(--vp-c-brand-1);
-  color: #fff;
+  background: var(--home-btn-bg);
+  color: var(--home-btn-text);
+  box-shadow: 0 8px 20px -10px rgba(19, 26, 28, 0.6);
 }
 
 .home-btn--primary:hover {
-  background: var(--vp-c-brand-3);
+  background: var(--home-btn-hover);
 }
 
 .home-btn--outline {
@@ -142,7 +219,7 @@ html:not(.dark) {
   flex-direction: column;
   padding: 28px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 14px;
+  border-radius: 12px;
   background: var(--home-card-bg);
   color: var(--vp-c-text-1);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -150,7 +227,7 @@ html:not(.dark) {
 
 .home-section-card:hover {
   border-color: var(--home-card-hover);
-  box-shadow: 0 4px 16px rgba(18, 169, 181, 0.08);
+  box-shadow: var(--home-shadow);
 }
 
 .home-section-card__icon {
@@ -393,7 +470,7 @@ html:not(.dark) {
 .VPFeature {
   border: 1px solid var(--vp-c-divider);
   background:
-    linear-gradient(180deg, rgba(18, 169, 181, 0.06), rgba(255, 255, 255, 0)),
+    linear-gradient(180deg, var(--vp-c-brand-soft), transparent),
     var(--vp-c-bg-soft);
 }
 
@@ -542,14 +619,14 @@ html:not(.dark) .mermaid.zoomed::before {
   font-size: 13px !important;
   font-weight: 600 !important;
   fill: #ffffff !important;
-  stroke: #3b82f6 !important;
+  stroke: var(--fe-accent) !important;
   stroke-width: 2px !important;
   rx: 8 !important;
   ry: 8 !important;
 }
 
 .mermaid .er.entityLabel {
-  fill: #1e293b !important;
+  fill: #14162a !important;
   font-weight: 700 !important;
   font-size: 15px !important;
   padding: 12px !important;
@@ -558,22 +635,22 @@ html:not(.dark) .mermaid.zoomed::before {
 .mermaid .er.attributeBoxEven,
 .mermaid .er.attributeBoxOdd {
   font-size: 12px !important;
-  fill: #f8fafc !important;
-  stroke: #e2e8f0 !important;
+  fill: #f6f7fb !important;
+  stroke: #e6e8f0 !important;
   stroke-width: 1px !important;
   padding: 8px 16px !important;
 }
 
 /* Fix text color issues */
 .mermaid .er text {
-  fill: #1e293b !important;
-  font-family: 'Segoe UI', system-ui, sans-serif !important;
+  fill: #14162a !important;
+  font-family: var(--vp-font-family-base) !important;
   padding: 6px 12px !important;
 }
 
 /* Ensure attribute text is readable */
 .mermaid .er .er-attribute-text {
-  fill: #374151 !important;
+  fill: #4c5068 !important;
   padding: 8px 16px !important;
   margin: 3px 0 !important;
   font-size: 12px !important;
@@ -581,13 +658,13 @@ html:not(.dark) .mermaid.zoomed::before {
 
 /* Entity title styling */
 .mermaid .er .er-entity-name {
-  fill: #1e293b !important;
+  fill: #14162a !important;
   font-weight: 700 !important;
   font-size: 15px !important;
 }
 
 .mermaid .er.relationshipLine {
-  stroke: #3b82f6 !important;
+  stroke: var(--fe-accent) !important;
   stroke-width: 2px !important;
   opacity: 0.9 !important;
 }
@@ -595,7 +672,7 @@ html:not(.dark) .mermaid.zoomed::before {
 .mermaid .er.relationshipLabel {
   font-size: 11px !important;
   font-weight: 600 !important;
-  fill: #1e293b !important;
+  fill: #14162a !important;
   background: #ffffff !important;
   padding: 4px 8px !important;
 }
